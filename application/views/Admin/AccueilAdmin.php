@@ -9,20 +9,6 @@
     <script src="main.js"></script>
 </head>
 <body>
-<div id='Colonne gauche'>
-
-hhhhhhh
-
-
-</div>
-
-<div id='Colonne centre'>
-
-</div>
-
-<div id='Colonne Droite'>
-
-</div>
-
+    
 </body>
 </html>
