@@ -9,8 +9,9 @@ class Visiteur extends CI_Controller {
 
 	public function Accueil()
 	{
+		$DonneesInjectees['titredelapage']='Accueil';
 		$this->load->view('Templates/Header');
-		$this->load->view('Visiteur/Accueil');
+		$this->load->view('Visiteur/Accueil',$DonneesInjectees);
 		$this->load->view('Templates/pieddepage');
 	}
 }
