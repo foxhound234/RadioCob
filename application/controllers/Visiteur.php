@@ -10,8 +10,28 @@ class Visiteur extends CI_Controller {
 	public function Accueil()
 	{
 		$DonneesInjectees['titredelapage']='Accueil';
+		$this->afficher('Visiteur/Accueil',$DonneesInjectees); 
+	}
+	public function afficherEvenement()
+	{
+
+
+	}
+
+	public function Contact()
+	{
+
+	}
+
+	 public function Partenaires()
+	 {
+
+	 }
+	 
+	private function afficher($page,$DonneesInjectees)
+	{
 		$this->load->view('Templates/Header');
-		$this->load->view('Visiteur/Accueil',$DonneesInjectees);
+		$this->load->view($page,$DonneesInjectees);
 		$this->load->view('Templates/pieddepage');
 	}
 }

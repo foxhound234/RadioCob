@@ -9,8 +9,13 @@ class Admin extends CI_Controller {
 
 	public function Accueil()
 	{
+		$DonneesInjectees['titredelapage']='Accueil';
+		$this->afficher('Admin/AccueilAdmin',$DonneesInjectees);
+	}
+	private function afficher($page,$DonneesInjectees)
+	{
 		$this->load->view('Templates/Header');
-		$this->load->view('Admin/AccueilAdmin');
+		$this->load->view($page,$DonneesInjectees);
 		$this->load->view('Templates/pieddepage');
 	}
 }
