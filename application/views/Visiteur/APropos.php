@@ -11,13 +11,6 @@
     <script src="main.js"></script>
 </head>
 <body>
-
-
-
-
-
-
-
 <table cellpadding="6" cellspacing="1" style="width:100%" border="0">
 
 <tr>
@@ -29,15 +22,9 @@
 <?php foreach ($DesAnimateurs as $items): ?>     
         <tr>
                 <td><?php echo  $items['nom'] ?></td>
-                <td> </td>
-                </td>
-                <td> <a href= <?php echo site_url()."/Visiteur/VoirUnAnimateur/".$items['id']; ?>> <img src="bzkghzjhb"></a>  
+                <td> <a href= <?php echo site_url()."/Visiteur/VoirUnAnimateur/".$items['id']; ?>><img width="25%" src='<?php  img_url($unProduit->NOMIMAGE) ?>'></a>  
         </tr>
 <?php endforeach; ?>
 </table>
-
-
-
-
 </body>
 </html>
