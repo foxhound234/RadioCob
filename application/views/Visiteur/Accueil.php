@@ -9,20 +9,17 @@
     <script src="main.js"></script>
 </head>
 <body>
-<div id='Colonne gauche'>
+    <div id='Colonne gauche'>
+    hhhhhhh
+    </div>
 
-hhhhhhh
+    <div id='Colonne centre'>
 
+    </div>
 
-</div>
+    <div id='Colonne Droite'>
 
-<div id='Colonne centre'>
-
-</div>
-
-<div id='Colonne Droite'>
-
-</div>
+    </div>
 
 </body>
 </html>

@@ -20,7 +20,26 @@ class Visiteur extends CI_Controller {
 
 	public function Contact()
 	{
-
+		if($this->input->post('btnEnregistrement'))
+		{
+		 $client=array(
+		   'nom' => $this->input->post('txtNom'),
+ 
+		   'prenom' => $this->input->post('txtPrenom'),
+ 
+		   'adresse'=>$this->input->post('txtadresse'),
+ 
+		   'ville'=>$this->input->post('txtVille'),
+ 
+		   'codePostal'=>$this->input->post('txtcodePostal'),
+ 
+		   'email'=>$this->input->post('txtEmail'),
+ 
+		   'motdePasse'=>$this->input->post('txtMdp')
+		   ); 
+		   
+		}
+		
 	}
 
 	 public function Partenaires()
@@ -39,6 +58,7 @@ class Visiteur extends CI_Controller {
 		$DonneesInjectees['TitredelaPage']="VoirUnAnimateur";
 		$this->afficher('Visiteur/VoirUnAnimateur',$DonneesInjectees);
 	 }
+	 
 	private function afficher($page,$DonneesInjectees)
 	{
 		$this->load->view('Templates/Header');
