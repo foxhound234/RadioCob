@@ -1,5 +1,5 @@
 <?php
-class ModeleEvenement extends CI_Model {
+class ModeleInfos extends CI_Model {
 
 public function __construct()
 {
