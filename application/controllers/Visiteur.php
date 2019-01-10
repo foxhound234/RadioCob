@@ -61,6 +61,31 @@ class Visiteur extends CI_Controller {
 		$this->afficher('Visiteur/VoirUnAnimateur',$DonneesInjectees);
 	 }
 	 
+	 public function ConnexionAdmin()
+	 {
+		$DonneesInjectees['TitredelaPage']="Admin";
+		$DonneesInjectees['Erreur']="";
+		$this->afficher('Visiteur/Connexion',$DonneesInjectees);
+		if($this->input->post('btnConnexion'))
+		{
+			$DonnesDeConnexion=array(
+				'login'=>$this->input->post('txtLogin'),
+				'password'=>$this->input->post('txtMdp')
+				);
+				$UtilisateurRetourner=$this->ModeleAdmin->RetournerAdmin($DonnesDeConnexion);
+
+		  if($UtilisateurRetourner==null)
+		  {
+			
+		  }
+		  else{
+			$this->session->Login=$UtilisateurRetourner->login;
+			$this->session->profil=$UtilisateurRetourner->type;  
+			$this->afficher('Visiteur/AccueilAdmin');
+		  }
+
+		}
+	 }
 	private function afficher($page,$DonneesInjectees)
 	{
 		$this->load->view('Templates/Header');
