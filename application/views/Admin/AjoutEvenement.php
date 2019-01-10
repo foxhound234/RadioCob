@@ -18,10 +18,13 @@ echo form_label('Titre','lbxTitre');
 
 echo form_input(array('name'=>'txtTitre','value'=>'','pattern'=>'[a-zA-Z0-9]+','placeholder'=>'Titre','required'=>'required','class'=>'form-control','title'=>'les lettres + chifres uniquement')).'<BR>';
 
+echo form_label('Periode','lblPeriode');
+
+echo form_input(array('name'=>'txtPeriode','value'=>'','pattern'=>'[a-zA-Z0-9]+','placeholder'=>'Periode','required'=>'required','class'=>'form-control','title'=>'les lettres + chifres uniquement')).'<BR>';
 
 echo form_label('Description','lbxDescription');
 
-echo form_textarea(array('name'=>'txtDescrisption','value'=>'','placeholder'=>'Description','pattern'=>'[a-zA-Z0-9]+','required'=>'required','class'=>'form-control','title'=>'les lettres + chifres uniquement')).'<BR>';
+echo form_textarea(array('name'=>'txtDescription','value'=>'','placeholder'=>'Description','pattern'=>'[a-zA-Z0-9]+','required'=>'required','class'=>'form-control','title'=>'les lettres + chifres uniquement')).'<BR>';
 
 echo form_label('Date Début','lbxDateDebut');
 

@@ -21,6 +21,22 @@ class Admin extends CI_Controller {
 	{
 		$DonneesInjectees['titredelapage']='Evenement';
 		$this->afficher('Admin/AjoutEvenement',$DonneesInjectees);
+		if($this->input->post('btnEvenement'))
+		{
+		 
+			$Donneesevenement=array(
+			  'titre'=>$this->input->post('txtTitre'),
+			 'description'=>$this->input->post('txtDescription'),
+			 'periode'=>$this->input->post('txtPeriode'),
+			 'position'=>1,
+			  'debut'=>$this->input->post('txtDateDebut'),
+			  'fin'=>$this->input->post('txtDateFin')
+			);
+
+			$this->ModeleEvenement->AjouterEvenement($Donneesevenement);
+			
+
+		}
 	}
 	private function afficher($page,$DonneesInjectees)
 	{
