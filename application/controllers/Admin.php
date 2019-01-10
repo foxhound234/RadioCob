@@ -17,6 +17,11 @@ class Admin extends CI_Controller {
 		session_destroy();
 	  	redirect('/Visiteur/Accueil', 'refresh');
 	}
+	public function AjouterEvenement()
+	{
+		$DonneesInjectees['titredelapage']='Evenement';
+		$this->afficher('Admin/AjoutEvenement',$DonneesInjectees);
+	}
 	private function afficher($page,$DonneesInjectees)
 	{
 		$this->load->view('Templates/Header');
