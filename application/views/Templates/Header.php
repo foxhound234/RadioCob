@@ -15,7 +15,7 @@
 <li class="active"><a href="<?php echo site_url('Visiteur/Accueil') ?>">Accueil </a>&nbsp;&nbsp;</li>
 <li class="active"><a href=""> Programmes</a>&nbsp;&nbsp;</li>
 <li class="active"><a href="">Evenement </a>&nbsp;&nbsp;</li>
-<li class="active"><a href=""> Partenaires </a>&nbsp;&nbsp;</li>
+<li class="active"><a href="<?php echo site_url('Visiteur/Partenaires') ?>"> Partenaires </a>&nbsp;&nbsp;</li>
 <li class="active"><a href="" data-toggle="modal" data-target="#myModal">  Contact </a>&nbsp;&nbsp;</li>
 <li class="active"><a href="<?php echo site_url('Visiteur/APropos') ?>"> A Propos de la  Radio </a>&nbsp;&nbsp;</li>
 <li class="active"><a href=""><i class="fa fa-facebook-official"></i></a>&nbsp;&nbsp;</li>

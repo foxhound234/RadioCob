@@ -44,7 +44,9 @@ class Visiteur extends CI_Controller {
 
 	 public function Partenaires()
 	 {
-
+		$DonneesInjectees['DesPartenaires']=$this->ModelePartenaires->getLespartenaires();
+		$DonneesInjectees['TitredelaPage']="Les Partenaires";
+		$this->afficher('Visiteur/Partenaires',$DonneesInjectees);
 	 }
 	 public function APropos()
 	 {

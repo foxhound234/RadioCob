@@ -22,7 +22,7 @@
 <?php foreach ($DesAnimateurs as $items): ?>     
         <tr>
                 <td><?php echo  $items['nom'] ?></td>
-                <td> <a href= <?php echo site_url()."/Visiteur/VoirUnAnimateur/".$items['id']; ?>><img width="25%" src='<?php  img_url($unProduit->NOMIMAGE) ?>'></a>  
+                <td> <a href= <?php echo site_url()."/Visiteur/VoirUnAnimateur/".$items['id']; ?>><img width="25%" src='<?php  img_url($items['photo']) ?>'></a>  
         </tr>
 <?php endforeach; ?>
 </table>

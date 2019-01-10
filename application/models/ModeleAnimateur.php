@@ -12,10 +12,10 @@ public function RetournerAnimateur ($id = NULL)
     if($id==NULL)
     {
       $requete=$this->db->get('cob_animateurs');
-      return $requete->result_array();
+      return $requete->result();
     }
     $requete=$this->db->get_where('cob_animateurs',array('id'=>$id));
-    return $requete->row_array();  
+    return $requete->row();  
 }
     
 }
