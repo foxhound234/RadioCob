@@ -13,7 +13,7 @@
  <?php foreach ($DesPartenaires as $items): ?>     
         <div>
          <?php echo $items['nom'] ?>
-         <img width="25%" src='<?php  img_url($unPrNOMIMAGE) ?>'>
+         <img width="25%" src='<?php echo img_url($unPrNOMIMAGE) ?>'>
          <div>
         <?php echo $items['description']?>
         <BR>

@@ -11,12 +11,15 @@
 </head>
 <body>
     <div class="text-center">
-    <h1> <?php echo $UnAnimateur['nom']?> </h1>
-
-     <p>  <?php echo $UnAnimateur['presentation']?> </p>          
-      
-     <?php if($UnAnimateur['site']!="") {
-         echo '<a href="'.$UnAnimateur['site'].'"> Visiter le site web </a>'; 
+    <h1> <?php echo $UnAnimateur->nom?> </h1>
+    <BR>
+    <BR>
+    <img width="25%" src='<?php echo img_url($UnAnimateur->photo) ?>'>
+    <BR>
+    <BR>
+     <p>  <?php echo $UnAnimateur->presentation?> </p>          
+     <?php if($UnAnimateur->site!="") {
+         echo '<a href="'.$UnAnimateur->site.'"> Visiter le site web </a>'; 
      }?>
    </div>  
 </body>

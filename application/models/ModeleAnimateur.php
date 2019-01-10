@@ -17,5 +17,5 @@ public function RetournerAnimateur ($id = NULL)
     $requete=$this->db->get_where('cob_animateurs',array('id'=>$id));
     return $requete->row();  
 }
-    
+ 
 }

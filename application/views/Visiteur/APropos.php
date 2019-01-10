@@ -11,18 +11,14 @@
     <script src="main.js"></script>
 </head>
 <body>
-<table cellpadding="6" cellspacing="1" style="width:100%" border="0">
-
+   <table  class="table">
 <tr>
         <th> Nom de L'animateur </th>
-        <th> </th>
 </tr>
-<?php $i = 1; ?>
-
 <?php foreach ($DesAnimateurs as $items): ?>     
         <tr>
-                <td><?php echo  $items['nom'] ?></td>
-                <td> <a href= <?php echo site_url()."/Visiteur/VoirUnAnimateur/".$items['id']; ?>><img width="25%" src='<?php  img_url($items['photo']) ?>'></a>  
+                <td><?php echo  $items->nom ?></td>    
+                <td> <a href= <?php echo site_url()."/Visiteur/VoirUnAnimateur/".$items->id; ?>><img width="25%" src='<?php  echo img_url($items->photo) ?>'></a> </td> 
         </tr>
 <?php endforeach; ?>
 </table>
