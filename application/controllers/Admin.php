@@ -12,6 +12,11 @@ class Admin extends CI_Controller {
 		$DonneesInjectees['titredelapage']='Accueil';
 		$this->afficher('Admin/AccueilAdmin',$DonneesInjectees);
 	}
+	public function Deconnexion()
+	{
+		session_destroy();
+	  	redirect('/Visiteur/Accueil', 'refresh');
+	}
 	private function afficher($page,$DonneesInjectees)
 	{
 		$this->load->view('Templates/Header');

@@ -11,7 +11,30 @@
 <body>
 <nav class="navbar">
 <div class="container-fluid">
-<ul class="nav navbar-nav">
+      <?php if ($this->session->profil=='A'):?>
+     <ul class="nav navbar-nav">
+     <li><a href="">Accueil</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Ajouter
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="<?php ?>">Un Evenement </a></li>
+            <li><a href="<?php  ?>">Un jeux</a></li>
+            <li><a href="<?php  ?>">Une infos locale </a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Modifier
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="<?php ?>">Un Evenement </a></li>
+            <li><a href="<?php ?>">un jeux </a></li>
+            <li><a href="<?php ?>">L </a></li>
+          </ul>
+        </li>
+        <li><a href="<?php echo site_url('Deconnexion')?>">Deconnexion</a></li>
+        <?php else:?>
+        <ul class="nav navbar-nav">    
 <li class="active"><a href="<?php echo site_url('Visiteur/Accueil') ?>">Accueil </a>&nbsp;&nbsp;</li>
 <li class="active"><a href=""> Programmes</a>&nbsp;&nbsp;</li>
 <li class="active"><a href="">Evenement </a>&nbsp;&nbsp;</li>
@@ -19,6 +42,8 @@
 <li class="active"><a href="" data-toggle="modal" data-target="#myModal">  Contact </a>&nbsp;&nbsp;</li>
 <li class="active"><a href="<?php echo site_url('Visiteur/APropos') ?>"> A Propos de la  Radio </a>&nbsp;&nbsp;</li>
 <li class="active"><a href=""><i class="fa fa-facebook-official"></i></a>&nbsp;&nbsp;</li>
+</ul>
+<?php endif;?>
 </ul>
 </div>
 </nav>

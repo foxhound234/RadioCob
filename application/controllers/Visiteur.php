@@ -70,18 +70,17 @@ class Visiteur extends CI_Controller {
 		{
 			$DonnesDeConnexion=array(
 				'login'=>$this->input->post('txtLogin'),
-				'password'=>$this->input->post('txtMdp')
+				'password'=>$this->input->post('txtPassword')
 				);
 				$UtilisateurRetourner=$this->ModeleAdmin->RetournerAdmin($DonnesDeConnexion);
-
 		  if($UtilisateurRetourner==null)
 		  {
-			
+			log_message('error',' erreur veuillez Ressaisir');
 		  }
 		  else{
 			$this->session->Login=$UtilisateurRetourner->login;
 			$this->session->profil=$UtilisateurRetourner->type;  
-			$this->afficher('Visiteur/AccueilAdmin');
+			redirect('/Admin/Accueil', 'refresh');
 		  }
 
 		}

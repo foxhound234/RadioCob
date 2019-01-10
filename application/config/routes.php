@@ -55,4 +55,5 @@ $route['translate_uri_dashes'] = FALSE;
 $route['Accueil']='Visiteur/Accueil';
 $route['APropos']='Visiteur/APropos';
 $route['Admin']='Visiteur/ConnexionAdmin';
+$route['Deconnexion']='Admin/Deconnexion';
 

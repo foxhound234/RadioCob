@@ -9,6 +9,18 @@
     <script src="main.js"></script>
 </head>
 <body>
-    
+<div class='text-center'>
+
+<h1> Bonjour <?php echo $this->session->Login ?> &nbsp;&nbsp;</h1>
+ <p>
+ 
+ Pour Commmencez cliquer sur l'un des onglets  
+ 
+ 
+ 
+ 
+ 
+  </p>
+</div>
 </body>
 </html>

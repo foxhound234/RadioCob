@@ -10,7 +10,7 @@
 </head>
 <body>
     <div id='Colonne gauche'>
-    hhhhhhh
+    <script src="//myradiostream.com/embed/cobfm"></script>
     </div>
 
     <div id='Colonne centre'>

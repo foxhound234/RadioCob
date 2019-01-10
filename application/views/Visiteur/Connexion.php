@@ -31,7 +31,7 @@ echo form_label('Password','lbxPass');
 
 echo form_password(array('name'=>'txtPassword','value'=>'','placeholder'=>'Mot De Passe','pattern'=>'.{6,}','required'=>'required','class'=>'form-control','title'=>'six caractère ou plus')).'<BR>';
 
-echo form_submit('btnConnexion', 'Connexion',array('class'=>'btn btn-primary')).'<BR>';
+echo form_submit('btnConnexion','Connexion',array('class'=>'btn btn-primary')).'<BR>';
 
 echo form_close();
 ?>
