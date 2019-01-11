@@ -18,7 +18,7 @@
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Ajouter
           <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="<?php ?>">Un Evenement </a></li>
+            <li><a href="<?php echo site_url('Admin/AjouterEvenement')?>">Un Evenement </a></li>
             <li><a href="<?php  ?>">Un jeux</a></li>
             <li><a href="<?php  ?>">Une infos locale </a></li>
           </ul>

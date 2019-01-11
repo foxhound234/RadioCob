@@ -2,10 +2,14 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin extends CI_Controller {
-    public function _construct()
-    {
-     parent::_construct();
-    }
+	function __construct() {
+		parent::__construct();
+		if(!($this->session->profil=='A'))
+		{
+		 redirect('Visiteur/ConnexionAdmin','Refresh');
+		}
+		
+	}
 
 	public function Accueil()
 	{
@@ -33,10 +37,29 @@ class Admin extends CI_Controller {
 			  'fin'=>$this->input->post('txtDateFin')
 			);
 
-			$this->ModeleEvenement->AjouterEvenement($Donneesevenement);
-			
-
+			$Evenements=$this->ModeleEvenement->AjouterEvenement($Donneesevenement);
+		  
+			redirect('/Admin/Accueil', 'refresh');	
+				
 		}
+	}
+
+	public function AjouterInfosLocal()
+	{
+		$DonneesInjectees['titredelapage']='Evenement';
+		$DonneesInjectees[''];
+	}
+	public function ModifierLesEvenements()
+	{
+		$DonneesInjectees['titredelapage']='Modifier les Evenement';
+		$DonneesInjectees['LesEvenements']=$this->ModeleEvenement->GetLesEvenements();
+		$this->afficher('Admin/ModifierEvenements',$DonneesInjectees);
+	}
+	public function ModifierUnEvenement($id)
+	{
+		$DonneesInjectees['titredelapage']='Modifier les Evenement';
+		$DonneesInjectees['LesEvenements']=$this->ModeleEvenement->GetLesEvenements($id);
+
 	}
 	private function afficher($page,$DonneesInjectees)
 	{

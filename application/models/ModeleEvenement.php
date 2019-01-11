@@ -12,5 +12,17 @@ public function AjouterEvenement($DonnesEvenement)
     return $this->db->insert_id();
 }
 
+public function GetLesEvenements($id=FALSE)
+{
+    if($id ===false)
+    {
+     $requete=$this->db->get('cob_evenements'); 
+    }
+    else
+    {
+     return $requete =$this->db->get_where('cob_evenements',array('id'=>$id));
+    }
+   return $requete;  
+}
 
 }
