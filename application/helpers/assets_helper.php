@@ -77,3 +77,17 @@ if ( ! function_exists('img'))
   }
 
 }
+
+if ( ! function_exists('son_url'))
+
+{
+
+  function son_url($nom)
+
+  {
+
+    return base_url() . 'assets/son/' . $nom. '.mp3';
+
+  }
+
+}
