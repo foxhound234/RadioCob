@@ -152,22 +152,22 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
+        <h4 class="modal-title">Ajouter Infos Local</h4>
       </div>
       <div class="modal-body">
       <?php
         if($nbinfojour==0)
         {
-          echo validation_errors(); // mise en place de la validation
+          echo validation_errors();
 
-          echo form_open_multipart('Admin/AjouterInfosLocal');
-        
-          echo form_label('Son','lbxSon');
-        
-          echo form_input(array('name'=>'txtSon','type'=>'file','value'=>'','placeholder'=>'son','required'=>'required')).'<BR>';
-        
-          echo form_submit('btninfoslocal','Ajouter',array('class'=>'btn btn-primary')).'<BR>';
+          echo form_open_multipart('Admin/Ajouterinfolocal');
+          ?>
+          <input type="file" name="userfile" size="20" />
 
+          <br /><br />
+          
+          <input type="submit"  name=" "value="upload" />
+          <?php
           echo form_close();
         }
         ?>

@@ -42,35 +42,31 @@ class Admin extends CI_Controller {
 		}
 	}
 
-	public function AjouterInfosLocal()
+	public function Ajouterinfolocal()
 	{
-	 if($this->input->post('btninfoslocal'))
-	 {
-		$config['upload_path']          = './assets/son';
-		$config['allowed_types']        = 'mp3|wav';
-		$config['max_size']             = 100000;
-
+		$config['upload_path'] = './assets/son';
+		$config['allowed_types'] ='gif|jpg|png|jpeg|mp3';
+		$config['max_size'] = 250000;
+		$this->load->library('upload', $config);  # Load upload library
 		$this->upload->initialize($config);
-
-		if ( ! $this->upload->do_upload('txtSon'))
-		{
-				$error =  $this->upload->display_errors();
-
-				echo $error;
+				
+		if (!$this->upload->do_upload($field = 'userfile')) {
+			$status                     = 'error';
+			$msg                        = $this->upload->display_errors('', '');
+			echo $msg;
+		} else {
+			
+        $data = $this->upload->data();
 		}
-		else
-		{
-				$data = $this->upload->data();
-		}	 
-	 }
+						
 	}
 	public function test()
 	{
 			$config['upload_path']          = './assets/images';
 			$config['allowed_types']        = 'gif|jpg|png';
-			$config['max_size']             = 100000;
-			$config['max_width']            = 2500;
-			$config['max_height']           = 2500;
+			$config['max_size']             = 0 ;
+			$config['max_width']            = 0 ;
+			$config['max_height']           = 0 ;
 
 			$this->upload->initialize($config);
 			if ( ! $this->upload->do_upload('userfile'))
@@ -95,13 +91,13 @@ class Admin extends CI_Controller {
 			$config['max_size']             = 100000;
 			$config['max_width']            = 2500;
 			$config['max_height']           = 2500;
-
+         
 			$this->upload->initialize($config);
 			if ( ! $this->upload->do_upload('txtImages'))
 			{
 					$error =  $this->upload->display_errors();
 
-					echo $error;
+					print_r($error);
 			}
 			else
 			{
