@@ -14,6 +14,8 @@ class Admin extends CI_Controller {
 	{
 		$DonneesInjectees['nbinfojour']=$this->ModeleInfos->getnbinfojour();
 		$DonneesInjectees['titredelapage']='Accueil';
+		$DonneesInjectees['LesEmissions']=$this->ModeleEmission->RetournerEmission();
+      $DonneesInjectees['LesAnimateurs']=$this->ModeleAnimateur->RetournerAnimateur(); 
 		$this->afficher('Admin/AccueilAdmin',$DonneesInjectees);
 	}
 	public function Deconnexion()
@@ -45,43 +47,53 @@ class Admin extends CI_Controller {
 	public function Ajouterinfolocal()
 	{
 		$config['upload_path'] = './assets/son';
-		$config['allowed_types'] ='gif|jpg|png|jpeg|mp3';
+		$config['allowed_types'] = '*';
 		$config['max_size'] = 250000;
-		$this->load->library('upload', $config);  # Load upload library
+	
 		$this->upload->initialize($config);
-				
-		if (!$this->upload->do_upload($field = 'userfile')) {
-			$status                     = 'error';
-			$msg                        = $this->upload->display_errors('', '');
-			echo $msg;
-		} else {
-			
-        $data = $this->upload->data();
+		if ( ! $this->upload->do_upload('userfile'))
+		{
+				$error =  $this->upload->display_errors();
+
+				echo $error;
 		}
+		else
+		{
+				$data = $this->upload->data();
+		 
+			
+		}	 
 						
 	}
-	public function test()
+	public function AjouterEmission()
 	{
-			$config['upload_path']          = './assets/images';
-			$config['allowed_types']        = 'gif|jpg|png';
-			$config['max_size']             = 0 ;
-			$config['max_width']            = 0 ;
-			$config['max_height']           = 0 ;
+		$config['upload_path']          = './assets/images';
+		$config['allowed_types']        = 'gif|jpg|png';
+		$config['max_size']             = 0 ;
+		$config['max_width']            = 0 ;
+		$config['max_height']           = 0 ;
 
-			$this->upload->initialize($config);
-			if ( ! $this->upload->do_upload('userfile'))
-			{
-					$error =  $this->upload->display_errors();
+		$this->upload->initialize($config);
+		if ( ! $this->upload->do_upload('txtImages'))
+		{
+				$error =  $this->upload->display_errors();
 
-					echo $error;
-			}
-			else
-			{
-					$data = $this->upload->data();
-             $this->load->view('upload_success', $data);
-				
-			}	 
+				echo $error;
+		}
+		else
+		{
+			$data = $this->upload->data();
+			$DonneesEmissions=array(
+				'titre'=>$this->input->post('txtTitre'),
+			   'description'=>$this->input->post('txtDescription'),
+			   'image'=>$data['file_name']
+			  );
+			  $this->ModeleEmission->AjouterEmission($DonneesEmissions);
+			  redirect('/Admin/Accueil', 'refresh');
+		}	 
+
 	}
+	
 	public function Ajouterjeux()
 	{
 		if($this->input->post('btnJeux'))
@@ -102,16 +114,12 @@ class Admin extends CI_Controller {
 			else
 			{
 					$data = $this->upload->data();
-					$Donneesjeux=array(
-						'intitule'=>$this->input->post('txtIntitule'),
+					$DonneesEmissions=array(
+						'titre'=>$this->input->post('txt'),
 					   'description'=>$this->input->post('txtDescription'),
-					   'fonctionnement'=>$this->input->post('txtFonctionnement'),
-					   'image'=>$data['file_name'],
-						'debut'=>$this->input->post('txtDateDebut'),
-						'fin'=>$this->input->post('txtDateFin'),
-						'interruption' => 1
+					   'image'=>$data['file_name']
 					  );
-					  $this->ModeleJeux->AjouterJeux($Donneesjeux);
+					  $this->ModeleEmission->AjouterEmission($DonneesEmissions);
 					redirect('/Admin/Accueil', 'refresh');
 			}
 		}

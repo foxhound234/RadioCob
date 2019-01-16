@@ -20,10 +20,12 @@
             <li><a href="" data-toggle="modal" data-target="#ModalEvenement">Un Evenement </a></li>
             <li><a href="" data-toggle="modal" data-target="#ModalJeux">Un jeux</a></li>
             <li><a href="" data-toggle="modal" data-target="#Modalinfo">Une infos locale </a></li>
+            <li><a href=""data-toggle="modal" data-target="#ModalEmission"> Une Emission </a></li>
+            <li><a href=""data-toggle="modal" data-target="#ModalAnimations"> Une animations</a></li>
           </ul>
         </li>
         <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Modifier
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">ModifierOuSupprimer
           <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="<?php ?>">Un Evenement </a></li>
@@ -139,7 +141,8 @@
         </div>
       </div>
     </div>
-  </div></div>
+  </div>
+  </div>
 
 
 
@@ -161,7 +164,7 @@
           echo validation_errors();
 
           echo form_open_multipart('Admin/Ajouterinfolocal');
-          ?>
+         ?>
           <input type="file" name="userfile" size="20" />
 
           <br /><br />
@@ -178,6 +181,102 @@
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+<!-- Modal -->
+<div id="ModalEmission" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Ajouter Une Emission </h4>
+      </div>
+      <div class="modal-body">
+      <?php
+          echo validation_errors();
+
+          echo form_open_multipart('Admin/AjouterEmission');
+          
+           echo form_label('Titre','lbxTitre');
+
+           echo form_input(array('name'=>'txtTitre','value'=>'','pattern'=>'[a-zA-Z0-9\s]+','placeholder'=>'Titre','required'=>'required','class'=>'form-control','title'=>'les lettres + chifres uniquement')).'<BR>';
+
+
+           echo form_label('Description','lbxDescription');
+
+          echo form_textarea(array('name'=>'txtDescription','value'=>'','placeholder'=>'Description','pattern'=>'[a-zA-Z0-9\s]+','required'=>'required','class'=>'form-control','title'=>'les lettres + chifres uniquement')).'<BR>';
+
+          echo form_label('Images','lbxImages');
+
+          echo form_input(array('name'=>'txtImages','type'=>'file','value'=>'','placeholder'=>'Image')).'<BR>';
+
+         echo form_submit('btnEmission','Ajouter',array('class'=>'btn btn-primary')).'<BR>';
+          
+         echo form_close();
+        ?>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div id="ModalAnimations" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Ajouter Une Emission </h4>
+      </div>
+      <div class="modal-body">
+      <?php
+          echo validation_errors();
+
+          echo form_open_multipart('Admin/Ajouteranimation');
+          
+           echo form_label('Titre','animateurs');
+
+           echo "<select name='txtnoAnimateurs' class='form-control' id='id' required>";
+           foreach ($LesAnimateurs as $UnAnimateur) {
+               echo "<option value='". $UnAnimateur->id. "'>" . $UnAnimateur->nom. "</option>";
+           }
+           echo "</select><br/>";
+
+
+
+           echo form_label('Description','lbxDescription');
+
+          echo "<select name='txtnoEmission' class='form-control' id='id' required>";
+         foreach ($LesEmissions as $UneEmission) {
+        echo "<option value='". $UneEmission->id. "'>" . $UneEmission->titre. "</option>";
+             }
+        echo "</select><br/>";
+
+         echo form_submit('btnEmission','Ajouter',array('class'=>'btn btn-primary')).'<BR>';
+          
+         echo form_close();
+        ?>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 
 

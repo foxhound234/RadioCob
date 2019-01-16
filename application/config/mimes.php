@@ -62,7 +62,7 @@ return array(
 	'midi'	=>	'audio/midi',
 	'mpga'	=>	'audio/mpeg',
 	'mp2'	=>	'audio/mpeg',
-	'mp3'=>  array('audio/mpeg','audio/mpeg3','audio/mpg','audio/x-mpeg','audio/mp3','application/force-download','application/octet-stream'),
+	'mp3' =>  array('audio/mpeg','audio/mpeg3','audio/mpg','audio/x-mpeg','audio/mp3','application/force-download','application/octet-stream'),
 	'aif'	=>	array('audio/x-aiff', 'audio/aiff'),
 	'aiff'	=>	array('audio/x-aiff', 'audio/aiff'),
 	'aifc'	=>	'audio/x-aiff',
