@@ -49,20 +49,13 @@ class Admin extends CI_Controller {
 		$config['upload_path'] = './assets/son';
 		$config['allowed_types'] = '*';
 		$config['max_size'] = 250000;
-	
-		$this->upload->initialize($config);
-		if ( ! $this->upload->do_upload('userfile'))
-		{
-				$error =  $this->upload->display_errors();
-
-				echo $error;
+		$name= $_FILES['file']['name'];  
+		$type= $_FILES['file']['type'];
+		if(isset($_POST['submit'])){
+		
+	           echo $name;
+			$temp_name= $_FILES['file']['name']; 
 		}
-		else
-		{
-				$data = $this->upload->data();
-		 
-			
-		}	 
 						
 	}
 	public function AjouterEmission()
@@ -72,26 +65,43 @@ class Admin extends CI_Controller {
 		$config['max_size']             = 0 ;
 		$config['max_width']            = 0 ;
 		$config['max_height']           = 0 ;
-
+         
 		$this->upload->initialize($config);
-		if ( ! $this->upload->do_upload('txtImages'))
+		$nomfichier=$_FILES['txtImages']['name']; 
+	
+		if($nomfichier=='')
 		{
-				$error =  $this->upload->display_errors();
-
-				echo $error;
-		}
-		else
-		{
-			$data = $this->upload->data();
 			$DonneesEmissions=array(
 				'titre'=>$this->input->post('txtTitre'),
 			   'description'=>$this->input->post('txtDescription'),
-			   'image'=>$data['file_name']
+			   'image'=>''
 			  );
 			  $this->ModeleEmission->AjouterEmission($DonneesEmissions);
 			  redirect('/Admin/Accueil', 'refresh');
-		}	 
+		}
+		else{
+			if ( ! $this->upload->do_upload('txtImages'))
+			{
+					$error =  $this->upload->display_errors();
+	
+					echo $error;
+			}
+			else
+			{
+				$data = $this->upload->data();
+				$DonneesEmissions=array(
+					'titre'=>$this->input->post('txtTitre'),
+				   'description'=>$this->input->post('txtDescription'),
+				   'image'=>$data['file_name']
+				  );
+				  $this->ModeleEmission->AjouterEmission($DonneesEmissions);
+				  redirect('/Admin/Accueil', 'refresh');
+			}
+			 
 
+		}
+      
+		 
 	}
 	
 	public function Ajouterjeux()
@@ -114,14 +124,38 @@ class Admin extends CI_Controller {
 			else
 			{
 					$data = $this->upload->data();
-					$DonneesEmissions=array(
-						'titre'=>$this->input->post('txt'),
+					$DonneesJeux=array(
+						'Intitule'=>$this->input->post('txtIntitule'),
 					   'description'=>$this->input->post('txtDescription'),
-					   'image'=>$data['file_name']
+					   'fonctionnement'=>$this->input->post('txtFonctionnement'),
+					   'image'=>$data['file_name'],
+					   'debut'=>$this->input->post('txtDateDebut'),
+					   'fin'=>$this->input->post('txtDateFin')
 					  );
-					  $this->ModeleEmission->AjouterEmission($DonneesEmissions);
+					  $this->ModeleJeux->AjouterJeux($DonneesJeux);
 					redirect('/Admin/Accueil', 'refresh');
 			}
+		}
+	}
+	public function Ajouteranimation()
+	{
+		if($this->input->post('btnAnimations'))
+		{
+			$DonneesEmissions=array(
+				'emission'=>$this->input->post('txtnoEmission'),
+			   'animateur'=>$this->input->post('txtnoAnimateurs')
+			  );
+			  $this->ModeleAnimation->AjouterUneAnimations($DonneesEmissions);
+		}
+	}
+	public function Ajouteranimateur()
+	{
+		if($this->input->post('btnAnimateur'))
+		{
+		$DonneesAnimateurs=array(
+		 'id'=>$this->input->post('txtnom'),
+		 'nom'=>$this->input->post('txtPresentations')
+		);
 		}
 	}
 	public function ModifierLesEvenements()

@@ -22,6 +22,7 @@
             <li><a href="" data-toggle="modal" data-target="#Modalinfo">Une infos locale </a></li>
             <li><a href=""data-toggle="modal" data-target="#ModalEmission"> Une Emission </a></li>
             <li><a href=""data-toggle="modal" data-target="#ModalAnimations"> Une animations</a></li>
+            <li><a href=""data-toggle="modal" data-target="#ModalAnimateur"> un animateurs </a></li>
           </ul>
         </li>
         <li class="dropdown">
@@ -101,39 +102,39 @@
         </div>
         <div class="modal-body">
         <?php
-  echo validation_errors(); // mise en place de la validation
+        echo validation_errors(); // mise en place de la validation
 
-  echo form_open_multipart('Admin/AjouterJeux');
+        echo form_open_multipart('Admin/AjouterJeux');
 
-  echo form_label('Intitule','lbxIntitule');
+        echo form_label('Intitule','lbxIntitule');
 
-  echo form_input(array('name'=>'txtIntitule','value'=>'','pattern'=>'[a-zA-Z0-9\s]+','placeholder'=>'Titre','required'=>'required','class'=>'form-control','title'=>'les lettres + chifres uniquement')).'<BR>';
-
-
-  echo form_label('Description','lbxDescription');
-
-  echo form_textarea(array('name'=>'txtDescription','value'=>'','placeholder'=>'Description','pattern'=>'[a-zA-Z0-9\s]+','required'=>'required','class'=>'form-control','title'=>'les lettres + chifres uniquement')).'<BR>';
-
-  echo form_label('Fonctionnement','lbxFonctionnement');
-
-  echo form_textarea(array('name'=>'txtFonctionnement','value'=>'','placeholder'=>'Fonctionnement','pattern'=>'[a-zA-Z0-9\s]+','required'=>'required','class'=>'form-control','title'=>'les lettres + chifres uniquement')).'<BR>';
-
-  echo form_label('Images','lbxImages');
-
-  echo form_input(array('name'=>'txtImages','type'=>'file','value'=>'','placeholder'=>'Image','required'=>'required','class'=>'form-control')).'<BR>';
-
-  echo form_label('Date debut','lbxdebut');
-
-  echo form_input(array('name'=>'txtDateDebut','type'=>'datetime-local','value'=>'','placeholder'=>'Image','required'=>'required','class'=>'form-control')).'<BR>';
-
-  echo form_label('Date fin','lbxfin');
-
-  echo form_input(array('name'=>'txtDateFin','type'=>'datetime-local','value'=>'','placeholder'=>'Image','required'=>'required','class'=>'form-control')).'<BR>';
+        echo form_input(array('name'=>'txtIntitule','value'=>'','pattern'=>'[a-zA-Z0-9\s]+','placeholder'=>'Titre','required'=>'required','class'=>'form-control','title'=>'les lettres + chifres uniquement')).'<BR>';
 
 
-  echo form_submit('btnJeux','Ajouter',array('class'=>'btn btn-primary')).'<BR>';
+        echo form_label('Description','lbxDescription');
 
-  echo form_close();
+        echo form_textarea(array('name'=>'txtDescription','value'=>'','placeholder'=>'Description','pattern'=>'[a-zA-Z0-9\s]+','required'=>'required','class'=>'form-control','title'=>'les lettres + chifres uniquement')).'<BR>';
+
+        echo form_label('Fonctionnement','lbxFonctionnement');
+
+        echo form_textarea(array('name'=>'txtFonctionnement','value'=>'','placeholder'=>'Fonctionnement','pattern'=>'[a-zA-Z0-9\s]+','required'=>'required','class'=>'form-control','title'=>'les lettres + chifres uniquement')).'<BR>';
+
+        echo form_label('Images','lbxImages');
+
+        echo form_input(array('name'=>'txtImages','type'=>'file','value'=>'','placeholder'=>'Image','required'=>'required','class'=>'form-control')).'<BR>';
+
+        echo form_label('Date debut','lbxdebut');
+
+        echo form_input(array('name'=>'txtDateDebut','type'=>'datetime-local','value'=>'','placeholder'=>'Image','required'=>'required','class'=>'form-control')).'<BR>';
+
+        echo form_label('Date fin','lbxfin');
+
+        echo form_input(array('name'=>'txtDateFin','type'=>'datetime-local','value'=>'','placeholder'=>'Image','required'=>'required','class'=>'form-control')).'<BR>';
+
+
+        echo form_submit('btnJeux','Ajouter',array('class'=>'btn btn-primary')).'<BR>';
+
+        echo form_close();
   ?>
         </div>
         <div class="modal-footer">
@@ -165,11 +166,11 @@
 
           echo form_open_multipart('Admin/Ajouterinfolocal');
          ?>
-          <input type="file" name="userfile" size="20" />
+          <input type="file" name="file" size="20" />
 
           <br /><br />
           
-          <input type="submit"  name=" "value="upload" />
+          <input type="submit"  name="submit"value="upload" />
           <?php
           echo form_close();
         }
@@ -246,7 +247,7 @@
 
           echo form_open_multipart('Admin/Ajouteranimation');
           
-           echo form_label('Titre','animateurs');
+           echo form_label('Animateurs','animateurs');
 
            echo "<select name='txtnoAnimateurs' class='form-control' id='id' required>";
            foreach ($LesAnimateurs as $UnAnimateur) {
@@ -256,7 +257,7 @@
 
 
 
-           echo form_label('Description','lbxDescription');
+           echo form_label('Emissions','lbxEmissions');
 
           echo "<select name='txtnoEmission' class='form-control' id='id' required>";
          foreach ($LesEmissions as $UneEmission) {
@@ -264,7 +265,7 @@
              }
         echo "</select><br/>";
 
-         echo form_submit('btnEmission','Ajouter',array('class'=>'btn btn-primary')).'<BR>';
+         echo form_submit('btnAnimations','Ajouter',array('class'=>'btn btn-primary')).'<BR>';
           
          echo form_close();
         ?>
@@ -278,11 +279,48 @@
 
 
 
+<!-- Modal -->
+<div id="ModalAnimateur" class="modal fade" role="dialog">
+  <div class="modal-dialog">
 
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Ajouter Un Animateurs </h4>
+      </div>
+      <div class="modal-body">
+      <?php
+          echo validation_errors();
 
+          echo form_open_multipart('Admin/Ajouteranimateur');
 
+          echo form_label('nom','lbxnom');
+          echo form_input(array('name'=>'txtnom','value'=>'','pattern'=>'[a-zA-Z0-9\s]+','placeholder'=>'Nom','required'=>'required','class'=>'form-control','title'=>'les lettres + chifres uniquement')).'<BR>';
 
+          echo form_label('Presentations','lbxPresentations');
 
+         echo form_textarea(array('name'=>'txtPresentations','value'=>'','placeholder'=>'Presentation','pattern'=>'[a-zA-Z0-9\s]+','required'=>'required','class'=>'form-control','title'=>'les lettres + chifres uniquement')).'<BR>';
+
+         echo form_label('Images','lbxImages');
+
+         echo form_input(array('name'=>'txtImages','type'=>'file','value'=>'','placeholder'=>'Image')).'<BR>';
+
+         echo form_label('Site','lbxsite');
+
+         echo form_input(array('name'=>'txtImages','value'=>'','class'=>'form-control','placeholder'=>'site web')).'<BR>';
+
+         echo form_submit('btnAnimateur','Ajouter',array('class'=>'btn btn-primary')).'<BR>';
+          
+         echo form_close();
+        ?>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 </body>
