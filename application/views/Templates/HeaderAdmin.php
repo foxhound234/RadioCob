@@ -20,29 +20,95 @@
       $('#NomfichierEmission').hide();
       $("#submit").hide();
     /*********************/
+    /* Animateur modifie modal*/
+      $('#lbxnom').hide();
+      $("#txtnom").hide();  
+  
+      $("#lbxPresentation").hide();
+      $('#txtPresentations').hide();
+
+      $("#lbxImages").hide();
+      $("#NomfichierAnimateur").hide();
+      $("#txtImageAnimateur").hide();
+
+      $("#lbxsite").hide();
+      $('#txtsite').hide();
+
+      $("#btnanimateur").hide();
+  
+    /**************/
+
    $("#noemission").change(function(){
     var id = $('#noemission').val();
     $('#NomfichierEmission').show();
+
     $("#labeltitre").show(); 
+
     $('#Emissiontitre').show();
+
     $("#lbxDescription").show();
-    $("#labeldescr").show();  
+
+    $("#labeldescr").show(); 
+
   $("#labelimages").show();
+
     $("#imageEmission").show();
+
     $("#Description").show();
+
   $("#submit").show();
+
   $.ajax({
         url : "<?php echo site_url('Admin/AfficheEmission/')?>" + id,
         type: "GET",
         dataType: "JSON",
         success: function(data)
         {
-            $('#Emissiontitre').val(data[0].titre);
+          $('#Emissiontitre').val(data[0].titre);
           $("#Description").text(data[0].description);
           $("#NomfichierEmission").text(data[0].image);
           }  
         });     
    });
+
+   $("#noanimateurs").change(function(){
+    var id = $('#noanimateurs').val();
+      $('#lbxnom').show();
+      $("#txtnom").show();  
+  
+      $("#lbxPresentation").show();
+      $('#txtPresentations').show();
+
+       $("#NomfichierAnimateurs").show();     
+      $("#lbxImages").show();
+      $("#txtImageAnimateur").show();
+
+      $("#lbxsite").show();
+      $('#txtsite').show();
+
+      $("#btnanimateur").show(); 
+      $.ajax({
+          url : "<?php echo site_url('Admin/AfficheAnimateurs/')?>" + id,
+          type: "GET",
+          dataType: "JSON",
+        success: function(data)
+        {
+          $("#txtnom").val(data[0].nom);
+          $("#txtPresentations").text(data[0].presentation);
+          $("#NomfichierAnimateurs").text(data[0].photo);
+          $("#txtsite").val(data[0].site);
+        }  
+        });    
+   });
+
+
+
+
+
+
+
+
+
 })
   </script>
 </head>
@@ -68,7 +134,7 @@
           <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="<?php ?>">Un Evenement </a></li>
-            <li><a href="<?php ?>">un jeux </a></li>
+            <li><a href="" data-toggle="modal" data-target="#ModalModifierAnimateur">un Animateurs </a></li>
             <li><a href="" data-toggle="modal" data-target="#ModalModifierEmissions">Emissions</a></li>
           </ul>
         </li>
@@ -370,7 +436,7 @@
           echo form_open_multipart('Admin/ModifierEmission');
           echo form_label('Emissions','lbxEmissions',array('id'=>'emission'));
 
-          echo "<select name='txtnoEmission' id='noemission' class='form-control' id='id' required>";
+          echo "<select name='txtnoEmission' id='noemission' class='form-control'  required>";
          foreach ($LesEmissionsAssignée as $UneEmission) {
            echo "<option value='". $UneEmission->id. "'>" . $UneEmission->titre. "</option>";
              }
@@ -399,5 +465,120 @@
     </div>
   </div>
 </div>
+
+
+<div id="ModalModifierAnimateur" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modifier un Animateur </h4>
+      </div>
+      <div class="modal-body">
+      <?php
+          echo validation_errors();
+
+          echo form_open_multipart('Admin/ModifierAnimateurs');
+          echo form_label('Animateur','lbxAnimateur',array('id'=>'emission'));
+
+          echo "<select name='txtnoAnimateurs' class='form-control' id='noanimateurs' required>";
+          foreach ($LesAnimateurs as $UnAnimateur) {
+              echo "<option value='". $UnAnimateur->id. "'>" . $UnAnimateur->nom. "</option>";
+          }
+          echo "</select><br/>";
+
+       
+          echo form_label('nom','lbxnom',array('id'=>'lbxnom'));
+
+          echo form_input(array('name'=>'txtnom','id'=>'txtnom','value'=>'','pattern'=>'[a-zA-Z0-9\s]+','placeholder'=>'Nom','required'=>'required','class'=>'form-control','title'=>'les lettres + chifres uniquement')).'<BR>';
+
+          echo form_label('Presentations','lbxPresentations',array('id'=>'lbxPresentation'));
+
+         echo form_textarea(array('name'=>'txtPresentations','id'=>'txtPresentations','value'=>'','placeholder'=>'Presentation','pattern'=>'[a-zA-Z0-9\s]+','required'=>'required','class'=>'form-control','title'=>'les lettres + chifres uniquement')).'<BR>';
+         echo '<p id="NomfichierAnimateurs"> </p>';
+         echo form_label('Images','lbxImages',array('id'=>'lbxImages'));
+
+         echo form_input(array('name'=>'txtImages','id'=>'txtImageAnimateur','type'=>'file','value'=>'','placeholder'=>'Image')).'<BR>';
+
+         echo form_label('Site','lbxsite',array('id'=>'lbxsite'));
+
+         echo form_input(array('name'=>'txtsite','id'=>'txtsite','value'=>'','class'=>'form-control','placeholder'=>'site web')).'<BR>';
+
+         echo form_submit('btnAnimateur','Ajouter',array('class'=>'btn btn-primary','id'=>'btnanimateur')).'<BR>';
+         echo form_close();
+        ?>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="ModalModifierAnimateur" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modifier un Animateur </h4>
+      </div>
+      <div class="modal-body">
+      <?php
+          echo validation_errors();
+
+          echo form_open_multipart('Admin/ModifierAnimateurs');
+          echo form_label('Animateur','lbxAnimateur',array('id'=>'emission'));
+
+          echo "<select name='txtnoAnimateurs' class='form-control' id='noanimateurs' required>";
+          foreach ($LesAnimateurs as $UnAnimateur) {
+              echo "<option value='". $UnAnimateur->id. "'>" . $UnAnimateur->nom. "</option>";
+          }
+          echo "</select><br/>";
+
+       
+          echo form_label('nom','lbxnom',array('id'=>'lbxnom'));
+
+          echo form_input(array('name'=>'txtnom','id'=>'txtnom','value'=>'','pattern'=>'[a-zA-Z0-9\s]+','placeholder'=>'Nom','required'=>'required','class'=>'form-control','title'=>'les lettres + chifres uniquement')).'<BR>';
+
+          echo form_label('Presentations','lbxPresentations',array('id'=>'lbxPresentation'));
+
+         echo form_textarea(array('name'=>'txtPresentations','id'=>'txtPresentations','value'=>'','placeholder'=>'Presentation','pattern'=>'[a-zA-Z0-9\s]+','required'=>'required','class'=>'form-control','title'=>'les lettres + chifres uniquement')).'<BR>';
+         echo '<p id="NomfichierAnimateurs"> </p>';
+         echo form_label('Images','lbxImages',array('id'=>'lbxImages'));
+
+         echo form_input(array('name'=>'txtImages','id'=>'txtImageAnimateur','type'=>'file','value'=>'','placeholder'=>'Image')).'<BR>';
+
+         echo form_label('Site','lbxsite',array('id'=>'lbxsite'));
+
+         echo form_input(array('name'=>'txtsite','id'=>'txtsite','value'=>'','class'=>'form-control','placeholder'=>'site web')).'<BR>';
+
+         echo form_submit('btnAnimateur','Ajouter',array('class'=>'btn btn-primary','id'=>'btnanimateur')).'<BR>';
+         echo form_close();
+        ?>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>
