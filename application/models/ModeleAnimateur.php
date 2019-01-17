@@ -17,5 +17,9 @@ public function RetournerAnimateur ($id = NULL)
     $requete=$this->db->get_where('cob_animateurs',array('id'=>$id));
     return $requete->row();  
 }
- 
+ public function AjoutAnimateur($DonnesAnimateur)
+ {
+    $this->db->insert('cob_animateurs',$DonnesAnimateur);
+    return $this->db->insert_id();
+ }
 }

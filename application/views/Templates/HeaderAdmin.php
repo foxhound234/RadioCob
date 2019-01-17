@@ -308,7 +308,7 @@
 
          echo form_label('Site','lbxsite');
 
-         echo form_input(array('name'=>'txtImages','value'=>'','class'=>'form-control','placeholder'=>'site web')).'<BR>';
+         echo form_input(array('name'=>'txtsite','value'=>'','class'=>'form-control','placeholder'=>'site web')).'<BR>';
 
          echo form_submit('btnAnimateur','Ajouter',array('class'=>'btn btn-primary')).'<BR>';
           
