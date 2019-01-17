@@ -5,8 +5,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript"></script> 
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script>
+ $(document).ready(function () {
+    /*  Emission modifie modal*/
+      $("#labeltitre").hide(); 
+      $('#Emissiontitre').hide();
+      $("#imageEmission").hide();
+      $("#Description").hide();
+      $("#lbxDescription").hide();
+      $("#labeldescr").hide();  
+      $("#labelimages").hide();
+      $('#NomfichierEmission').hide();
+      $("#submit").hide();
+    /*********************/
+   $("#noemission").change(function(){
+    var id = $('#noemission').val();
+    $('#NomfichierEmission').show();
+    $("#labeltitre").show(); 
+    $('#Emissiontitre').show();
+    $("#lbxDescription").show();
+    $("#labeldescr").show();  
+  $("#labelimages").show();
+    $("#imageEmission").show();
+    $("#Description").show();
+  $("#submit").show();
+  $.ajax({
+        url : "<?php echo site_url('Admin/AfficheEmission/')?>" + id,
+        type: "GET",
+        dataType: "JSON",
+        success: function(data)
+        {
+            $('#Emissiontitre').val(data[0].titre);
+          $("#Description").text(data[0].description);
+          $("#NomfichierEmission").text(data[0].image);
+          }  
+        });     
+   });
+})
+  </script>
 </head>
 <body>
 <nav class="navbar">
@@ -31,7 +69,7 @@
           <ul class="dropdown-menu" role="menu">
             <li><a href="<?php ?>">Un Evenement </a></li>
             <li><a href="<?php ?>">un jeux </a></li>
-            <li><a href="<?php ?>">L </a></li>
+            <li><a href="" data-toggle="modal" data-target="#ModalModifierEmissions">Emissions</a></li>
           </ul>
         </li>
         <li><a href="<?php echo site_url('Deconnexion')?>">Deconnexion</a></li>
@@ -185,10 +223,6 @@
 
 
 
-
-
-
-
 <!-- Modal -->
 <div id="ModalEmission" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -322,6 +356,48 @@
   </div>
 </div>
 
+<div id="ModalModifierEmissions" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modifier une Emission </h4>
+      </div>
+      <div class="modal-body">
+      <?php
+          echo validation_errors();
 
+          echo form_open_multipart('Admin/ModifierEmission');
+          echo form_label('Emissions','lbxEmissions',array('id'=>'emission'));
+
+          echo "<select name='txtnoEmission' id='noemission' class='form-control' id='id' required>";
+         foreach ($LesEmissionsAssignée as $UneEmission) {
+           echo "<option value='". $UneEmission->id. "'>" . $UneEmission->titre. "</option>";
+             }
+        echo "</select><br/>";
+
+        echo form_label('Titre','lbxTitre',array('id'=>'labeltitre'));
+
+           echo form_input(array('name'=>'txtTitre','value'=>'','pattern'=>'[a-zA-Z]*-?[a-zA-Z]*','placeholder'=>'Titre','required'=>'required','id'=>'Emissiontitre','class'=>'form-control','title'=>'les lettres + chifres uniquement')).'<BR>';
+
+
+           echo form_label('Description','lbxDescription',array('id'=>'labeldescr'));
+
+          echo form_textarea(array('name'=>'txtDescription','value'=>'','placeholder'=>'Description','pattern'=>'[a-zA-Z0-9\s]+','id'=>'Description','required'=>'required','class'=>'form-control','title'=>'les lettres + chifres uniquement')).'<BR>';
+
+          echo form_label('Images','lbxImages',array('id'=>'labelimages'));
+          echo '<p id="NomfichierEmission"> </p>';
+          echo form_input(array('name'=>'txtImages','type'=>'file','id'=>'imageEmission','value'=>'','placeholder'=>'Image')).'<BR>';
+
+         echo form_submit('btnEmission','Modifier',array('class'=>'btn btn-primary','name'=>'btnmoif','id'=>'submit')).'<BR>';
+         echo form_close();
+        ?>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>

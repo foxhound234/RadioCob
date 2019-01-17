@@ -6,7 +6,7 @@ class Admin extends CI_Controller {
 		parent::__construct();
 		if(!($this->session->profil=='A'))
 		{
-		 redirect('Visiteur/ConnexionAdmin','Refresh');
+		 	redirect('Visiteur/ConnexionAdmin','Refresh');
 		}
 	}
 
@@ -15,7 +15,8 @@ class Admin extends CI_Controller {
 		$DonneesInjectees['nbinfojour']=$this->ModeleInfos->getnbinfojour();
 		$DonneesInjectees['titredelapage']='Accueil';
 		$DonneesInjectees['LesEmissions']=$this->ModeleEmission->RetournerEmission();
-      $DonneesInjectees['LesAnimateurs']=$this->ModeleAnimateur->RetournerAnimateur(); 
+		$DonneesInjectees['LesEmissionsAssignée']=$this->ModeleEmission->RetournerLesEmissions();
+        $DonneesInjectees['LesAnimateurs']=$this->ModeleAnimateur->RetournerAnimateur(); 
 		$this->afficher('Admin/AccueilAdmin',$DonneesInjectees);
 	}
 	public function Deconnexion()
@@ -52,11 +53,7 @@ class Admin extends CI_Controller {
 		$name= $_FILES['file']['name'];  
 		$type= $_FILES['file']['type'];
 		if(isset($_POST['submit'])){
-			
 			$dossier='assets/images/';
-			
-		
-		
 		}
 						
 	}
@@ -211,20 +208,70 @@ class Admin extends CI_Controller {
 		}
 	}
 
-	public function ModifierLesEvenements()
-	{
-		$DonneesInjectees['titredelapage']='Modifier les Evenement';
-		$DonneesInjectees['LesEvenements']=$this->ModeleEvenement->GetLesEvenements();
-		$this->afficher('Admin/ModifierEvenements',$DonneesInjectees);
-	}
 
-	public function ModifierUnEvenement($id)
+
+	public function ModifierUnEvenement()
 	{
-		$DonneesInjectees['titredelapage']='Modifier les Evenement';
-		$DonneesInjectees['LesEvenements']=$this->ModeleEvenement->GetLesEvenements($id);
+		
 
 	}
+	public function ModifierEmission()
+	{
+		if($this->input->post('btnEmission'))
+		{
+			$nomfichier=$_FILES['txtImages']['name']; 
+			$dossier='/assets/images/';
+			$id=$this->input->post('txtnoEmission');
+           
+				  if($nomfichier=='')
+				 {
+					$DonneesEmissions=array(
+						'titre'=>$this->input->post('txtTitre'),
+						'description'=>$this->input->post('txtDescription'),
+					   );
+						$this->ModeleEmission->ModifierEmission($DonneesEmissions,$id);  		
+					 redirect('/Admin/Accueil', 'refresh');
+				 }
 
+
+
+
+				 if(file_exists($dossier.$nomfichier))
+				 {
+					$DonneesEmissions=array(
+						'titre'=>$this->input->post('txtTitre'),
+						'description'=>$this->input->post('txtDescription')
+					   );
+						$this->ModeleEmission->ModifierEmission($DonneesEmissions,$id);  		
+				 }
+				 else{
+					 if ( ! $this->upload->do_upload('txtImages'))
+					 {
+							 $error =  $this->upload->display_errors();
+		 
+							 print_r($error);
+					 }
+					 else
+					 {
+							 $data = $this->upload->data();
+							 $DonneesEmissions=array(
+								'titre'=>$this->input->post('txtTitre'),
+								'description'=>$this->input->post('txtDescription'),
+								'image'=>$nomfichier
+							   );
+								$this->ModeleEmission->ModifierEmission($DonneesEmissions,$id);  		
+							 redirect('/Admin/Accueil', 'refresh');
+					 }	
+				 }	
+
+
+		}
+	}
+   public function AfficheEmission($id)
+   {
+		$data = $this->ModeleEmission->RetournerEmission($id);
+		echo json_encode($data);
+   }
 	private function afficher($page,$DonneesInjectees)
 	{
 		$this->load->view('Templates/HeaderAdmin',$DonneesInjectees);
