@@ -12,12 +12,12 @@ class Admin extends CI_Controller {
 
 	public function Accueil()
 	{
-		$DonneesInjectees['nbinfojour']=$this->ModeleInfos->getnbinfojour();
+		$DonneesInjectees['nbinfojour']=$this->modeleInfos->getnbinfojour();
 		$DonneesInjectees['titredelapage']='Accueil';
-		$DonneesInjectees['LesEmissions']=$this->ModeleEmission->RetournerEmission();
-		$DonneesInjectees['LesEmissionsAssignée']=$this->ModeleEmission->RetournerLesEmissions();
-		$DonneesInjectees['LesAnimateurs']=$this->ModeleAnimateur->RetournerAnimateur(); 
-		$DonneesInjectees['LesEvenements']=$this->ModeleEvenement->GetLesEvenements();
+		$DonneesInjectees['LesEmissions']=$this->modeleEmission->RetournerEmission();
+		$DonneesInjectees['LesEmissionsAssignée']=$this->modeleEmission->RetournerLesEmissions();
+		$DonneesInjectees['LesAnimateurs']=$this->modeleAnimateur->RetournerAnimateur(); 
+		$DonneesInjectees['LesEvenements']=$this->modeleEvenement->GetLesEvenements();
 		$this->afficher('Admin/AccueilAdmin',$DonneesInjectees);
 	}
 	public function Deconnexion()
@@ -39,7 +39,7 @@ class Admin extends CI_Controller {
 			  'fin'=>$this->input->post('txtDateFin')
 			);
 
-			$Evenements=$this->ModeleEvenement->AjouterEvenement($Donneesevenement);
+			$Evenements=$this->modeleEvenement->AjouterEvenement($Donneesevenement);
 		  
 			redirect('/Admin/Accueil', 'refresh');	
 				
@@ -75,7 +75,7 @@ class Admin extends CI_Controller {
 				   'description'=>$this->input->post('txtDescription'),
 				   'image'=>$nomfichier
 				  );
-				  $this->ModeleEmission->AjouterEmission($DonneesEmissions);
+				  $this->modeleEmission->AjouterEmission($DonneesEmissions);
 				  redirect('/Admin/Accueil', 'refresh');
 			}
 			else
@@ -94,7 +94,7 @@ class Admin extends CI_Controller {
 					   'description'=>$this->input->post('txtDescription'),
 					   'image'=>$data['file_name']
 					  );
-					  $this->ModeleEmission->AjouterEmission($DonneesEmissions);
+					  $this->modeleEmission->AjouterEmission($DonneesEmissions);
 					  redirect('/Admin/Accueil', 'refresh');
 				}
 					 
@@ -125,7 +125,7 @@ class Admin extends CI_Controller {
 							   'debut'=>$this->input->post('txtDateDebut'),
 							   'fin'=>$this->input->post('txtDateFin')
 							  );
-							  $this->ModeleJeux->AjouterJeux($DonneesJeux);
+							  $this->modeleJeux->AjouterJeux($DonneesJeux);
 							redirect('/Admin/Accueil', 'refresh');
 				}
 				else{
@@ -146,7 +146,7 @@ class Admin extends CI_Controller {
 							   'debut'=>$this->input->post('txtDateDebut'),
 							   'fin'=>$this->input->post('txtDateFin')
 							  );
-							  $this->ModeleJeux->AjouterJeux($DonneesJeux);
+							  $this->modeleJeux->AjouterJeux($DonneesJeux);
 							redirect('/Admin/Accueil', 'refresh');
 					}	
 				}	
@@ -160,7 +160,7 @@ class Admin extends CI_Controller {
 				'emission'=>$this->input->post('txtnoEmission'),
 			   'animateur'=>$this->input->post('txtnoAnimateurs')
 			  );
-			  $this->ModeleAnimation->AjouterUneAnimations($DonneesEmissions);
+			  $this->modeleAnimation->AjouterUneAnimations($DonneesEmissions);
 		}
 	}
 	public function Ajouteranimateur()
@@ -183,7 +183,7 @@ class Admin extends CI_Controller {
 					'presentation'=>$this->input->post('txtPresentations'),
 					'photo'=> $nomfichier,
 					'site'=>$this->input->post('txtsite'));
-				$this->ModeleAnimateur->AjoutAnimateur($DonneesAnimateurs);		
+				$this->modeleAnimateur->AjoutAnimateur($DonneesAnimateurs);		
 			}
 			else{
 				if ( ! $this->upload->do_upload('txtImages'))
@@ -202,7 +202,7 @@ class Admin extends CI_Controller {
 							'photo'=> $nomfichier,
 							'site'=>$this->input->post('txtsite'));
 
-							$this->ModeleAnimateur->AjoutAnimateur($DonneesAnimateurs);	
+							$this->modeleAnimateur->AjoutAnimateur($DonneesAnimateurs);	
 						redirect('/Admin/Accueil', 'refresh');
 				}	
 			}	
@@ -226,7 +226,7 @@ class Admin extends CI_Controller {
 						'presentation'=>$this->input->post('txtPresentations'),
 						'site'=>$this->input->post('txtsite'),
 					   );
-				    $this->ModeleAnimateur->ModifierAnimateur($DonneesAnimateurs,$id);  		
+				    $this->modeleAnimateur->ModifierAnimateur($DonneesAnimateurs,$id);  		
 					redirect('/Admin/Accueil', 'refresh');
 				 }
 
@@ -238,7 +238,7 @@ class Admin extends CI_Controller {
 						'site'=>$this->input->post('txtsite'),
 						'photo'=>$nomfichier
 					   );
-						$this->ModeleAnimateur->ModifierAnimateur($DonneesAnimateurs,$id);  
+						$this->modeleAnimateur->ModifierAnimateur($DonneesAnimateurs,$id);  
 						redirect('/Admin/Accueil', 'refresh');		
 				 }
 				 else{
@@ -257,7 +257,7 @@ class Admin extends CI_Controller {
 								'site'=>$this->input->post('txtsite'),
 								'photo'=>$nomfichier
 							   );
-						    $this->ModeleAnimateur->ModifierAnimateur($DonneesAnimateurs,$id); 
+						    $this->modeleAnimateur->ModifierAnimateur($DonneesAnimateurs,$id); 
 							redirect('/Admin/Accueil', 'refresh');
 					 }	
 				 }	
@@ -280,7 +280,7 @@ class Admin extends CI_Controller {
 						'titre'=>$this->input->post('txtTitre'),
 						'description'=>$this->input->post('txtDescription'),
 					   );
-				    $this->ModeleEmission->ModifierEmission($DonneesEmissions,$id);  		
+				    $this->modeleEmission->ModifierEmission($DonneesEmissions,$id);  		
 					redirect('/Admin/Accueil', 'refresh');
 				 }
 
@@ -293,7 +293,7 @@ class Admin extends CI_Controller {
 						'titre'=>$this->input->post('txtTitre'),
 						'description'=>$this->input->post('txtDescription')
 					   );
-						$this->ModeleEmission->ModifierEmission($DonneesEmissions,$id);  		
+						$this->modeleEmission->ModifierEmission($DonneesEmissions,$id);  		
 				 }
 				 else{
 					 if ( ! $this->upload->do_upload('txtImages'))
@@ -310,7 +310,7 @@ class Admin extends CI_Controller {
 								'description'=>$this->input->post('txtDescription'),
 								'image'=>$nomfichier
 							   );
-								$this->ModeleEmission->ModifierEmission($DonneesEmissions,$id);  		
+								$this->modeleEmission->ModifierEmission($DonneesEmissions,$id);  		
 							 redirect('/Admin/Accueil', 'refresh');
 					 }	
 				 }	
@@ -320,13 +320,18 @@ class Admin extends CI_Controller {
 	}
 	public function AfficheAnimateurs($id)
 	{
-		$data = $this->ModeleAnimateur->RetournerAnimateur($id);
+		
+		$data = $this->modeleAnimateur->RetournerAnimateur($id);
 		echo json_encode($data);	
 	}
    public function AfficheEmission($id)
    {
-		$data = $this->ModeleEmission->RetournerEmission($id);
+		$data = $this->modeleEmission->RetournerEmission($id);
 		echo json_encode($data);
+   }
+   public function AfficheEvenement($id)
+   {
+
    }
 	private function afficher($page,$DonneesInjectees)
 	{

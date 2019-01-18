@@ -25,4 +25,19 @@ public function GetLesEvenements($id=FALSE)
    return $requete;  
 }
 
+public function getUnEvenement($id)
+{
+    $query = $this->db->select('*')
+    ->from('cob_evenements')
+    ->where('id', $id)
+    ->get();
+
+    if ($query->num_rows() > 0) {
+        foreach ($query->result() as $data) {
+            $Evenement[] = $data;
+        }
+    } 
+    return $Evenement;
+
+}
 }

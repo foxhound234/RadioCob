@@ -36,7 +36,29 @@
 
       $("#btnanimateur").hide();
   
-    /**************/
+    /******************/
+    /* Evenement modifie modal */
+
+   $("#lbxTitre").hide();
+   $("#txtTitre").hide();
+
+   $("#lbxPeriode").hide();
+   $("#txtPeriode").hide();
+
+   $("#lbxDescription").hide();
+   $("#txtDescription").hide();
+
+
+   $("#lbxDateDebut").hide();
+   $("#txtDateDebut").hide();
+
+
+   $("#lbxDatefin").hide();
+   $("#txtDateFin").hide();
+
+
+   $("#btnEvenement").hide();
+    /******************/
 
    $("#noemission").change(function(){
     var id = $('#noemission').val();
@@ -102,6 +124,12 @@
    });
 
 
+   $("noevenement").change(function(){
+    var id = $('#noevenement').val();
+
+
+
+      });
 
 
 
@@ -133,7 +161,7 @@
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">ModifierOuSupprimer
           <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="<?php ?>">Un Evenement </a></li>
+            <li><a href="" data-toggle="modal" data-target="#ModalModifierEvenement">Un Evenement </a></li>
             <li><a href="" data-toggle="modal" data-target="#ModalModifierAnimateur">un Animateurs </a></li>
             <li><a href="" data-toggle="modal" data-target="#ModalModifierEmissions">Emissions</a></li>
           </ul>
@@ -568,6 +596,57 @@
 
 
 
+<div id="ModalModifierEvenement" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modifier un Animateur </h4>
+      </div>
+      <div class="modal-body">
+      <?php
+          echo validation_errors();
+
+          echo form_open_multipart('Admin/ModifierEvenements');
+          echo form_label('Animateur','lbxAnimateur',array('id'=>'emission'));
+
+          echo "<select name='txtnoEvenement' class='form-control' id='noevenement' required>";
+          foreach ($LesEvenements as $UnEvenement) {
+              echo "<option value='". $UnEvenement->id. "'>" . $UnEvenement->Titre. "</option>";
+          }
+          echo "</select><br/>";
+
+          echo form_label('Titre','lbxTitre',array('id'=>'lbxTitre'));
+
+          echo form_input(array('name'=>'txtTitre','id'=>'txtTitre','value'=>'','pattern'=>'[a-zA-Z0-9\s]+','placeholder'=>'Titre','required'=>'required','class'=>'form-control','title'=>'les lettres + chifres uniquement')).'<BR>';
+      
+          echo form_label('Periode','lbxPeriode',array('id'=>'lbxPeriode'));
+      
+          echo form_input(array('name'=>'txtPeriode','id'=>'txtPeriode','value'=>'','pattern'=>'[a-zA-Z0-9\s]+','placeholder'=>'Periode','required'=>'required','class'=>'form-control','title'=>'les lettres + chifres uniquement')).'<BR>';
+      
+          echo form_label('Description','lbxDescription',array('id'=>'lbxDescription'));
+      
+          echo form_textarea(array('name'=>'txtDescription','id'=>'txtDescription','value'=>'','placeholder'=>'Description','pattern'=>'[a-zA-Z0-9\s]+','required'=>'required','class'=>'form-control','title'=>'les lettres + chifres uniquement')).'<BR>';
+      
+          echo form_label('Date Début','lbxDateDebut',array('id'=>'lbxDateDebut'));
+      
+          echo form_input(array('name'=>'txtDateDebut','id'=>'txtDateDebut','type'=>'date','value'=>'','placeholder'=>'DateDebut','required'=>'required','class'=>'form-control')).'<BR>';
+      
+          echo form_label('Date fin','lbxDatefin',array('id'=>'lbxDatefin'));
+      
+          echo form_input(array('name'=>'txtDateFin','id'=>'txtDateFin','type'=>'date','value'=>'','placeholder'=>'Datefin','required'=>'required','class'=>'form-control')).'<BR>';
+      
+          echo form_submit('btnEvenement','Ajouter',array('class'=>'btn btn-primary','id'=>'btnEvenement')).'<BR>';
+
+         echo form_close();
+        ?>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
