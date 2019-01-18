@@ -12,17 +12,19 @@ public function AjouterEvenement($DonnesEvenement)
     return $this->db->insert_id();
 }
 
-public function GetLesEvenements($id=FALSE)
+public function GetLesEvenements($id=NULL)
 {
-    if($id ===false)
+    if($id==NULL)
     {
-     $requete=$this->db->get('cob_evenements'); 
+        $requete=$this->db->get('cob_evenements');
+        return $requete->result();
     }
     else
     {
-     return $requete =$this->db->get_where('cob_evenements',array('id'=>$id));
-    }
-   return $requete;  
+     $requete =$this->db->get_where('cob_evenements',array('id'=>$id));
+     $query=$this->db->query($requete);
+     return $query->row();
+    } 
 }
 
 public function getUnEvenement($id)
@@ -39,5 +41,11 @@ public function getUnEvenement($id)
     } 
     return $Evenement;
 
+}
+
+public function ModifierUnEvenement($DonnesEvenement,$id)
+{
+    $this->db->where('id', $id);
+    $this->db->update('cob_evenements',$DonnesEvenement); 
 }
 }

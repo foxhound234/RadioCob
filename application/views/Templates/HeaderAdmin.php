@@ -124,17 +124,42 @@
    });
 
 
-   $("noevenement").change(function(){
+   $("#noevenement").change(function(){
     var id = $('#noevenement').val();
 
+    $("#lbxTitre").show();
+   $("#txtTitre").show();
+
+   $("#lbxPeriode").show();
+   $("#txtPeriode").show();
+
+   $("#lbxDescription").show();
+   $("#txtDescription").show();
 
 
+   $("#lbxDateDebut").show();
+   $("#txtDateDebut").show();
+
+
+   $("#lbxDatefin").show();
+   $("#txtDateFin").show();
+
+
+   $("#btnEvenement").show();
+   $.ajax({
+          url : "<?php echo site_url('Admin/AfficheEvenement/')?>" + id,
+          type: "GET",
+          dataType: "JSON",
+        success: function(data)
+        {
+          $("#txtTitre").val(data[0].titre);
+          $("#txtPeriode").val(data[0].periode);
+          $("#txtDescription").text(data[0].description);
+          $("#txtDateDebut").val(data[0].debut);
+          $("#txtDateFin").val(data[0].fin);
+        }  
+        });    
       });
-
-
-
-
-
 
 
 })
@@ -436,7 +461,7 @@
 
          echo form_label('Site','lbxsite');
 
-         echo form_input(array('name'=>'txtsite','value'=>'','class'=>'form-control','placeholder'=>'site web')).'<BR>';
+         echo form_input(array('name'=>'txtsite','value'=>'','class'=>'form-control','pattern'=>"https?://.+",'placeholder'=>'site web')).'<BR>';
 
          echo form_submit('btnAnimateur','Ajouter',array('class'=>'btn btn-primary')).'<BR>';
           
@@ -530,58 +555,9 @@
 
          echo form_label('Site','lbxsite',array('id'=>'lbxsite'));
 
-         echo form_input(array('name'=>'txtsite','id'=>'txtsite','value'=>'','class'=>'form-control','placeholder'=>'site web')).'<BR>';
+         echo form_input(array('name'=>'txtsite','id'=>'txtsite','value'=>'','pattern'=>"https?://.+",'class'=>'form-control','placeholder'=>'site web')).'<BR>';
 
-         echo form_submit('btnAnimateur','Ajouter',array('class'=>'btn btn-primary','id'=>'btnanimateur')).'<BR>';
-         echo form_close();
-        ?>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<div id="ModalModifierAnimateur" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modifier un Animateur </h4>
-      </div>
-      <div class="modal-body">
-      <?php
-          echo validation_errors();
-
-          echo form_open_multipart('Admin/ModifierAnimateurs');
-          echo form_label('Animateur','lbxAnimateur',array('id'=>'emission'));
-
-          echo "<select name='txtnoAnimateurs' class='form-control' id='noanimateurs' required>";
-          foreach ($LesAnimateurs as $UnAnimateur) {
-              echo "<option value='". $UnAnimateur->id. "'>" . $UnAnimateur->nom. "</option>";
-          }
-          echo "</select><br/>";
-
-       
-          echo form_label('nom','lbxnom',array('id'=>'lbxnom'));
-
-          echo form_input(array('name'=>'txtnom','id'=>'txtnom','value'=>'','pattern'=>'[a-zA-Z0-9\s]+','placeholder'=>'Nom','required'=>'required','class'=>'form-control','title'=>'les lettres + chifres uniquement')).'<BR>';
-
-          echo form_label('Presentations','lbxPresentations',array('id'=>'lbxPresentation'));
-
-         echo form_textarea(array('name'=>'txtPresentations','id'=>'txtPresentations','value'=>'','placeholder'=>'Presentation','pattern'=>'[a-zA-Z0-9\s]+','required'=>'required','class'=>'form-control','title'=>'les lettres + chifres uniquement')).'<BR>';
-         echo '<p id="NomfichierAnimateurs"> </p>';
-         echo form_label('Images','lbxImages',array('id'=>'lbxImages'));
-
-         echo form_input(array('name'=>'txtImages','id'=>'txtImageAnimateur','type'=>'file','value'=>'','placeholder'=>'Image')).'<BR>';
-
-         echo form_label('Site','lbxsite',array('id'=>'lbxsite'));
-
-         echo form_input(array('name'=>'txtsite','id'=>'txtsite','value'=>'','class'=>'form-control','placeholder'=>'site web')).'<BR>';
-
-         echo form_submit('btnAnimateur','Ajouter',array('class'=>'btn btn-primary','id'=>'btnanimateur')).'<BR>';
+         echo form_submit('btnAnimateur','Modifier',array('class'=>'btn btn-primary','id'=>'btnanimateur')).'<BR>';
          echo form_close();
         ?>
       </div>
@@ -601,18 +577,18 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modifier un Animateur </h4>
+        <h4 class="modal-title">Modifier un Evenement </h4>
       </div>
       <div class="modal-body">
       <?php
           echo validation_errors();
 
-          echo form_open_multipart('Admin/ModifierEvenements');
-          echo form_label('Animateur','lbxAnimateur',array('id'=>'emission'));
+          echo form_open_multipart('Admin/ModifierEvenement');
+          echo form_label('Evenement','lbxEvenements',array('id'=>'emission'));
 
           echo "<select name='txtnoEvenement' class='form-control' id='noevenement' required>";
           foreach ($LesEvenements as $UnEvenement) {
-              echo "<option value='". $UnEvenement->id. "'>" . $UnEvenement->Titre. "</option>";
+              echo "<option value='". $UnEvenement->id. "'>" . $UnEvenement->titre. "</option>";
           }
           echo "</select><br/>";
 
@@ -636,8 +612,8 @@
       
           echo form_input(array('name'=>'txtDateFin','id'=>'txtDateFin','type'=>'date','value'=>'','placeholder'=>'Datefin','required'=>'required','class'=>'form-control')).'<BR>';
       
-          echo form_submit('btnEvenement','Ajouter',array('class'=>'btn btn-primary','id'=>'btnEvenement')).'<BR>';
-
+          echo form_submit('btnEvenement','Modifier',array('class'=>'btn btn-primary','id'=>'btnEvenement')).'<BR>';
+          echo form_submit('btnTest','Modifier',array('class'=>'btn btn-primary','id'=>'btntest')).'<BR>';
          echo form_close();
         ?>
       </div>
@@ -652,7 +628,10 @@
 
 
 
-
+<div id="dialogtest" title="Basic dialog">
+  <p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
+</div>
+ 
 
 
 
