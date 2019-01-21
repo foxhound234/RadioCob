@@ -56,10 +56,38 @@
    $("#lbxDatefin").hide();
    $("#txtDateFin").hide();
 
-
    $("#btnEvenement").hide();
     /******************/
+    /******/
+    /* Jeux modifie modal */
 
+
+    $("#lbxIntitule4").hide();
+   $("#txtIntitule").hide();
+
+   $("#lbxDescriptionJeux").hide();
+   $("#txtDescriptionJeux").hide();
+
+   $("#lbxFonctionnement").hide();
+   $("#txtFonctionnement").hide();
+
+
+   $("#lbxImages4").hide();
+   $("#NomfichierJeux").hide();
+   $("#TxtImages").hide();
+
+   $("#lbxdebut").hide();
+   $("#txtDateDebutJeux").hide();
+
+   $("#lbxfin").hide();
+   $("#txtDateFinJeux").hide();
+
+   $("#lbxInterruption").hide();
+ $("#txtInterruption").hide();
+
+   $("#btnJeux").hide();
+
+    /****** ****************** */
    $("#noemission").change(function(){
     var id = $('#noemission').val();
     $('#NomfichierEmission').show();
@@ -162,6 +190,51 @@
       });
 
 
+      $("#noJeux").change(function(){
+    var id = $('#noJeux').val();
+
+   
+    $("#lbxIntitule4").show();
+   $("#txtIntitule").show();
+
+   $("#lbxDescriptionJeux").show();
+   $("#txtDescriptionJeux").show();
+
+   $("#lbxFonctionnement").show();
+   $("#txtFonctionnement").show();
+
+
+   $("#lbxImages4").show();
+   $("#NomfichierJeux").show();
+   $("#TxtImages").show();
+
+   $("#lbxdebut").show();
+   $("#txtDateDebutJeux").show();
+
+   $("#lbxfin").show();
+   $("#txtDateFinJeux").show();
+
+ $("#lbxInterruption").show();
+ $("#txtInterruption").show();
+
+   $("#btnJeux").show();
+   $.ajax({
+          url : "<?php echo site_url('Admin/AfficheJeux/')?>" + id,
+          type: "GET",
+          dataType: "JSON",
+        success: function(data)
+        {
+          $("#txtIntitule").val(data[0].intitule);
+          $("#txtPeriode").val(data[0].periode);
+          $("#txtDescriptionJeux").text(data[0].description);
+          $("#txtFonctionnement").text(data[0].fonctionnement);
+          $("#NomfichierJeux").text(data[0].image);
+          $("#txtDateDebutJeux").val(data[0].debut);
+          $("#txtDateFinJeux").val(data[0].fin);
+          $("#txtInterruption").val(data[0].interruption);
+        }  
+        });    
+      });
 })
   </script>
 </head>
@@ -180,6 +253,7 @@
             <li><a href=""data-toggle="modal" data-target="#ModalEmission"> Une Emission </a></li>
             <li><a href=""data-toggle="modal" data-target="#ModalAnimations"> Une animations</a></li>
             <li><a href=""data-toggle="modal" data-target="#ModalAnimateur"> un animateurs </a></li>
+            <li><a href=""data-toggle="modal" data-target="#ModalAjouterPartenaires">Un partenaire</a></li>
           </ul>
         </li>
         <li class="dropdown">
@@ -189,6 +263,7 @@
             <li><a href="" data-toggle="modal" data-target="#ModalModifierEvenement">Un Evenement </a></li>
             <li><a href="" data-toggle="modal" data-target="#ModalModifierAnimateur">un Animateurs </a></li>
             <li><a href="" data-toggle="modal" data-target="#ModalModifierEmissions">Emissions</a></li>
+            <li><a href=""data-toggle="modal" data-target="#ModalModifierJeux">Un Jeux</a></li>
           </ul>
         </li>
         <li><a href="<?php echo site_url('Deconnexion')?>">Deconnexion</a></li>
@@ -613,7 +688,65 @@
           echo form_input(array('name'=>'txtDateFin','id'=>'txtDateFin','type'=>'date','value'=>'','placeholder'=>'Datefin','required'=>'required','class'=>'form-control')).'<BR>';
       
           echo form_submit('btnEvenement','Modifier',array('class'=>'btn btn-primary','id'=>'btnEvenement')).'<BR>';
-          echo form_submit('btnTest','Modifier',array('class'=>'btn btn-primary','id'=>'btntest')).'<BR>';
+         echo form_close();
+         echo form_submit('btnEvenement','test',array('class'=>'btn btn-primary','id'=>'btntest'));
+        ?>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="ModalAjouterPartenaires" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Ajouter Un Partenaire </h4>
+      </div>
+      <div class="modal-body">
+      <?php
+          echo validation_errors();
+
+          echo form_open_multipart('Admin/AjouterPartenaire');
+   
+          echo form_label('NOM','lbxNom');
+
+          echo form_input(array('name'=>'txtNom','value'=>'','pattern'=>'[a-zA-Z0-9\s]+','placeholder'=>'Nom du partenaires','required'=>'required','class'=>'form-control','title'=>'les lettres + chiffres uniquement')).'<BR>';
+      
+          echo form_label('Description','lbxDescription');
+      
+          echo form_textarea(array('name'=>'txtDescription','value'=>'','pattern'=>'[a-zA-Z0-9\s]+','placeholder'=>'Description','class'=>'form-control','title'=>'les lettres + chifres uniquement')).'<BR>';
+      
+          echo form_label('Site','lbxSite');
+      
+          echo form_input(array('name'=>'txtSite','value'=>'','placeholder'=>'Site','pattern'=>'https?://.+','class'=>'form-control','title'=>'les lettres + chifres uniquement')).'<BR>';
+      
+          echo form_label('Logo','lbxLogo');
+      
+          echo form_input(array('name'=>'txtLogo','type'=>'file','value'=>'','placeholder'=>'Fichier')).'<BR>';
+
+          echo form_label('Type','lbxtype');
+
+          echo "<select name='txtType' class='form-control' id='noevenement' required>";
+         
+              echo "<option value='ponctuel'>ponctuel</option>";
+              echo "<option value='institutionnel'>institutionnel</option>";
+          echo "</select><br/>";
+
+          echo form_label('Date Debut','lbxDateDebut',array('id'=>'lbxDatefin'));
+      
+          echo form_input(array('name'=>'txtDateDebut','type'=>'date','value'=>'','placeholder'=>'Datefin','required'=>'required','class'=>'form-control')).'<BR>';
+
+          echo form_label('Date fin','lbxDatefin',array('id'=>'lbxDatefin'));
+      
+          echo form_input(array('name'=>'txtDateFin','id'=>'txtDateFin','type'=>'date','value'=>'','placeholder'=>'Datefin','required'=>'required','class'=>'form-control')).'<BR>';
+    
+
+          echo form_submit('btnPartenaires','Ajouter',array('class'=>'btn btn-primary')).'<BR>';
          echo form_close();
         ?>
       </div>
@@ -626,13 +759,67 @@
 
 
 
-
-
-<div id="dialogtest" title="Basic dialog">
-  <p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
-</div>
  
 
+
+<div id="ModalModifierJeux" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modifier un Jeux </h4>
+      </div>
+      <div class="modal-body">
+      <?php
+          echo validation_errors();
+
+          echo form_open_multipart('Admin/ModifierJeux');
+          echo form_label('Jeux','lbxJeux');
+
+          echo "<select name='txtnoJeux' class='form-control' id='noJeux' required>";
+          foreach ($LesJeux as $UnJeux) {
+              echo "<option value='". $UnJeux->id. "'>" . $UnJeux->intitule. "</option>";
+          }
+          echo "</select><br/>";
+
+          echo form_label('Intitule','lbxIntitule',array('id'=>'lbxIntitule4'));
+
+        echo form_input(array('name'=>'txtIntitule','id'=>'txtIntitule','value'=>'','pattern'=>'[a-zA-Z0-9\s]+','placeholder'=>'Titre','required'=>'required','class'=>'form-control','title'=>'les lettres + chifres uniquement')).'<BR>';
+
+
+        echo form_label('Description','lbxDescription',array('id'=>'lbxDescriptionJeux'));
+
+        echo form_textarea(array('name'=>'txtDescription','id'=>'txtDescriptionJeux','value'=>'','placeholder'=>'Description','pattern'=>'[a-zA-Z0-9\s]+','required'=>'required','class'=>'form-control','title'=>'les lettres + chifres uniquement')).'<BR>';
+
+        echo form_label('Fonctionnement','lbxFonctionnement',array('id'=>'lbxFonctionnement'));
+
+        echo form_textarea(array('name'=>'txtFonctionnement','id'=>'txtFonctionnement','value'=>'','placeholder'=>'Fonctionnement','pattern'=>'[a-zA-Z0-9\s]+','required'=>'required','class'=>'form-control','title'=>'les lettres + chifres uniquement')).'<BR>';
+
+        echo form_label('Images','lbxImages',array('id'=>'lbxImages4'));
+        echo '<p id="NomfichierJeux"> </p>';
+        echo form_input(array('name'=>'txtImages','id'=>'TxtImages','type'=>'file','value'=>'','placeholder'=>'Image','class'=>'form-control')).'<BR>';
+        
+        echo form_label('Date debut','lbxdebut',array('id'=>'lbxdebut'));
+
+        echo form_input(array('name'=>'txtDateDebut','id'=>'txtDateDebutJeux','type'=>'datetime-local','value'=>'','placeholder'=>'DateDebut','required'=>'required','class'=>'form-control')).'<BR>';
+
+        echo form_label('Date fin','lbxfin',array('id'=>'lbxfin'));
+
+        echo form_input(array('name'=>'txtDateFin','id'=>'txtDateFinJeux','type'=>'datetime-local','value'=>'','placeholder'=>'DateFin','required'=>'required','class'=>'form-control')).'<BR>';
+
+        echo form_label('Interruption','lbxInterruption',array('id'=>'lbxInterruption'));
+
+        echo form_input(array('name'=>'txtInterruption','id'=>'txtInterruption','value'=>'','pattern'=>'[0-9]','placeholder'=>'Interruption','required'=>'required','class'=>'form-control')).'<BR>';
+        echo form_submit('btnJeux','Modifier',array('class'=>'btn btn-primary','id'=>'btnJeux')).'<BR>';
+         echo form_close();
+        ?>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 

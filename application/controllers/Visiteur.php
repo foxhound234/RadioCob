@@ -42,19 +42,19 @@ class Visiteur extends CI_Controller {
 
 	 public function Partenaires()
 	 {
-		$DonneesInjectees['DesPartenaires']=$this->modelePartenaires->getLespartenaires();
+		$DonneesInjectees['DesPartenaires']=$this->ModelePartenaires->getLespartenaires();
 		$DonneesInjectees['TitredelaPage']="Les Partenaires";
 		$this->afficher('Visiteur/Partenaires',$DonneesInjectees);
 	 }
 	 public function APropos()
 	 {
-	  $DonneesInjectees['DesAnimateurs']=$this->modeleAnimateur->RetournerAnimateur();
+	  $DonneesInjectees['DesAnimateurs']=$this->ModeleAnimateur->RetournerAnimateur();
 	  $DonneesInjectees['TitredelaPage']="A propos";
 	  $this->afficher('Visiteur/APropos',$DonneesInjectees);
 	 }
 	 public function VoirUnAnimateur($id)
 	 {
-		$DonneesInjectees['UnAnimateur']=$this->modeleAnimateur->RetournerAnimateur($id);
+		$DonneesInjectees['UnAnimateur']=$this->ModeleAnimateur->RetournerAnimateur($id);
 		$DonneesInjectees['TitredelaPage']="VoirUnAnimateur";
 		$this->afficher('Visiteur/VoirUnAnimateur',$DonneesInjectees);
 	 }
@@ -70,7 +70,7 @@ class Visiteur extends CI_Controller {
 				'login'=>$this->input->post('txtLogin'),
 				'password'=>$this->input->post('txtPassword')
 				);
-				$UtilisateurRetourner=$this->modeleAdmin->RetournerAdmin($DonnesDeConnexion);
+				$UtilisateurRetourner=$this->ModeleAdmin->RetournerAdmin($DonnesDeConnexion);
 		  if($UtilisateurRetourner==null)
 		  {
 			log_message('error',' erreur veuillez Ressaisir');

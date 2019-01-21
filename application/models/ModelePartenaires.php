@@ -12,5 +12,10 @@ public function getLespartenaires()
     return $requete->result();
 }
 
+public function AjouterPartenaire($DonneesPartenaire)
+{
+    $this->db->insert('cob_partenaires',$DonneesPartenaire);
+    return $this->db->insert_id();
+}
 
 }

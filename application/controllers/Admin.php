@@ -18,6 +18,7 @@ class Admin extends CI_Controller {
 		$DonneesInjectees['LesEmissionsAssignée']=$this->ModeleEmission->RetournerLesEmissions();
 		$DonneesInjectees['LesAnimateurs']=$this->ModeleAnimateur->RetournerAnimateur(); 
 		$DonneesInjectees['LesEvenements']=$this->ModeleEvenement->GetLesEvenements();
+		$DonneesInjectees['LesJeux']=$this->ModeleJeux->GetLesJeux();
 		$this->afficher('Admin/AccueilAdmin',$DonneesInjectees);
 	}
 	public function Deconnexion()
@@ -210,7 +211,64 @@ class Admin extends CI_Controller {
 	}
 
 
+	public function AjouterPartenaire()
+	{
 
+		if($this->input->post('btnPartenaires'))
+		{
+			$config['upload_path']          = './assets/images';
+			$config['allowed_types']        = 'gif|jpg|png';
+			$config['max_size']             = 100000;
+			$config['max_width']            = 2500;
+			$config['max_height']           = 2500;
+			$this->upload->initialize($config);
+			$nomfichier=$_FILES['txtLogo']['name']; 
+			$dossier='/assets/images/';
+			if(file_exists($dossier.$nomfichier)||$nomfichier=='')
+			{
+				$DonneesPartenaire=array(
+					'nom'=>$this->input->post('txtNom'),
+					'description'=>$this->input->post('txtDescription'),
+					'logo'=> $nomfichier,
+					'site'=>$this->input->post('txtSite'),
+					'debut'=>$this->input->post('txtDateDebut'),
+					'fin'=>$this->input->post('txtDateFin'),
+					'type'=>$this->input->post('txtType'),
+					'position'=>14
+				);
+				$this->ModelePartenaires->AjouterPartenaire($DonneesPartenaire);
+				redirect('/Admin/Accueil', 'refresh');
+			}
+			else{
+				if ( ! $this->upload->do_upload('txtLogo'))
+				{
+						$error =  $this->upload->display_errors();
+	
+						print_r($error);
+				}
+				else
+				{
+						$data = $this->upload->data();
+						$DonneesPartenaire=array(
+							'nom'=>$this->input->post('txtnom'),
+							'description'=>$this->input->post('txtDescription'),
+							'logo'=> $nomfichier,
+							'site'=>$this->input->post('txtSite'),
+							'debut'=>$this->input->post('txtDateDebut'),
+							'fin'=>$this->input->post('txtDateFin'),
+							'type'=>$this->input->post('txtType'),
+							'position'=>14
+						);
+							
+
+						$this->ModelePartenaires->AjouterPartenaire($DonneesPartenaire);
+						redirect('/Admin/Accueil', 'refresh');
+				}	
+			}	
+		}
+
+
+	}
 	public function ModifierAnimateurs()
 	{
 		if($this->input->post('btnAnimateur'))
@@ -339,12 +397,81 @@ class Admin extends CI_Controller {
 
 
 		}	
-     
-
-
-		
-
 	}
+
+	public function ModifierJeux()
+	{
+		if($this->input->post('btnJeux'))
+		{
+			$id=$this->input->post('txtnoJeux');
+
+            $nomfichier=$_FILES['txtImages']['name']; 
+			$dossier='/assets/images/';
+
+	
+			
+			  if($nomfichier=='')
+			  {
+				$DonneesJeux=array(
+					'intitule'=>$this->input->post('txtIntitule'),
+				   'description'=>$this->input->post('txtDescription'),
+				   'fonctionnement'=>$this->input->post('txtFonctionnement'),
+					'debut'=>$this->input->post('txtDateDebut'),
+					'fin'=>$this->input->post('txtDateFin'),
+					'interruption'=>$this->input->post('txtInterruption')
+				  );
+				
+				 $this->ModeleJeux->ModifierUnJeux($DonneesJeux,$id);  		
+				 redirect('/Admin/Accueil', 'refresh');
+			  }
+
+
+
+
+			  if(file_exists($dossier.$nomfichier))
+			  {
+				$DonneesJeux=array(
+					'intitule'=>$this->input->post('txtIntitule'),
+				   'description'=>$this->input->post('txtDescription'),
+				   'fonctionnement'=>$this->input->post('txtFonctionnement'),
+				   'image'=>$nomfichier,
+					'debut'=>$this->input->post('txtDateDebut'),
+					'fin'=>$this->input->post('txtDateFin'),
+					'interruption'=>$this->input->post('txtInterruption')
+				  );
+				
+					
+					 redirect('/Admin/Accueil', 'refresh');	
+			  }
+			  else{
+				  if ( ! $this->upload->do_upload('txtImages'))
+				  {
+						  $error =  $this->upload->display_errors();
+	  
+						  print_r($error);
+				  }
+				  else
+				  {
+						  $data = $this->upload->data();
+						  $DonneesJeux=array(
+							'intitule'=>$this->input->post('txtIntitule'),
+						   'description'=>$this->input->post('txtDescription'),
+						   'fonctionnement'=>$this->input->post('txtFonctionnement'),
+						   'image'=>$nomfichier,
+							'debut'=>$this->input->post('txtDateDebut'),
+							'fin'=>$this->input->post('txtDateFin'),
+							'interruption'=>$this->input->post('txtInterruption')
+						  );
+						
+							 $this->ModeleJeux->ModifierUnJeux($DonneesJeux,$id);
+							 
+						  redirect('/Admin/Accueil', 'refresh');
+				  }	
+
+
+		}	
+	}
+}
 	public function AfficheAnimateurs($id)
 	{
 		
@@ -360,6 +487,11 @@ class Admin extends CI_Controller {
    {
 	$data=$this->ModeleEvenement->getUnEvenement($id);
 		echo json_encode($data);
+   }
+   public function AfficheJeux($id)
+   {
+	$data=$this->ModeleJeux->getUnJeux($id);
+	echo json_encode($data); 
    }
 	private function afficher($page,$DonneesInjectees)
 	{
