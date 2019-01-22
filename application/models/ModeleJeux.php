@@ -47,5 +47,13 @@ class ModeleJeux extends CI_Model {
         $this->db->update('cob_jeux',$DonnesJeux);
     }
 
+      public function SupprimerJeux($id)
+      {
+          $this->db->where('jeu',$id);
+          $this->db->delete('cob_participants');
+
+          $this->db->where('id',$id);
+          $this->db->delete('cob_jeux');
+      }
 
     }

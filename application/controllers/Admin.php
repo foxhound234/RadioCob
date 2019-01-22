@@ -19,6 +19,7 @@ class Admin extends CI_Controller {
 		$DonneesInjectees['LesAnimateurs']=$this->ModeleAnimateur->RetournerAnimateur(); 
 		$DonneesInjectees['LesEvenements']=$this->ModeleEvenement->GetLesEvenements();
 		$DonneesInjectees['LesJeux']=$this->ModeleJeux->GetLesJeux();
+		$DonneesInjectees['LesPartenaires']=$this->ModelePartenaires->getLespartenaires();
 		$this->afficher('Admin/AccueilAdmin',$DonneesInjectees);
 	}
 	public function Deconnexion()
@@ -153,6 +154,7 @@ class Admin extends CI_Controller {
 				}	
 		}
 	}
+
 	public function Ajouteranimation()
 	{
 		if($this->input->post('btnAnimations'))
@@ -164,6 +166,7 @@ class Admin extends CI_Controller {
 			  $this->ModeleAnimation->AjouterUneAnimations($DonneesEmissions);
 		}
 	}
+
 	public function Ajouteranimateur()
 	{
 		if($this->input->post('btnAnimateur'))
@@ -407,9 +410,6 @@ class Admin extends CI_Controller {
 
             $nomfichier=$_FILES['txtImages']['name']; 
 			$dossier='/assets/images/';
-
-	
-			
 			  if($nomfichier=='')
 			  {
 				$DonneesJeux=array(
@@ -472,10 +472,36 @@ class Admin extends CI_Controller {
 		}	
 	}
 }
+  public function SupprimerJeux()
+   {
+	   if($this->input->post('btnSupjeux')){
+		$id=$this->input->post('txtid');
+		$this->ModeleJeux->SupprimerJeux($id); 
+		redirect('/Admin/Accueil', 'refresh');  
+	   }
+   }
+   public function SupprimerPartenaire()
+   {
+	   if($this->input->post('btnSupPartenaire'))
+	   {
+		$id=$this->input->post('txtidPartenaire');
+		$this->ModelePartenaires->SupprimerPartenaire($id); 
+		redirect('/Admin/Accueil', 'refresh'); 
+	   }
+   }
+   public function SupprimerEmission()
+   {
+	   
+   }
 	public function AfficheAnimateurs($id)
 	{
 		
 		$data = $this->ModeleAnimateur->RetournerAnimateur($id);
+		echo json_encode($data);	
+	}
+	public function AffichePartenaire($id)
+	{
+		$data = $this->ModelePartenaires->getUnPartenaire($id);
 		echo json_encode($data);	
 	}
    public function AfficheEmission($id)
