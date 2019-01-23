@@ -19,6 +19,7 @@
       $("#labelimages").hide();
       $('#NomfichierEmission').hide();
       $("#submit").hide();
+      $("#btnSupEmission").hide();
     /*********************/
     /* Animateur modifie modal*/
       $('#lbxnom').hide();
@@ -35,6 +36,7 @@
       $('#txtsite').hide();
 
       $("#btnanimateur").hide();
+      $("#btnSupAnimateur").hide();
   
     /******************/
     /* Evenement modifie modal */
@@ -57,6 +59,7 @@
    $("#txtDateFin").hide();
 
    $("#btnEvenement").hide();
+   $("#btnSupEvenement").hide();
     /******************/
     /******/
     /* Jeux modifie modal */
@@ -139,7 +142,7 @@
 
     $("#Description").show();
   $("#submit").show();
-
+  $("#btnSupEmission").show();
   $.ajax({
         url : "<?php echo site_url('Admin/AfficheEmission/')?>" + id,
         type: "GET",
@@ -169,6 +172,7 @@
       $('#txtsite').show();
 
       $("#btnanimateur").show(); 
+      $("#btnSupAnimateur").show();
       $.ajax({
           url : "<?php echo site_url('Admin/AfficheAnimateurs/')?>" + id,
           type: "GET",
@@ -206,6 +210,8 @@
 
 
    $("#btnEvenement").show();
+   $("#btnSupEvenement").show();
+
    $.ajax({
           url : "<?php echo site_url('Admin/AfficheEvenement/')?>" + id,
           type: "GET",
@@ -329,11 +335,19 @@
    });
 
 
-   $("#btnSupPartenaires").click(function() {
-     var id=$('#noPartenaires').val();
-     $("#idPartenaire").val(id);
+   $("#btnSupEmission").click(function() {
+     var id=$('#noemission').val();
+     $("#idEmission").val(id);
    });
 
+  $("#btnSupEvenement").click(function(){
+    var id=$('#noevenement').val();
+    $("#idEvenement").val(id);
+  })
+  $("#btnSupAnimateur").click(function(){
+    var id=$('#noanimateurs').val();
+    $("#idAnimateur").val(id);
+  })
 
  })
   </script>
@@ -687,7 +701,7 @@
          echo form_submit('btnEmission','Modifier',array('class'=>'btn btn-primary','name'=>'btnmoif','id'=>'submit')).'<BR>';
          echo form_close();
         ?>
-           <button type="button" class="btn btn-default" id="btnSupjeux" data-toggle="modal" data-target="#SuppressionEmission">Supprimer</button>
+           <button type="button" class="btn btn-default" id="btnSupEmission" data-toggle="modal" data-target="#SuppressionEmission">Supprimer</button>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -737,6 +751,7 @@
          echo form_submit('btnAnimateur','Modifier',array('class'=>'btn btn-primary','id'=>'btnanimateur')).'<BR>';
          echo form_close();
         ?>
+         <button type="button" class="btn btn-default" id="btnSupAnimateur" data-toggle="modal" data-target="#SuppressionAnimateur">Supprimer</button>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -791,8 +806,8 @@
       
           echo form_submit('btnEvenement','Modifier',array('class'=>'btn btn-primary','id'=>'btnEvenement')).'<BR>';
          echo form_close();
-         echo form_submit('btnEvenement','test',array('class'=>'btn btn-primary','id'=>'btntest'));
         ?>
+        <button type="button" class="btn btn-default" id="btnSupEvenement" data-toggle="modal" data-target="#SuppressionEvenement">Supprimer</button>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -1031,14 +1046,15 @@
 </div>
 
 
-<div id="SuppressionPartenaires" class="modal" tabindex="-1" role="dialog">
+<div id="SuppressionEmission" class="modal" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-body">
-      <H1>  Voulez  vous vraiment supprimer le  Partenaires? </h1>
+      <H1>  Voulez  vous vraiment supprimer l'emission? </h1>
       <?php
         echo form_open('Admin/SupprimerEmission');
-      echo form_input(array('name'=>'txtidEmission','id'=>'idEmission','type'=>'hidden','value'=>'','pattern'=>'[a-zA-Z0-9\s]+','placeholder'=>'Titre','required'=>'required','class'=>'form-control','title'=>'les lettres + chifres uniquement')).'<BR>';
+     
+      echo form_input(array('name'=>'txtidEmission','type'=>'hidden','id'=>'idEmission','value'=>'','pattern'=>'[a-zA-Z0-9\s]+','placeholder'=>'Titre','required'=>'required','class'=>'form-control','title'=>'les lettres + chifres uniquement')).'<BR>';
       echo form_submit('btnSupEmission','Oui',array('class'=>'btn btn-primary'));
       echo form_close();
       ?>
@@ -1053,7 +1069,48 @@
 
 
 
+<div id="SuppressionEvenement" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+      <H1>  Voulez  vous vraiment Supprimer l'evenement? </h1>
+      <?php
+        echo form_open('Admin/SupprimerEvenement');
+     
+      echo form_input(array('name'=>'txtidEvenement','type'=>'hidden','id'=>'idEvenement','value'=>'','pattern'=>'[a-zA-Z0-9\s]+','placeholder'=>'Titre','required'=>'required','class'=>'form-control','title'=>'les lettres + chifres uniquement')).'<BR>';
+      echo form_submit('btnSupEvenement','Oui',array('class'=>'btn btn-primary'));
+      echo form_close();
+      ?>
+        &nbsp;<button type="button" class="btn btn-default" data-dismiss="modal">Non</button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
+
+
+<div id="SuppressionAnimateur" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+      <H1>  Voulez  vous vraiment Supprimer l'Animateur? </h1>
+      <?php
+        echo form_open('Admin/SuppressionAnimateur');
+        echo form_input(array('name'=>'txtidAnimateur','type'=>'hidden','id'=>'idAnimateur','value'=>'','pattern'=>'[a-zA-Z0-9\s]+','placeholder'=>'Titre','required'=>'required','class'=>'form-control','title'=>'les lettres + chifres uniquement')).'<BR>';
+        echo form_submit('btnSupAnimateur','Oui',array('class'=>'btn btn-primary'));
+        echo form_close();
+      ?>
+        &nbsp;<button type="button" class="btn btn-default" data-dismiss="modal">Non</button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 

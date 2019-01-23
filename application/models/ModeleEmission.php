@@ -42,7 +42,14 @@ class ModeleEmission extends CI_Model {
         $query=$this->db->query($requete);
         return $query->result();
     }
+    public function SupprimerEmission($id)
+    {
+        $this->db->where('emission',$id);
+        $this->db->delete('cob_animation');
 
+        $this->db->where('id',$id);
+        $this->db->delete('cob_emissions');
+    }
     public function ModifierEmission($DonnesaModifier,$id)
     {
         $this->db->where('id', $id);

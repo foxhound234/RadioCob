@@ -33,6 +33,14 @@ public function RetournerAnimateur ($id = NULL)
     $this->db->insert('cob_animateurs',$DonnesAnimateur);
     return $this->db->insert_id();
  }
+ public function SupprimerAnimateur($id)
+ {
+     $this->db->where('animateur',$id);
+     $this->db->delete('cob_animation');
+
+     $this->db->where('id',$id);
+     $this->db->delete('cob_animateurs');
+ }
  public function ModifierAnimateur($DonnesaModifier,$id)
  {
      $this->db->where('id', $id);

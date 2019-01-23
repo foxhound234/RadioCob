@@ -42,7 +42,11 @@ public function getUnEvenement($id)
     return $Evenement;
 
 }
-
+public function SupprimerEvenement($id)
+{
+    $this->db->where('id',$id);
+    $this->db->delete('cob_evenements');
+}
 public function ModifierUnEvenement($DonnesEvenement,$id)
 {
     $this->db->where('id', $id);

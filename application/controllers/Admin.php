@@ -491,7 +491,30 @@ class Admin extends CI_Controller {
    }
    public function SupprimerEmission()
    {
-	   
+	   if($this->input->post('btnSupEmission'))
+	   {
+		$id=$this->input->post("txtidEmission");
+		$this->ModeleEmission->SupprimerEmission($id);
+		redirect('/Admin/Accueil', 'refresh');
+	   }
+   }
+   public function SupprimerEvenement()
+   {
+	if($this->input->post('btnSupEvenement'))
+	{
+		$id=$this->input->post("txtidEvenement");
+		$this->ModeleEvenement->SupprimerEvenement($id);
+		redirect('/Admin/Accueil', 'refresh');
+	}
+   }
+   public function SuppressionAnimateur()
+   {
+	if($this->input->post('btnSupAnimateur'))
+	{
+		$id=$this->input->post("txtidAnimateur");
+		$this->ModeleAnimateur->SupprimerAnimateur($id);
+		redirect('/Admin/Accueil', 'refresh');
+	}
    }
 	public function AfficheAnimateurs($id)
 	{
