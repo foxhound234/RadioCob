@@ -83,6 +83,13 @@ class Visiteur extends CI_Controller {
 
 		}
 	 }
+	 public function LesEvenements()
+	 {
+		$DonneesInjectees['TitredelaPage']="Les Evenements";
+		$DonneesInjectees['LesEvenements']=$this->ModeleEvenement->LesEvenements();
+		$this->afficher('Visiteur/Evenement',$DonneesInjectees);
+		
+	 }
 	private function afficher($page,$DonneesInjectees)
 	{
 		$this->load->view('Templates/Header');

@@ -1,0 +1,79 @@
+
+.picto {
+    display: inline-block;
+    align-content: top;
+    margin: 4%;
+}
+.textePicto {
+    max-width: 500px;
+    display: block;
+    font-size: 30px;
+    color:white;
+}
+.fond-picto{
+    background: #2b456e;
+    margin-left: 10%;
+    width: 80%;
+}
+.form-liste {
+
+background: #2b456e;
+    clear: left;
+    position: relative;
+    margin: 15px 7px 7px 0;
+    padding: 7px 7px 27px;
+    border: 1px dotted #8d8b8d;
+    background: #2b456e;
+
+}
+.form-elt-liste {
+
+    background: #2b456e;
+    border: 1px solid #2b456e;
+    color:#F5DEB3;
+    list-style: none;
+    padding: 8px 16px 8px 34px;
+    margin: 8px 10px 8px 0;
+    font-size: xx-large;
+}
+
+body{
+  background-color:#B0C4DE;  
+}
+.navbar-nav > li > a {
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+    line-height: 20px;
+    color: beige;
+    font-size: 25px;
+}
+.fond-picto > h1:nth-child(1){
+    color:white;
+}
+.nav > li > a:focus, .nav > li > a:hover {
+    text-decoration: none;
+    background-color: #426aa8;
+    height: 60px;
+}
+.container-fluid {
+
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    background: #3b5e96;
+}
+div.fond-picto:nth-child(8) > a:nth-child(4){
+    height: 60px;
+}
+
+div > a{
+    color: beige;
+    text-decoration: none;
+}
+
+div > a:hover{
+    color: green;
+    text-decoration: none;
+}

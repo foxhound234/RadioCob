@@ -519,7 +519,7 @@ class Admin extends CI_Controller {
 	public function AfficheAnimateurs($id)
 	{
 		
-		$data = $this->ModeleAnimateur->RetournerAnimateur($id);
+		$data = $this->ModeleAnimateur->getUnAnimateur($id);
 		echo json_encode($data);	
 	}
 	public function AffichePartenaire($id)

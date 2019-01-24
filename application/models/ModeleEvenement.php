@@ -52,4 +52,11 @@ public function ModifierUnEvenement($DonnesEvenement,$id)
     $this->db->where('id', $id);
     $this->db->update('cob_evenements',$DonnesEvenement); 
 }
+public function LesEvenements()
+{
+    $requete="SELECT * FROM cob_evenements WHERE debut <= CURDATE() AND fin >= CURDATE()";
+    $query=$this->db->query($requete);
+    return $query->result();
+}
+
 }

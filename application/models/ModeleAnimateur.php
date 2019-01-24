@@ -15,18 +15,23 @@ public function RetournerAnimateur ($id = NULL)
       return $requete->result();
     }
     else{
-        $query = $this->db->select('*')
-        ->from('cob_animateurs')
-        ->where('id', $id)
-        ->get();
-
-        if ($query->num_rows() > 0) {
-            foreach ($query->result() as $data) {
-                $animateur[] = $data;
-            }
-        } 
-        return $animateur;
+        $requete=$this->db->get_where('cob_animateurs',array('id'=>$id));
+       return $requete;
     } 
+}
+public function getUnAnimateur($id)
+{
+    $query = $this->db->select('*')
+    ->from('cob_animateurs')
+    ->where('id', $id)
+    ->get();
+
+    if ($query->num_rows() > 0) {
+        foreach ($query->result() as $data) {
+            $animateur[] = $data;
+        }
+    } 
+    return $animateur;   
 }
  public function AjoutAnimateur($DonnesAnimateur)
  {
