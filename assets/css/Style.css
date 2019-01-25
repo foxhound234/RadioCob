@@ -16,15 +16,13 @@
     width: 80%;
 }
 .form-liste {
-
-background: #2b456e;
-    clear: left;
+    background: #2b456e;
+    clear: right;
     position: relative;
-    margin: 15px 7px 7px 0;
-    padding: 7px 7px 27px;
+    margin: 5%;
+    padding: 50px 50px 50px;
     border: 1px dotted #8d8b8d;
     background: #2b456e;
-
 }
 .form-elt-liste {
 
@@ -52,6 +50,7 @@ body{
     color:white;
 }
 .nav > li > a:focus, .nav > li > a:hover {
+
     text-decoration: none;
     background-color: #426aa8;
     height: 60px;
@@ -76,4 +75,7 @@ div > a{
 div > a:hover{
     color: green;
     text-decoration: none;
+}
+.Evenement{
+color: rgba(77, 76, 76, 0.911); 
 }

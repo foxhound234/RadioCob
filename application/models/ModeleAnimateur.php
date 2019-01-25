@@ -7,16 +7,14 @@ public function __construct()
 }
 
 
-public function RetournerAnimateur ($id = NULL)
+public function RetournerAnimateur($id = NULL)
 {
     if($id==NULL)
     {
-      $requete=$this->db->get('cob_animateurs');
-      return $requete->result();
+        return $this->db->get('cob_animateurs')->result();
     }
     else{
-        $requete=$this->db->get_where('cob_animateurs',array('id'=>$id));
-       return $requete;
+        return $this->db->get_where('cob_animateurs',array('id'=>$id))->row();
     } 
 }
 public function getUnAnimateur($id)

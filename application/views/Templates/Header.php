@@ -18,7 +18,7 @@
   <li class="active"><a href="<?php echo site_url('Visiteur/LesEvenements')?>">Evenement </a>&nbsp;&nbsp;</li>
   <li class="active"><a href="<?php echo site_url('Visiteur/Partenaires') ?>"> Partenaires </a>&nbsp;&nbsp;</li>
   <li class="active"><a href="" data-toggle="modal" data-target="#myModal">  Contact </a>&nbsp;&nbsp;</li>
-  <li class="active"><a href="">Jeux </a>&nbsp;&nbsp;</li>
+  <li class="active"><a href="<?php echo site_url('Visiteur/Jeux') ?>">Jeux </a>&nbsp;&nbsp;</li>
   <li class="active"><a href="<?php echo site_url('Visiteur/APropos') ?>"> A Propos de la  Radio </a>&nbsp;&nbsp;</li>
   </ul>
 

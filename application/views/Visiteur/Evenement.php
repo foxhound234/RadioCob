@@ -16,7 +16,7 @@
     <BR>
     <?php foreach ( $LesEvenements as $Evenement):?>
     <div id="picto text-justify">
-    <span>
+    <span class="Evenement">
     <H1><?php echo $Evenement->titre?></h1>
     </span>
      <div class="text-center">

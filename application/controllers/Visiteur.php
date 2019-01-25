@@ -10,11 +10,7 @@ class Visiteur extends CI_Controller {
 		$DonneesInjectees['titredelapage']='Accueil';
 		$this->afficher('Visiteur/Accueil',$DonneesInjectees); 
 	}
-	public function afficherEvenement()
-	{
-
-
-	}
+	
 
 	public function Contact()
 	{
@@ -89,6 +85,12 @@ class Visiteur extends CI_Controller {
 		$DonneesInjectees['LesEvenements']=$this->ModeleEvenement->LesEvenements();
 		$this->afficher('Visiteur/Evenement',$DonneesInjectees);
 		
+	 }
+	 public function Jeux()
+	 {
+		$DonneesInjectees['TitredelaPage']="Les Evenements";
+		$DonneesInjectees['LesJeux']=$this->ModeleJeux->LesJeuxActuelle();
+		$this->afficher('Visiteur/Jeux',$DonneesInjectees);	 
 	 }
 	private function afficher($page,$DonneesInjectees)
 	{
