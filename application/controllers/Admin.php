@@ -407,6 +407,13 @@ class Admin extends CI_Controller {
 		if($this->input->post('btnJeux'))
 		{
 			$id=$this->input->post('txtnoJeux');
+			
+			$config['upload_path']          = './assets/images';
+			$config['allowed_types']        = 'gif|jpg|png';
+			$config['max_size']             = 100000;
+			$config['max_width']            = 2500;
+			$config['max_height']           = 2500;
+			$this->upload->initialize($config);
 
             $nomfichier=$_FILES['txtImages']['name']; 
 			$dossier='/assets/images/';
@@ -444,7 +451,7 @@ class Admin extends CI_Controller {
 					 redirect('/Admin/Accueil', 'refresh');	
 			  }
 			  else{
-				  if ( ! $this->upload->do_upload('txtImages'))
+				  if (!$this->upload->do_upload('txtImages'))
 				  {
 						  $error =  $this->upload->display_errors();
 	  

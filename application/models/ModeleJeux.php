@@ -58,8 +58,9 @@ class ModeleJeux extends CI_Model {
 
       public function LesJeuxActuelle()
     {
-    $requete="SELECT * FROM cob_jeux WHERE debut <= CURDATE() AND fin >= CURDATE()";
-    $query=$this->db->query($requete);
-    return $query->result();
+        $requete="SELECT * FROM `cob_jeux` WHERE fin > now()";
+        $query=$this->db->query($requete);
+        return $query->result();
     }
+
     }

@@ -54,6 +54,7 @@ public function ModifierUnEvenement($DonnesEvenement,$id)
 }
 public function LesEvenements()
 {
+    $aujourdhui = date("Y-m-d H:i:s");
     $requete="SELECT * FROM cob_evenements WHERE debut <= CURDATE() AND fin >= CURDATE()";
     $query=$this->db->query($requete);
     return $query->result();
