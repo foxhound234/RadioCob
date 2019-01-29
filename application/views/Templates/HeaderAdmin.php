@@ -58,6 +58,10 @@
    $("#lbxDatefin").hide();
    $("#txtDateFin").hide();
 
+   $("#ImageEvenementLabel").hide();
+   $("#txtImageEvenement").hide();
+   $("#ImagesEvenement").hide();
+
    $("#btnEvenement").hide();
    $("#btnSupEvenement").hide();
     /******************/
@@ -208,6 +212,9 @@
    $("#lbxDatefin").show();
    $("#txtDateFin").show();
 
+   $("#ImageEvenementLabel").show();
+   $("#txtImageEvenement").show();
+   $("#ImagesEvenement").show();
 
    $("#btnEvenement").show();
    $("#btnSupEvenement").show();
@@ -222,6 +229,7 @@
           $("#txtPeriode").val(data[0].periode);
           $("#txtDescription").text(data[0].description);
           $("#txtDateDebut").val(data[0].debut);
+          $("#txtImageEvenement").text(data[0].images);
           $("#txtDateFin").val(data[0].fin);
         }  
         });    
@@ -421,7 +429,11 @@
 
     echo form_input(array('name'=>'txtDateFin','type'=>'date','value'=>'','placeholder'=>'Datefin','required'=>'required','class'=>'form-control')).'<BR>';
 
+    echo form_label('Images', 'LbxImages');
 
+    echo form_input(array('name'=>'txtImages','type'=>'file','value'=>''));
+    
+    
     echo form_submit('btnEvenement','Ajouter',array('class'=>'btn btn-primary')).'<BR>';
 
     echo form_close();  
@@ -804,6 +816,11 @@
       
           echo form_input(array('name'=>'txtDateFin','id'=>'txtDateFin','type'=>'date','value'=>'','placeholder'=>'Datefin','required'=>'required','class'=>'form-control')).'<BR>';
       
+           echo form_label('Images', 'lbximages',array('id'=>'ImageEvenementLabel'));
+           echo '<p id="txtImageEvenement"> </p>';
+
+           echo form_input(array('name'=>'txtImages', 'value'=>'','type'=>'file','id'=>'ImagesEvenement')).'<BR>';
+           
           echo form_submit('btnEvenement','Modifier',array('class'=>'btn btn-primary','id'=>'btnEvenement')).'<BR>';
          echo form_close();
         ?>

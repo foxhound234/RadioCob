@@ -79,3 +79,36 @@ div > a:hover{
 .Evenement{
 color: rgba(77, 76, 76, 0.911); 
 }
+.form-control{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+.formdiv{
+    display: table;
+    margin: 100 auto;
+    background-color: #2b456e;
+    color:#F5DEB3;
+
+}
+
+.input-sm{
+    border: none; 
+    color:black;
+}
+
+.col-md-6 {
+
+    width: 76%;
+    margin-left: 9%;
+
+}
+.intitule{
+    color:#3b5e96;  
+}
+.test{
+    width: 76%;
+    margin-left: 42%;
+}

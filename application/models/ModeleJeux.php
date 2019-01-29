@@ -21,9 +21,7 @@ class ModeleJeux extends CI_Model {
     }
     else
     {
-     $requete =$this->db->get_where('cob_jeux',array('id'=>$id));
-     $query=$this->db->query($requete);
-     return $query->row();
+     return $this->db->get_where('cob_jeux',array('id'=>$id))->row();
     } 
     }
     public function getUnJeux($id)
@@ -58,9 +56,15 @@ class ModeleJeux extends CI_Model {
 
       public function LesJeuxActuelle()
     {
-        $requete="SELECT * FROM `cob_jeux` WHERE fin > now()";
+        $requete="SELECT * FROM `cob_jeux` WHERE fin > now() and debut <= now()";
         $query=$this->db->query($requete);
         return $query->result();
     }
-
+     
+    public function AjouterParticipant($DonnesParticipant)
+    {
+        $this->db->insert('cob_participants',$DonnesParticipant);
+        return $this->db->insert_id();
+    }
+    
     }

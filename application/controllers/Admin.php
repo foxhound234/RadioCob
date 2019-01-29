@@ -31,20 +31,55 @@ class Admin extends CI_Controller {
 	{
 		if($this->input->post('btnEvenement'))
 		{
-		 
+			$config['upload_path']          = './assets/images';
+			$config['allowed_types']        = 'gif|jpg|png';
+			$config['max_size']             = 0 ;
+			$config['max_width']            = 0 ;
+			$config['max_height']           = 0 ;
+			 
+			$this->upload->initialize($config);
+			$nomfichier=$_FILES['txtImages']['name'];
+			$dossier='assets/images/';
+            
+		   if(file_exists($dossier.$nomfichier)||$nomfichier='')
+		   {
 			$Donneesevenement=array(
-			  'titre'=>$this->input->post('txtTitre'),
-			 'description'=>$this->input->post('txtDescription'),
-			 'periode'=>$this->input->post('txtPeriode'),
-			 'position'=>1,
-			  'debut'=>$this->input->post('txtDateDebut'),
-			  'fin'=>$this->input->post('txtDateFin')
-			);
+				'titre'=>$this->input->post('txtTitre'),
+			   'description'=>$this->input->post('txtDescription'),
+			   'periode'=>$this->input->post('txtPeriode'),
+			   'position'=>1,
+				'debut'=>$this->input->post('txtDateDebut'),
+				'fin'=>$this->input->post('txtDateFin'),
+				'images'=>$nomfichier
+			  );
+  
+			  $Evenements=$this->ModeleEvenement->AjouterEvenement($Donneesevenement);
+		   }
+		   else{
 
-			$Evenements=$this->ModeleEvenement->AjouterEvenement($Donneesevenement);
-		  
-			redirect('/Admin/Accueil', 'refresh');	
-				
+			if ( ! $this->upload->do_upload('txtImages'))
+			{
+					$error =  $this->upload->display_errors();
+	
+					echo $error;
+			}
+			else
+			{
+				$data = $this->upload->data();
+				$Donneesevenement=array(
+					'titre'=>$this->input->post('txtTitre'),
+				   'description'=>$this->input->post('txtDescription'),
+				   'periode'=>$this->input->post('txtPeriode'),
+				   'position'=>1,
+					'debut'=>$this->input->post('txtDateDebut'),
+					'fin'=>$this->input->post('txtDateFin'),
+					'images'=>$nomfichier
+				  );
+				  $Evenements=$this->ModeleEvenement->AjouterEvenement($Donneesevenement);
+				  redirect('/Admin/Accueil', 'refresh');
+			}
+			
+		   }	
 		}
 	}
 
@@ -70,6 +105,8 @@ class Admin extends CI_Controller {
          
 		$this->upload->initialize($config);
 		$nomfichier=$_FILES['txtImages']['name']; 
+		$dossier='/assets/images/';
+		
 			if(file_exists($dossier.$nomfichier)|| $nomfichier=='')
 			{
 				$DonneesEmissions=array(

@@ -56,11 +56,11 @@
 
             echo form_label('Telephone', 'lbxTelephone');
 
-            echo form_input(array('name'=>'txttel','value'=>'','pattern'=>'[0-9]','required'=>'required','class'=>'form-control')).'<BR>';
+            echo form_input(array('name'=>'txttel','value'=>'','pattern'=>'[0-9]+','required'=>'required','class'=>'form-control')).'<BR>';
 
             echo form_label('codepostal','lbxcodePostal');
 
-            echo form_input(array('name'=>'txtcodePostal','value'=>'','pattern'=>'[0-9]','required'=>'required','class'=>'form-control')).'<BR>';
+            echo form_input(array('name'=>'txtcodePostal','value'=>'','pattern'=>'[0-9]+','required'=>'required','class'=>'form-control')).'<BR>';
 
             echo form_label('Ville','lbxVille');
 
@@ -70,7 +70,7 @@
 
             echo form_textarea(array('name'=>'txtMsg','value'=>'','pattern'=>'[a-zA-Z0-9]+','required'=>'required','class'=>'form-control')).'<BR>';
 
-            echo form_submit('btnEnregistrement', 'enregistrement',array('class'=>'btn btn-primary')).'<BR>';
+            echo form_submit('btnEnregistrement', 'Envoyer',array('class'=>'btn btn-primary')).'<BR>';
 
             echo form_close();
             ?>

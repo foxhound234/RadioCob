@@ -15,23 +15,12 @@ class Visiteur extends CI_Controller {
 	public function Contact()
 	{
 		if($this->input->post('btnEnregistrement'))
-		{
-		 $client=array(
-		   'nom' => $this->input->post('txtNom'),
- 
-		   'prenom' => $this->input->post('txtPrenom'),
- 
-		   'adresse'=>$this->input->post('txtadresse'),
- 
-		   'ville'=>$this->input->post('txtVille'),
- 
-		   'codePostal'=>$this->input->post('txtcodePostal'),
- 
-		   'email'=>$this->input->post('txtEmail'),
- 
-		   'motdePasse'=>$this->input->post('txtMdp')
-		   ); 
-		   
+		{		
+		   $this->email->to("morganlb347@gmail.com");
+		   $this->email->from($this->input->post('txtEmail'));
+		   $this->email->subject('Nom : '.$this->input->post('txtNom').' Prenom:'.$this->input->post('txtPrenom'));
+		   $this->email->message('Telephone:'.$this->input->post('txttel').'.'.$this->input->post('txtMsg').'. Ville:'.$this->input->post('txtVille'));
+		   $this->email->send();
 		}
 		
 	}
@@ -88,10 +77,58 @@ class Visiteur extends CI_Controller {
 	 }
 	 public function Jeux()
 	 {
-		$DonneesInjectees['TitredelaPage']="Les Evenements";
+		$DonneesInjectees['TitredelaPage']="Les Jeux";
 		$DonneesInjectees['LesJeux']=$this->ModeleJeux->LesJeuxActuelle();
 		$this->afficher('Visiteur/Jeux',$DonneesInjectees);	 
 	 }
+	 public function inscriptionJeux($id)
+	 {
+
+		$DonneesInjectees['TitredeLaPage']="inscriptionJeux";
+		$DonneesInjectees['UnJeux']=$this->ModeleJeux->GetLesJeux($id);
+		$this->afficher('Visiteur/incriptionJeux',$DonneesInjectees);
+		if($this->input->post('btninscription'))
+		{		
+
+		  $date=date("Y-m-d H:i:s");
+          $DonnesParticipant=array(
+			'email'=>$this->input->post('txtEmail'),
+			'nom'=>$this->input->post('txtNom'),
+			'prenom'=>$this->input->post('txtPrenom'),
+			'tel'=>$this->input->post('txttel'),
+			'cp'=>$this->input->post('txtcodePostal'),
+			'ville'=>$this->input->post('txtVille'),
+			 'date'=>$date,
+			'jeu'=>$id
+		  );
+		 
+		  $this->ModeleJeux->AjouterParticipant($DonneesPartenaire);
+		  
+		}
+	 }
+	 public function IncriptionJeux()
+	 {
+		if($this->input->post('btninscription'))
+		{		
+
+		  $date=date("Y-m-d H:i:s");
+          $DonnesParticipant=array(
+			'email'=>$this->input->post('txtEmail'),
+			'nom'=>$this->input->post('txtNom'),
+			'prenom'=>$this->input->post('txtPrenom'),
+			'tel'=>$this->input->post('txttel'),
+			'cp'=>$this->input->post('txtcodePostal'),
+			'ville'=>$this->input->post('txtVille'),
+			 'date'=>$date,
+			'jeu'=>$this->input->post("txtid")
+		  );
+		  $this->ModeleJeux->AjouterParticipant($DonnesParticipant);
+		  
+		  redirect('Visiteur/Accueil','refresh');
+		   
+		}
+	 }
+
 	private function afficher($page,$DonneesInjectees)
 	{
 		$this->load->view('Templates/Header');
