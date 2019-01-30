@@ -134,7 +134,7 @@ class Visiteur extends CI_Controller {
 		$this->afficher('Visiteur/Programmes',$DonneesInjectees);
 	 }
 	 public function afficheProgrammation(){
-		$data['AcceptedServices'] = $this->ModeleEmission->AfficherProgrammation(); // I get by result()
+		$data['AcceptedServices'] = $this->ModeleEmission->AfficherProgrammation();
 		echo json_encode($data);
 	 }
 	private function afficher($page,$DonneesInjectees)

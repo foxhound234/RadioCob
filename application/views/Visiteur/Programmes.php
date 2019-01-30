@@ -7,27 +7,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script>
     $(document).ready(function() {
-    $.ajax({
+      $.ajax({
         url:"<?php echo site_url('Visiteur/afficheProgrammation'); ?>", 
         dataType:'JSON',
+        data:'',
         type:"GET",
-        success: function(data){
-            console.log(data);
-             test=document.createElement("p");
-             var text = document.createTextNode(data[0].fin);
-             test.appendChild(text);   
-             document.body.appendChild(test);
-        },
-        error: function(){
-            console.log('Could not load the data');
-        }
-    });
-  });
+        succes:function(data) {
+            var responseData= $.parseJSON(data);
+               var str='';
+                str+='<ul>';
+                $.each(responseData, function(key, value) {
+                    str+='<li>'+value.fin+'</li>';
+                    alert("fdfg");
+                });
+                str+='</ul>';
+                $('#test').html(str);
 
+
+        },
+        error: function () {
+        alert("54545");
+      }
+      });
+
+    });
     </script>
 </head>
 <body>
-<div id='Programmes'>
+<div id="test">
 </div>
 </body>
 </html>
