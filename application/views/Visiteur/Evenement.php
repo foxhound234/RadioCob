@@ -17,10 +17,11 @@
     <?php foreach ( $LesEvenements as $Evenement):?>
     <div id="picto text-justify">
     <span class="Evenement">
-    <H1><?php echo $Evenement->titre?></h1>
+    <H1> Titre:<?php echo $Evenement->titre?></h1>
     </span>
      <div class="text-center">
         <ul class="form-liste">
+        <li class="form-elt-liste"> <img style="height:150px;" src='<?php echo img_url($Evenement->images) ?>'></li>
         <li class="form-elt-liste">Description:<?php echo $Evenement->description?> </li>
         <li class="form-elt-liste"> Periode:<?php echo  $Evenement->periode?> </li>
         </ul>

@@ -80,7 +80,6 @@ $autoload['libraries'] = array('session','pagination','email','upload');
 |
 */
 $autoload['drivers'] = array();
-
 /*
 | -------------------------------------------------------------------
 |  Auto-load Helper Files
@@ -89,8 +88,7 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
-$autoload['helper'] = array('url','form','assets','file');
-
+$autoload['helper'] = array('url','form','assets','file','download');
 /*
 | -------------------------------------------------------------------
 |  Auto-load Config files

@@ -149,7 +149,7 @@
   $("#btnSupEmission").show();
   $.ajax({
         url : "<?php echo site_url('Admin/AfficheEmission/')?>" + id,
-        type: "GET",
+        type: "POST",
         dataType: "JSON",
         success: function(data)
         {
@@ -220,7 +220,7 @@
    $("#btnSupEvenement").show();
 
    $.ajax({
-          url : "<?php echo site_url('Admin/AfficheEvenement/')?>" + id,
+          url : "<?php echo base_url();?>index.php/Admin/AfficheEvenement/",
           type: "GET",
           dataType: "JSON",
         success: function(data)

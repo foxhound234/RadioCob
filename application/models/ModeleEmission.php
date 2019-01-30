@@ -56,5 +56,10 @@ class ModeleEmission extends CI_Model {
         $this->db->update('cob_emissions',$DonnesaModifier);
     }
     
+    public function AfficherProgrammation()
+    {
+        $query=$this->db->query("SELECT * FROM vue_programmation");
+        return $query->result();          
+    }
  
 }

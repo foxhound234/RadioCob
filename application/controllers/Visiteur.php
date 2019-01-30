@@ -129,6 +129,14 @@ class Visiteur extends CI_Controller {
 		}
 	 }
 
+	 public function Programmation(){
+		$DonneesInjectees['TitredeLaPage']="Programmation";
+		$this->afficher('Visiteur/Programmes',$DonneesInjectees);
+	 }
+	 public function afficheProgrammation(){
+		$data['AcceptedServices'] = $this->ModeleEmission->AfficherProgrammation(); // I get by result()
+		echo json_encode($data);
+	 }
 	private function afficher($page,$DonneesInjectees)
 	{
 		$this->load->view('Templates/Header');

@@ -14,7 +14,7 @@
   <div class="container-fluid">
   <ul class="nav navbar-nav">    
   <li class="active"><a href="<?php echo site_url('Visiteur/Accueil') ?>">Accueil </a>&nbsp;&nbsp;</li>
-  <li class="active"><a href=""> Programmes</a>&nbsp;&nbsp;</li>
+  <li class="active"><a href="<?php echo site_url('Visiteur/Programmation')?>"> Programmes</a>&nbsp;&nbsp;</li>
   <li class="active"><a href="<?php echo site_url('Visiteur/LesEvenements')?>">Evenement </a>&nbsp;&nbsp;</li>
   <li class="active"><a href="<?php echo site_url('Visiteur/Partenaires') ?>"> Partenaires </a>&nbsp;&nbsp;</li>
   <li class="active"><a href="" data-toggle="modal" data-target="#myModal">  Contact </a>&nbsp;&nbsp;</li>

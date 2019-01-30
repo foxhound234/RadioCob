@@ -12,7 +12,7 @@
  <?php foreach ($LesJeux as $Unjeux):?>
   <div class="picto">
    <span class="textePicto">
-    <?php echo $Unjeux->intitule ?>  
+       <?php echo $Unjeux->intitule ?>  
     </span>
     <img style="height:150px;" src='<?php echo img_url($Unjeux->image) ?>'>
     <p class="textePicto"><?php echo $Unjeux->description?> </P>
