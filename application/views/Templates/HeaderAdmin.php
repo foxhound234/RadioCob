@@ -405,38 +405,38 @@
         </div>
         <div class="modal-body">
         <?php
-    echo validation_errors(); // mise en place de la validation
+        echo validation_errors(); // mise en place de la validation
 
-    echo form_open('Admin/AjouterEvenement');
+        echo form_open_multipart('Admin/AjouterEvenement');
 
-    echo form_label('Titre','lbxTitre');
+        echo form_label('Titre','lbxTitre');
 
-    echo form_input(array('name'=>'txtTitre','value'=>'','pattern'=>'[a-zA-Z0-9\s]+','placeholder'=>'Titre','required'=>'required','class'=>'form-control','title'=>'les lettres + chifres uniquement')).'<BR>';
+        echo form_input(array('name'=>'txtTitre','value'=>'','pattern'=>'[a-zA-Z0-9\s]+','placeholder'=>'Titre','required'=>'required','class'=>'form-control','title'=>'les lettres + chifres uniquement')).'<BR>';
 
-    echo form_label('Periode','lblPeriode');
+        echo form_label('Periode','lblPeriode');
 
-    echo form_input(array('name'=>'txtPeriode','value'=>'','pattern'=>'[a-zA-Z0-9\s]+','placeholder'=>'Periode','required'=>'required','class'=>'form-control','title'=>'les lettres + chifres uniquement')).'<BR>';
+        echo form_input(array('name'=>'txtPeriode','value'=>'','pattern'=>'[a-zA-Z0-9\s]+','placeholder'=>'Periode','required'=>'required','class'=>'form-control','title'=>'les lettres + chifres uniquement')).'<BR>';
 
-    echo form_label('Description','lbxDescription');
+        echo form_label('Description','lbxDescription');
 
-    echo form_textarea(array('name'=>'txtDescription','value'=>'','placeholder'=>'Description','pattern'=>'[a-zA-Z0-9\s]+','required'=>'required','class'=>'form-control','title'=>'les lettres + chifres uniquement')).'<BR>';
+        echo form_textarea(array('name'=>'txtDescription','value'=>'','placeholder'=>'Description','pattern'=>'[a-zA-Z0-9\s]+','required'=>'required','class'=>'form-control','title'=>'les lettres + chifres uniquement')).'<BR>';
 
-    echo form_label('Date Début','lbxDateDebut');
+        echo form_label('Date Début','lbxDateDebut');
 
-    echo form_input(array('name'=>'txtDateDebut','type'=>'date','value'=>'','placeholder'=>'DateDebut','required'=>'required','class'=>'form-control')).'<BR>';
+        echo form_input(array('name'=>'txtDateDebut','type'=>'date','value'=>'','placeholder'=>'DateDebut','required'=>'required','class'=>'form-control')).'<BR>';
 
-    echo form_label('Date fin','lbxDatefin');
+        echo form_label('Date fin','lbxDatefin');
 
-    echo form_input(array('name'=>'txtDateFin','type'=>'date','value'=>'','placeholder'=>'Datefin','required'=>'required','class'=>'form-control')).'<BR>';
+        echo form_input(array('name'=>'txtDateFin','type'=>'date','value'=>'','placeholder'=>'Datefin','required'=>'required','class'=>'form-control')).'<BR>';
 
-    echo form_label('Images', 'LbxImages');
+        echo form_label('Images', 'LbxImages');
 
-    echo form_input(array('name'=>'txtImages','type'=>'file','value'=>''));
-    
-    
-    echo form_submit('btnEvenement','Ajouter',array('class'=>'btn btn-primary')).'<BR>';
+        echo form_input(array('name'=>'txtImages','type'=>'file','value'=>'','placeholder'=>'Image')).'<BR>';
+        
+        
+        echo form_submit('btnEvenement','Ajouter',array('class'=>'btn btn-primary')).'<BR>';
 
-    echo form_close();  
+        echo form_close();  
     ?>
         </div>
         <div class="modal-footer">

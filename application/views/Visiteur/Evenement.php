@@ -11,25 +11,22 @@
     <link rel="stylesheet" type="text/css" media="screen" href=<?php echo css_url("Style")?> />
 </head>
 <body>
-    <div class="text-center">
+    <div class="text-center"> 
     <h1>Les Evenements</h1>
+    </div> 
     <BR>
-    <?php foreach ( $LesEvenements as $Evenement):?>
-    <div id="picto text-justify">
-    <span class="Evenement">
-    <H1> Titre:<?php echo $Evenement->titre?></h1>
-    </span>
-     <div class="text-center">
-        <ul class="form-liste">
-        <li class="form-elt-liste"> <img style="height:150px;" src='<?php echo img_url($Evenement->images) ?>'></li>
-        <li class="form-elt-liste">Description:<?php echo $Evenement->description?> </li>
-        <li class="form-elt-liste"> Periode:<?php echo  $Evenement->periode?> </li>
-        </ul>
-     </div>
-    </div>    
-    <Br>
-    <?php endforeach; ?>
+    <?php foreach ( $LesEvenements as $key=>$Evenement):
 
-    </div>
+            echo'
+            <div class="text-center DivEvenement">
+            <ul class="form-Evenement">
+            <li class="form-elt-Evenement">  <H1 class="h1Evenement"> Titre:'.$Evenement->titre.'</h1> </li>
+            <li class="form-elt-Evenement"> <img style="height:150px;" src='.img_url($Evenement->images).'></li>
+            <li class=" text-center form-elt-Evenement">Description:<BR>'.$Evenement->description.'</li>
+            <li class="text-center form-elt-Evenement"> Periode:'.$Evenement->periode.'</li>
+            </ul>
+         </div>';
+           
+    endforeach; ?>
 </body>
 </html>

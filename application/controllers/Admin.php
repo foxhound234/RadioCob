@@ -40,7 +40,7 @@ class Admin extends CI_Controller {
 			$this->upload->initialize($config);
 			$nomfichier=$_FILES['txtImages']['name'];
 			$dossier='assets/images/';
-            
+           
 		   if(file_exists($dossier.$nomfichier)||$nomfichier='')
 		   {
 			$Donneesevenement=array(
@@ -54,6 +54,7 @@ class Admin extends CI_Controller {
 			  );
   
 			  $Evenements=$this->ModeleEvenement->AjouterEvenement($Donneesevenement);
+			  redirect('/Admin/Accueil', 'refresh');
 		   }
 		   else{
 

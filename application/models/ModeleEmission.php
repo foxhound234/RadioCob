@@ -58,8 +58,17 @@ class ModeleEmission extends CI_Model {
     
     public function AfficherProgrammation()
     {
-        $query=$this->db->query("SELECT * FROM vue_programmation");
-        return $query->result();          
+        $query = $this->db->select('*')
+        ->from('vue_programmation')
+        ->order_by("jour", "asc")
+        ->get();
+
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $data) {
+                $hasil[] = $data;
+            }
+        } 
+        return $hasil;         
     }
  
 }
