@@ -14,5 +14,18 @@ public function getnbinfojour()
   return $this->db->count_all_results();
 }
 
+    public function getIdJour()
+    {
+        $query = $this->db->select('*')
+        ->from('cob_evenements')
+        ->where('date_format(date,"%Y-%m-%d")', 'CURDATE()', FALSE)
+        ->get();
 
+    return $query->row();
+    }
+public function AjouterInfo($DonnesInfo)
+{
+    $this->db->insert('cob_infos-locales',$DonnesInfo);
+    return $this->db->insert_id();
+}
 }

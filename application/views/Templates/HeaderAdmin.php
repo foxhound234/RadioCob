@@ -523,15 +523,30 @@
         {
           echo validation_errors();
 
-          echo form_open_multipart('Admin/Ajouterinfolocal');
-         ?>
-          <input type="file" name="file" size="20" />
+          echo form_open('Admin/Ajouterinfolocal');
 
-          <br /><br />
-          
-          <input type="submit"  name="submit"value="upload" />
-          <?php
-          echo form_close();
+          echo form_input(array('name'=>'txtLien', 'value'=>'','pattern'=>'https?://.+','placeholder'=>'Lien Mp3','pattern'=>'[a-zA-Z0-9\s]+','required'=>'required','class'=>'form-control','title'=>'lien'));
+
+            echo form_submit('btnInfo','Ajouter',array('class'=>'btn btn-primary')).'<BR>';
+
+          echo form_close();  
+        } else{
+          echo validation_errors();
+
+          echo form_open('Admin/Ajouterinfolocal');
+
+          echo form_hidden(array('name'=>'txtid', 'value'=>''));
+           
+          echo form_input(array('name'=>'txtLien', 'value'=>'','pattern'=>'https?://.+','placeholder'=>'Lien Mp3','pattern'=>'[a-zA-Z0-9\s]+','required'=>'required','class'=>'form-control','title'=>'lien'));
+
+          echo form_input(array('name'=>'txtLien', 'value'=>'','pattern'=>'https?://.+','placeholder'=>'Lien Mp3','pattern'=>'[a-zA-Z0-9\s]+','required'=>'required','class'=>'form-control','title'=>'lien'));
+
+            echo form_submit('btnInfo','Ajouter',array('class'=>'btn btn-primary')).'<BR>';
+
+          echo form_close();  
+
+
+
         }
         ?>
       </div>

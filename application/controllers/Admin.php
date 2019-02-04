@@ -86,15 +86,21 @@ class Admin extends CI_Controller {
 
 	public function Ajouterinfolocal()
 	{
-		$config['upload_path'] = './assets/son';
-		$config['allowed_types'] = '*';
-		$config['max_size'] = 250000;
-		$name= $_FILES['file']['name'];  
-		$type= $_FILES['file']['type'];
-		if(isset($_POST['submit'])){
-			$dossier='assets/images/';
-		}
+	 if($this->input->post('btnInfo'))
+	 {
+		$date = date('Y-m-d H:i:s');
+		$Donneesinfo=array(
+			'son'=>$this->input->post('txtLien'),
+		   'date'=>$date
+		  );
+		  $this->ModeleInfos->AjouterInfo($Donneesinfo);
+		  redirect('/Admin/Accueil', 'refresh');
+	 }
 						
+	}
+	public function AjouterTxtinfoLocal()
+	{
+		
 	}
 	public function AjouterEmission()
 	{

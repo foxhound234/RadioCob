@@ -60,7 +60,7 @@ class ModeleEmission extends CI_Model {
     {
         $query = $this->db->select('*')
         ->from('vue_programmation')
-        ->order_by("jour", "asc")
+        ->order_by("jour,debut", "asc")
         ->get();
 
         if ($query->num_rows() > 0) {

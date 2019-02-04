@@ -16,17 +16,27 @@
     </div> 
     <BR>
     <?php foreach ( $LesEvenements as $key=>$Evenement):
-
+           if($Evenement->images=='')
+           {
             echo'
-            <div class="text-center DivEvenement">
+            <div class="text-center DivEvenement containera ">
+            <ul class="form-Evenement">
+            <li class="form-elt-Evenement">  <H1 class="h1Evenement"> Titre:'.$Evenement->titre.'</h1> </li>
+            <li class=" text-center form-elt-Evenement">Description:<BR>'.$Evenement->description.'</li>
+            <li class="text-center form-elt-Evenement"> Periode:'.$Evenement->periode.'</li>
+            </ul>
+         </div>';
+           }else{
+            echo'
+            <div class="text-center DivEvenement containera ">
             <ul class="form-Evenement">
             <li class="form-elt-Evenement">  <H1 class="h1Evenement"> Titre:'.$Evenement->titre.'</h1> </li>
             <li class="form-elt-Evenement"> <img style="height:150px;" src='.img_url($Evenement->images).'></li>
             <li class=" text-center form-elt-Evenement">Description:<BR>'.$Evenement->description.'</li>
             <li class="text-center form-elt-Evenement"> Periode:'.$Evenement->periode.'</li>
             </ul>
-         </div>';
-           
+         </div>';    
+           }
     endforeach; ?>
 </body>
 </html>
