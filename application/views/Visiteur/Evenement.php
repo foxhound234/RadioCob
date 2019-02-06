@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
+    <title><?php echo $TitredelaPage ?></title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -19,22 +19,28 @@
            if($Evenement->images=='')
            {
             echo'
-            <div class="text-center DivEvenement containera ">
-            <ul class="form-Evenement">
-            <li class="form-elt-Evenement">  <H1 class="h1Evenement"> Titre:'.$Evenement->titre.'</h1> </li>
-            <li class=" text-center form-elt-Evenement">Description:<BR>'.$Evenement->description.'</li>
-            <li class="text-center form-elt-Evenement"> Periode:'.$Evenement->periode.'</li>
-            </ul>
+            <div class="Levenement">
+            <div class="containera">
+            <p> pas Image </P>
+           </div>
+            <div class="containerb">
+            <H1 class="text-center"> Titre:'.$Evenement->titre.'</h1> 
+            <p class="pEvenement text-center"> Description:<BR>'.$Evenement->description.'</p>
+            <p class="pEvenement text-center"> Periode:'.$Evenement->periode.'</p>
+            </div>
+    
          </div>';
            }else{
             echo'
-            <div class="text-center DivEvenement containera ">
-            <ul class="form-Evenement">
-            <li class="form-elt-Evenement">  <H1 class="h1Evenement"> Titre:'.$Evenement->titre.'</h1> </li>
-            <li class="form-elt-Evenement"> <img style="height:150px;" src='.img_url($Evenement->images).'></li>
-            <li class=" text-center form-elt-Evenement">Description:<BR>'.$Evenement->description.'</li>
-            <li class="text-center form-elt-Evenement"> Periode:'.$Evenement->periode.'</li>
-            </ul>
+            <div class="Levenement">
+            <div class="containera">
+            <img  class="image"  src='.img_url($Evenement->images).'>
+           </div>
+            <div class="containerb">
+            <H1 class="text-center"> Titre :'.$Evenement->titre.'</h1> 
+            <p class="pEvenement text-center"> Description:<BR>'.$Evenement->description.'</p>
+            <p class="pEvenement text-center"> Periode:'.$Evenement->periode.'</p>
+            </div>
          </div>';    
            }
     endforeach; ?>

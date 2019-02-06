@@ -12,6 +12,8 @@ class Admin extends CI_Controller {
 
 	public function Accueil()
 	{
+			$info=$this->ModeleInfos->getIdJour();
+		$DonneesInjectees['LesInfoslocal']=$this->ModeleInfos->GetInfoLocal($info->id);
 		$DonneesInjectees['nbinfojour']=$this->ModeleInfos->getnbinfojour();
 		$DonneesInjectees['titredelapage']='Accueil';
 		$DonneesInjectees['LesEmissions']=$this->ModeleEmission->RetournerEmission();
@@ -96,11 +98,18 @@ class Admin extends CI_Controller {
 		  $this->ModeleInfos->AjouterInfo($Donneesinfo);
 		  redirect('/Admin/Accueil', 'refresh');
 	 }
-						
-	}
-	public function AjouterTxtinfoLocal()
-	{
 		
+	 if($this->input->post('btntxtInfo'))
+	 {
+		 $info=$this->ModeleInfos->getIdJour();
+		 $Donnestxtinfo=array(
+			 'info-locale'=>$info->id,
+			'titre'=>$this->input->post('txtTitre'),
+			'information'=>$this->input->post('txtInfo')
+		 );
+		$this->ModeleInfos->AjoutertxtInfo($Donnestxtinfo);
+		redirect('/Admin/Accueil', 'refresh');
+	 }
 	}
 	public function AjouterEmission()
 	{
@@ -638,6 +647,15 @@ class Admin extends CI_Controller {
    {
 	$data=$this->ModeleJeux->getUnJeux($id);
 	echo json_encode($data); 
+   }
+   public function ModifierTxtLocal()
+   {
+	
+
+
+
+
+
    }
 	private function afficher($page,$DonneesInjectees)
 	{

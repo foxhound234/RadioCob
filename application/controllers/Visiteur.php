@@ -137,6 +137,10 @@ class Visiteur extends CI_Controller {
 		$data= $this->ModeleEmission->AfficherProgrammation();
 		echo json_encode($data);
 	 }
+	 public function AffichePopup()
+	 {
+		$this->load->view('Visiteur/PopupRadio'); 
+	 }
 	private function afficher($page,$DonneesInjectees)
 	{
 		$this->load->view('Templates/Header');

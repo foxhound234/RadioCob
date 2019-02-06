@@ -187,6 +187,7 @@
         margin-top: 4px;
         padding: 6px;
         background: #afd9f1;
+        color: #15326b;
 
     }
     .H1Jour{
@@ -225,13 +226,15 @@
     }
     .h1Evenement{
         font-size: 21px;
+        margin-left: 48%;
     }
 
   
-    .Description{
-        max-height: 50%;
-    }
-     
+    .image {
+        display: inline-block;
+  
+        height: auto;
+      }
     .text {
         overflow: hidden;
         text-overflow: ellipsis;
@@ -243,13 +246,48 @@
      }
      
      .containera {
-
-        padding-right: 0px;
-        padding-left: 40px;
-        margin-right: auto;
-        margin-left: auto;
-    
+      display: inline-block;
+     height:100% ;
+     width: 20%;
     }
+
+  .containerb {
+      display: inline-block;
+     color: #15326b;
+     height:100% ;
+     width: 20%;
+    }
+    .containerc{
+    margin-left: 50%;
+    display: inline-block;
+    }
+    .pEvenement{
+        font-size: 124%;
+    }
+    .Levenement{
+        border: 1px solid;
+        padding: 10px;
+        box-shadow: 5px 10px 8px #888888;
+        background-color: #FFF;
+            margin-left: 20px;
+
+            margin-right: 20px;
+
+            margin-top: 30px;
+    }
+    .TitreSon{
+        font-size: 123%;
+    }
+
+    .divPopup{
+        margin: 17%;
+    }
+
+
+
+
+
+
      @media screen and (max-width: 640px) {
         .bloc {
           display:block;

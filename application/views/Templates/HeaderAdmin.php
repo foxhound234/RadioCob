@@ -128,6 +128,20 @@
    $("#btnSupPartenaires").hide();
 
     /**************** */
+
+    /** Info modal  Modifie */
+
+     $('#labeltitreinfo').hide();
+     $('#txtInfo').hide();
+
+     $("#labelInformation").hide();
+     $("#Information").hide();
+    
+      $("#btnmodifinfo").hide();
+      $("#btnSupInfo").hide();
+
+
+    /****************/
    $("#noemission").change(function(){
     var id = $('#noemission').val();
     $('#NomfichierEmission').show();
@@ -280,7 +294,24 @@
         }  
         });    
       });
-      
+      $("#idInfo").change(function(){
+       $id=$('#idInfo').val();
+
+        $('#labeltitreinfo').show();
+        $('#txtInfo').show();
+
+         $("#labelInformation").show();
+         $("#Information").show();
+    
+        $("#btnmodifinfo").show();
+        $("#btnSupInfo").show();
+
+
+
+
+
+
+      })
       $("#noPartenaires").change(function(){
     var id = $('#noPartenaires').val();
 
@@ -387,6 +418,7 @@
             <li><a href="" data-toggle="modal" data-target="#ModalModifierEmissions">Emissions</a></li>
             <li><a href=""data-toggle="modal" data-target="#ModalModifierJeux">Un Jeux</a></li>
             <li> <a href="" data-toggle="modal" data-target="#ModalModifierPartenaire">Un Partenaire</a>
+            <li> <a href=""data-toggle="modal" data-target="#ModalModifierTxtLocal"> Une Info Locale </a></li>
           </ul> 
         </li>
         <li><a href="<?php echo site_url('Deconnexion')?>">Deconnexion</a></li>
@@ -519,13 +551,13 @@
       </div>
       <div class="modal-body">
       <?php
-        if($nbinfojour==0)
+        if($nbinfojour == 0)
         {
           echo validation_errors();
 
           echo form_open('Admin/Ajouterinfolocal');
 
-          echo form_input(array('name'=>'txtLien', 'value'=>'','pattern'=>'https?://.+','placeholder'=>'Lien Mp3','pattern'=>'[a-zA-Z0-9\s]+','required'=>'required','class'=>'form-control','title'=>'lien'));
+          echo form_input(array('name'=>'txtLien','type'=>'url','value'=>'','placeholder'=>'Lien Mp3','required'=>'required','class'=>'form-control','title'=>'lien'));
 
             echo form_submit('btnInfo','Ajouter',array('class'=>'btn btn-primary')).'<BR>';
 
@@ -535,13 +567,15 @@
 
           echo form_open('Admin/Ajouterinfolocal');
 
-          echo form_hidden(array('name'=>'txtid', 'value'=>''));
+           echo form_label('Titre', 'lbxTitre');
            
-          echo form_input(array('name'=>'txtLien', 'value'=>'','pattern'=>'https?://.+','placeholder'=>'Lien Mp3','pattern'=>'[a-zA-Z0-9\s]+','required'=>'required','class'=>'form-control','title'=>'lien'));
+          echo form_input(array('name'=>'txtTitre', 'value'=>'','pattern'=>'[a-zA-Z0-9\s]+','placeholder'=>'','required'=>'required','class'=>'form-control','title'=>'lien'));
 
-          echo form_input(array('name'=>'txtLien', 'value'=>'','pattern'=>'https?://.+','placeholder'=>'Lien Mp3','pattern'=>'[a-zA-Z0-9\s]+','required'=>'required','class'=>'form-control','title'=>'lien'));
+          echo form_label('Information', 'lbxInformation');
+          
+          echo form_textarea(array('name'=>'txtInfo', 'value'=>'','pattern'=>'[a-zA-Z0-9\s]+','placeholder'=>'','required'=>'required','class'=>'form-control','title'=>'lien'));           
 
-            echo form_submit('btnInfo','Ajouter',array('class'=>'btn btn-primary')).'<BR>';
+            echo form_submit('btntxtInfo','AjouterTxtinfo',array('class'=>'btn btn-primary')).'<BR>';
 
           echo form_close();  
 
@@ -1145,6 +1179,48 @@
 </div>
 
 
+<div id="ModalModifierTxtLocal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modifier une Info Local </h4>
+      </div>
+      <div class="modal-body">
+      <?php
+          echo validation_errors();
+
+          echo form_open('Admin/ModifierTxtLocal');
+          echo form_label('Emissions','lbxEmissions',array('id'=>'emission'));
+
+          echo "<select name='txtnoEmission' id='idInfo' class='form-control'  required>";
+         foreach ($LesInfoslocal as $infoLocal) {
+           echo "<option value='". $infoLocal->id. "'>" . $infoLocal->titre. "</option>";
+             }
+        echo "</select><br/>";
+
+        echo form_label('Titre','lbxTitre',array('id'=>'labeltitreinfo'));
+
+        echo form_input(array('name'=>'txtTitre','value'=>'','pattern'=>'[a-zA-Z]*-?[a-zA-Z]*','placeholder'=>'Titre','required'=>'required','id'=>'txtInfo','class'=>'form-control','title'=>'les lettres + chifres uniquement')).'<BR>';
+
+
+        echo form_label('Description','lbxDescription',array('id'=>'labelInformation'));
+
+        echo form_textarea(array('name'=>'txtDescription','value'=>'','placeholder'=>'Description','pattern'=>'[a-zA-Z0-9\s]+','id'=>'Information','required'=>'required','class'=>'form-control','title'=>'les lettres + chifres uniquement')).'<BR>';
+
+         
+         echo form_submit('btnEmission','Modifier',array('class'=>'btn btn-primary','name'=>'btnmoif','id'=>'btnmodifinfo')).'<BR>';
+
+         echo form_close();
+        ?>
+           <button type="button" class="btn btn-default" id="btnSupInfo" data-toggle="modal" data-target="#SuppressionEmission">Supprimer</button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
