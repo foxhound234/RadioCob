@@ -20,12 +20,30 @@ $atts = array(
         'window_name' => '_blank'
 );
 ?>
- <?php echo anchor_popup(site_url('Visiteur/AffichePopup/'), '<button class="btn btn-primary"> Ecouter La Radio </button>', $atts);?>
+<div class="hautcentre">
+<?php echo anchor_popup(site_url('Visiteur/AffichePopup/'), '<button class="btn btn-primary"> Ecouter La Radio </button>', $atts);?>
+</div>
     </div>
-
-    <div id='Colonne centre'>
+    <div id='Colonne centre' class='divInfo'>
+    <h1> Information Local du <?php echo $InfoLocales->date?></h1>
+    <audio
+        controls
+        class="audioInfo"
+        src= <?php echo $InfoLocales->son?>>
+            Your browser does not support the
+            <code>audio</code> element.
+    </audio>
+   
+    <?php foreach ($Informations as $UneInfo) :?>
+    <div class="divInformation">
+        <div class="txtInfo">
+        <h1>Titre:<?php echo $UneInfo->titre?></h1>
+        <p> Informations:<?php echo $UneInfo->information?></p> 
+        </div>
     </div>
-
+    <br>
+    <?php endforeach;?>
+    </div>
     <div id='Colonne Droite'>
 
     </div>

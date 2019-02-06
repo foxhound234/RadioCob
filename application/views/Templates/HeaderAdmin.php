@@ -170,7 +170,7 @@
           $('#Emissiontitre').val(data[0].titre);
           $("#Description").text(data[0].description);
           $("#NomfichierEmission").text(data[0].image);
-          }  
+        }  
         });     
    });
 
@@ -234,7 +234,7 @@
    $("#btnSupEvenement").show();
 
    $.ajax({
-          url : "<?php echo base_url();?>index.php/Admin/AfficheEvenement/",
+          url : "<?php echo site_url('Admin/AfficheEvenement/')?>" + id,
           type: "GET",
           dataType: "JSON",
         success: function(data)
@@ -245,7 +245,11 @@
           $("#txtDateDebut").val(data[0].debut);
           $("#txtImageEvenement").text(data[0].images);
           $("#txtDateFin").val(data[0].fin);
-        }  
+        },
+         error: function (xhr, ajaxOptions, thrownError) {
+          alert(xhr.status);
+        alert(thrownError);
+        } 
         });    
       });
 
@@ -294,9 +298,10 @@
         }  
         });    
       });
-      $("#idInfo").change(function(){
-       $id=$('#idInfo').val();
 
+      $("#idInfo").change(function(){
+        var id=$('#idInfo').val();
+        
         $('#labeltitreinfo').show();
         $('#txtInfo').show();
 
@@ -304,15 +309,25 @@
          $("#Information").show();
     
         $("#btnmodifinfo").show();
+
         $("#btnSupInfo").show();
-
-
-
-
-
-
+        $.ajax({
+          url : "<?php echo site_url('Admin/AfficheInfo/')?>" + id,
+          type: "GET",
+          dataType: "JSON",
+        success: function(data)
+        { 
+          $("#txtInfo").val(data[0].titre);
+          $("#Information").text(data[0].information);
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+          alert(xhr.status);
+        alert(thrownError);
+        }
+         
+        });    
       })
-      $("#noPartenaires").change(function(){
+   $("#noPartenaires").change(function(){
     var id = $('#noPartenaires').val();
 
    
@@ -386,6 +401,10 @@
   $("#btnSupAnimateur").click(function(){
     var id=$('#noanimateurs').val();
     $("#idAnimateur").val(id);
+  })
+  $("#btnSupInfo").click(function(){
+    var id=$('#idInfo').val();
+    $("#idInfotxt").val(id);
   })
 
  })
@@ -1098,7 +1117,7 @@
       <H1>  Voulez  vous vraiment supprimer le  Partenaires? </h1>
       <?php
         echo form_open('Admin/SupprimerPartenaire');
-      echo form_input(array('name'=>'txtidPartenaire','id'=>'idPartenaire','type'=>'hidden','value'=>'','pattern'=>'[a-zA-Z0-9\s]+','placeholder'=>'Titre','required'=>'required','class'=>'form-control','title'=>'les lettres + chifres uniquement')).'<BR>';
+      echo form_input(array('name'=>'txtidPartenaire','type'=>'hidden','id'=>'idPartenaire','type'=>'hidden','value'=>'','pattern'=>'[a-zA-Z0-9\s]+','placeholder'=>'Titre','required'=>'required','class'=>'form-control','title'=>'les lettres + chifres uniquement')).'<BR>';
       echo form_submit('btnSupPartenaire','Oui',array('class'=>'btn btn-primary'));
       echo form_close();
       ?>
@@ -1193,7 +1212,7 @@
           echo form_open('Admin/ModifierTxtLocal');
           echo form_label('Emissions','lbxEmissions',array('id'=>'emission'));
 
-          echo "<select name='txtnoEmission' id='idInfo' class='form-control'  required>";
+          echo "<select name='txtnoInfo' id='idInfo' class='form-control'  required>";
          foreach ($LesInfoslocal as $infoLocal) {
            echo "<option value='". $infoLocal->id. "'>" . $infoLocal->titre. "</option>";
              }
@@ -1201,7 +1220,7 @@
 
         echo form_label('Titre','lbxTitre',array('id'=>'labeltitreinfo'));
 
-        echo form_input(array('name'=>'txtTitre','value'=>'','pattern'=>'[a-zA-Z]*-?[a-zA-Z]*','placeholder'=>'Titre','required'=>'required','id'=>'txtInfo','class'=>'form-control','title'=>'les lettres + chifres uniquement')).'<BR>';
+        echo form_input(array('name'=>'txtTitre','value'=>'','pattern'=>'[a-zA-Z0-9\s]+','placeholder'=>'Titre','required'=>'required','id'=>'txtInfo','class'=>'form-control','title'=>'les lettres + chifres uniquement')).'<BR>';
 
 
         echo form_label('Description','lbxDescription',array('id'=>'labelInformation'));
@@ -1209,11 +1228,11 @@
         echo form_textarea(array('name'=>'txtDescription','value'=>'','placeholder'=>'Description','pattern'=>'[a-zA-Z0-9\s]+','id'=>'Information','required'=>'required','class'=>'form-control','title'=>'les lettres + chifres uniquement')).'<BR>';
 
          
-         echo form_submit('btnEmission','Modifier',array('class'=>'btn btn-primary','name'=>'btnmoif','id'=>'btnmodifinfo')).'<BR>';
+         echo form_submit('btnInfoModif','Modifier',array('class'=>'btn btn-primary','name'=>'btnmoif','id'=>'btnmodifinfo')).'<BR>';
 
          echo form_close();
         ?>
-           <button type="button" class="btn btn-default" id="btnSupInfo" data-toggle="modal" data-target="#SuppressionEmission">Supprimer</button>
+           <button type="button" class="btn btn-default" id="btnSupInfo" data-toggle="modal" data-target="#SuppressionInfo">Supprimer</button>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -1223,7 +1242,25 @@
 </div>
 
 
-
+<div id="SuppressionInfo" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+      <H1>  Voulez  vous vraiment Supprimer l'Information? </h1>
+      <?php
+        echo form_open('Admin/SuppressionInformation');
+        echo form_input(array('name'=>'txtidInfo','id'=>'idInfotxt','value'=>'','pattern'=>'[a-zA-Z0-9\s]+','placeholder'=>'Titre','required'=>'required','type'=>'hidden','class'=>'form-control','title'=>'les lettres + chifres uniquement')).'<BR>';
+        echo form_submit('btnSupInfo','Oui',array('class'=>'btn btn-primary'));
+        echo form_close();
+      ?>
+        &nbsp;<button type="button" class="btn btn-default" data-dismiss="modal">Non</button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>

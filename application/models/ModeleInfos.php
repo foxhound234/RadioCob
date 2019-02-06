@@ -44,5 +44,30 @@ public function GetInfoLocal($id)
 
     return $query->result();
 }
+public function InfoLocal($id)
+{
+    $query = $this->db->select('*')
+    ->from('cob_texte-infos-locales')
+    ->where('id', $id)
+    ->get();
+
+    if ($query->num_rows() > 0) {
+        foreach ($query->result() as $data) {
+            $zzz[] = $data;
+        }
+    } 
+    return $zzz;
+}
+
+public function ModifieInfo($DonnesInfo,$id)
+{
+    $this->db->where('id', $id);
+    $this->db->update('cob_texte-infos-locales',$DonnesInfo);
+}
+public function SuppressionInfo($id)
+{
+    $this->db->where('id', $id);
+    $this->db->delete('cob_texte-infos-locales');
+}
 
 }

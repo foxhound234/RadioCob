@@ -578,83 +578,105 @@ class Admin extends CI_Controller {
 		}	
 	}
 }
-  public function SupprimerJeux()
-   {
-	   if($this->input->post('btnSupjeux')){
-		$id=$this->input->post('txtid');
-		$this->ModeleJeux->SupprimerJeux($id); 
-		redirect('/Admin/Accueil', 'refresh');  
-	   }
-   }
-   public function SupprimerPartenaire()
-   {
-	   if($this->input->post('btnSupPartenaire'))
-	   {
-		$id=$this->input->post('txtidPartenaire');
-		$this->ModelePartenaires->SupprimerPartenaire($id); 
-		redirect('/Admin/Accueil', 'refresh'); 
-	   }
-   }
-   public function SupprimerEmission()
-   {
-	   if($this->input->post('btnSupEmission'))
-	   {
-		$id=$this->input->post("txtidEmission");
-		$this->ModeleEmission->SupprimerEmission($id);
-		redirect('/Admin/Accueil', 'refresh');
-	   }
-   }
-   public function SupprimerEvenement()
-   {
-	if($this->input->post('btnSupEvenement'))
+	public function SupprimerJeux()
 	{
-		$id=$this->input->post("txtidEvenement");
-		$this->ModeleEvenement->SupprimerEvenement($id);
-		redirect('/Admin/Accueil', 'refresh');
+		if($this->input->post('btnSupjeux')){
+			$id=$this->input->post('txtid');
+			$this->ModeleJeux->SupprimerJeux($id); 
+			redirect('/Admin/Accueil', 'refresh');  
+		}
 	}
-   }
-   public function SuppressionAnimateur()
-   {
-	if($this->input->post('btnSupAnimateur'))
+	public function SupprimerPartenaire()
 	{
-		$id=$this->input->post("txtidAnimateur");
-		$this->ModeleAnimateur->SupprimerAnimateur($id);
-		redirect('/Admin/Accueil', 'refresh');
+		if($this->input->post('btnSupPartenaire'))
+		{
+			$id=$this->input->post('txtidPartenaire');
+			$this->ModelePartenaires->SupprimerPartenaire($id); 
+			redirect('/Admin/Accueil', 'refresh'); 
+		}
 	}
-   }
+	public function SupprimerEmission()
+	{
+		if($this->input->post('btnSupEmission'))
+		{
+			$id=$this->input->post("txtidEmission");
+			$this->ModeleEmission->SupprimerEmission($id);
+			redirect('/Admin/Accueil', 'refresh');
+		}
+	}
+	public function SupprimerEvenement()
+	{
+		if($this->input->post('btnSupEvenement'))
+		{
+			$id=$this->input->post("txtidEvenement");
+			$this->ModeleEvenement->SupprimerEvenement($id);
+			redirect('/Admin/Accueil', 'refresh');
+		}
+	}
+	
+	public function SuppressionAnimateur()
+	{
+		if($this->input->post('btnSupAnimateur'))
+		{
+			$id=$this->input->post("txtidAnimateur");
+			$this->ModeleAnimateur->SupprimerAnimateur($id);
+			redirect('/Admin/Accueil', 'refresh');
+		}
+	}
+
 	public function AfficheAnimateurs($id)
 	{
-		
-		$data = $this->ModeleAnimateur->getUnAnimateur($id);
-		echo json_encode($data);	
+			
+			$data = $this->ModeleAnimateur->getUnAnimateur($id);
+			echo json_encode($data);	
 	}
 	public function AffichePartenaire($id)
 	{
-		$data = $this->ModelePartenaires->getUnPartenaire($id);
-		echo json_encode($data);	
+			$data = $this->ModelePartenaires->getUnPartenaire($id);
+			echo json_encode($data);	
 	}
-   public function AfficheEmission($id)
-   {
+	public function AfficheEmission($id)
+	{
 		$data = $this->ModeleEmission->RetournerEmission($id);
 		echo json_encode($data);
-   }
-   public function AfficheEvenement($id)
-   {
-	$data=$this->ModeleEvenement->getUnEvenement($id);
+	}
+	public function AfficheEvenement($id)
+	{
+		$data=$this->ModeleEvenement->getUnEvenement($id);
 		echo json_encode($data);
+	}
+	public function AfficheJeux($id)
+	{
+		$data=$this->ModeleJeux->getUnJeux($id);
+		echo json_encode($data); 
+	}
+	public function AfficheInfo($id)
+	{
+		$data=$this->ModeleInfos->InfoLocal($id);
+		echo json_encode($data); 
+	}
+	public function ModifierTxtLocal()
+	{
+		if($this->input->post('btnInfoModif'))
+		{
+			$id=$this->input->post('txtnoInfo');
+
+			$DonneesInfo=array(
+				'titre'=>$this->input->post('txtTitre'),
+			   'information'=>$this->input->post('txtDescription'),
+			  );
+			  $this->ModeleInfos->ModifieInfo($DonneesInfo,$id);
+			  redirect('/Admin/Accueil', 'refresh');
+		}
    }
-   public function AfficheJeux($id)
-   {
-	$data=$this->ModeleJeux->getUnJeux($id);
-	echo json_encode($data); 
-   }
-   public function ModifierTxtLocal()
-   {
-	
+   public function SuppressionInformation(){
+	if($this->input->post('btnSupInfo'))
+	{
+		$id=$this->input->post('txtidInfo');
 
-
-
-
+		$this->ModeleInfos->SuppressionInfo($id);
+			  redirect('/Admin/Accueil', 'refresh');
+	}
 
    }
 	private function afficher($page,$DonneesInjectees)
