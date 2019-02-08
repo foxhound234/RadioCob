@@ -12,6 +12,18 @@
   <link rel="stylesheet" href=<?php echo css_url("Style")?> />
 </head>
 <body>
+<?php 
+$atts = array(
+        'width'       => 450,
+        'height'      => 350,
+        'scrollbars'  => 'yes',
+        'status'      => 'yes',
+        'resizable'   => 'yes',
+        'screenx'     => 0,
+        'screeny'     => 0,
+        'window_name' => '_blank'
+);
+?>
   <nav class="navbar">
   <div class="container-fluid">
   <ul class="nav navbar-nav">    
@@ -22,6 +34,8 @@
   <li class="active"><a href="" data-toggle="modal" data-target="#myModal">  Contact </a>&nbsp;&nbsp;</li>
   <li class="active"><a href="<?php echo site_url('Visiteur/Jeux') ?>">Jeux </a>&nbsp;&nbsp;</li>
   <li class="active"><a href="<?php echo site_url('Visiteur/APropos') ?>"> A Propos de la  Radio </a>&nbsp;&nbsp;</li>
+  <li class="active"><?php echo anchor_popup(site_url('Visiteur/AffichePopup/'),'<img class="imgee" src='.img_url('play.png').'>',array('title' => 'Ecoutez Le Direct', 'class'=>'ahref'),$atts);?></Li>
+</li>
   </ul>
 
 </ul>

@@ -9,9 +9,10 @@ class Visiteur extends CI_Controller {
 	{
 		$info=$this->ModeleInfos->getIdJour();
 		$DonneesInjectees['titredelapage']='Accueil';
+		$DonneesInjectees['nbinfojour']=$this->ModeleInfos->getnbinfojour();
 		$DonneesInjectees['InfoLocales']=$info;
 		$DonneesInjectees['Informations']=$this->ModeleInfos->GetInfoLocal($info->id);
-		$DonneesInjectees['LesEvenement']=$this->ModeleEvenement->LesEvenements();
+		$DonneesInjectees['LesEvenements']=$this->ModeleEvenement->LesEvenements();
 		$DonneesInjectees['LesJeux']=$this->ModeleJeux->LesJeuxActuelle();
 
 		$this->afficher('Visiteur/Accueil',$DonneesInjectees); 

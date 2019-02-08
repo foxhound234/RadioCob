@@ -623,6 +623,46 @@ class Admin extends CI_Controller {
 			redirect('/Admin/Accueil', 'refresh');
 		}
 	}
+	public function AjouterInterview()
+	{
+		if($this->input->post('btnInterview'))
+		{
+			$nomfichier=$_FILES['txtImages']['name']; 
+			$dossier='/assets/images/';
+			if(file_exists($dossier.$nomfichier))
+			{
+				$DonneesInterview=array(
+					'Titre'=>$this->input->post('txtTitre'),
+					'Description'=>$this->input->post('txtDescription'),
+					'image'=>$nomfichier,
+					'audio'=>$this->input->post('txtAudio')
+				);
+
+			} else{
+
+				if (!$this->upload->do_upload('txtImages'))
+				{
+						$error =  $this->upload->display_errors();
+	
+						print_r($error);
+				}
+				else
+				{
+						$DonneesInterview=array(
+						'Titre'=>$this->input->post('txtTitre'),
+					'Description'=>$this->input->post('txtDescription'),
+					'image'=>$nomfichier,
+					'audio'=>$this->input->post('txtAudio')
+						);
+					
+						 $this->ModeleJeux->ModifierUnJeux($DonneesJeux,$id);
+						 
+						redirect('/Admin/Accueil', 'refresh');
+				}	
+			}   
+
+		}
+	}
 
 	public function AfficheAnimateurs($id)
 	{

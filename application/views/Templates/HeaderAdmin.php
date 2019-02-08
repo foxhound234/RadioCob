@@ -426,6 +426,7 @@
             <li><a href=""data-toggle="modal" data-target="#ModalAnimations"> Une animations</a></li>
             <li><a href=""data-toggle="modal" data-target="#ModalAnimateur"> un animateurs </a></li>
             <li><a href=""data-toggle="modal" data-target="#ModalAjouterPartenaires">Un partenaire</a></li>
+            <li><a href="" data-toggle="modal" data-target="#ModalInterview">Une Interview</a></li>
           </ul>
         </li>
         <li class="dropdown">
@@ -744,6 +745,59 @@
     </div>
   </div>
 </div>
+
+<div id="ModalInterview" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Ajouter Une interview </h4>
+      </div>
+      <div class="modal-body">
+      <?php
+          echo validation_errors();
+
+          echo form_open_multipart('Admin/AjouterInterview');
+
+          echo form_label('Titre','lbxTitre');
+          echo form_input(array('name'=>'txtTitre','value'=>'','pattern'=>'[a-zA-Z0-9\s]+','placeholder'=>'Titre','required'=>'required','class'=>'form-control','title'=>'les lettres + chifres uniquement')).'<BR>';
+
+          echo form_label('Description','lbxDescription');
+
+         echo form_textarea(array('name'=>'txtDescription','value'=>'','placeholder'=>'Description','pattern'=>'[a-zA-Z0-9\s]+','required'=>'required','class'=>'form-control','title'=>'les lettres + chifres uniquement')).'<BR>';
+
+         echo form_label('Images','lbxImages');
+
+         echo form_input(array('name'=>'txtImages','type'=>'file','value'=>'','placeholder'=>'Image')).'<BR>';
+
+         echo form_label('Lienmp3','lbxmp3');
+
+         echo form_input(array('name'=>'txtAudio','value'=>'','class'=>'form-control','pattern'=>"https?://.+",'placeholder'=>'Lien mp3 de l interview')).'<BR>';
+
+         echo form_submit('btnInterview','Ajouter',array('class'=>'btn btn-primary')).'<BR>';
+          
+         echo form_close();
+        ?>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
 
 <div id="ModalModifierEmissions" class="modal fade" role="dialog">
   <div class="modal-dialog">
