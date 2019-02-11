@@ -8,41 +8,196 @@
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
 </head>
 <body>
-<div class="hautcentre">
-</div>
-    </div>
-    <div id='Colonne centre' class="divColonneCentre">
+ <!-- Colonne Centre -->
+    <?php if($nbinfo>0)
+    {
+   echo "
+   <div id='Colonne centre' class=divColonneCentre>
+        <!-- Partie Information locale -->
         <div class='divInfo'>
-        <h1 class="infoloc"> Informations Locales </h1>   
+        <h1 class=infoloc> Informations Locales </h1>   
         <audio controls
-        class="audioInfo"
-        src= <?php echo $InfoLocales->son?>>
+        class=audioInfo
+        src=".$InfoLocales->son.">
             Your browser does not support the
             <code>audio</code> element.
         </audio>
         </div>
-    <div class="divInformation">
-        <div class="txtInfo">
-    <?php foreach ($Informations as $UneInfo) :?>
-        <h1 class="titre">Titre:<?php echo $UneInfo->titre?></h1>
-        <p class="infodes"> Informations:<?php echo $UneInfo->information?></p> 
-    <?php endforeach;?>
+        <div class=divInformation>
+        <div class=txtInfo>";
+
+     foreach ($Informations as $UneInfo) :
+        echo "
+        <h1 class=titre>Titre:".$UneInfo->titre."</h1>
+        <p class=infodes> Informations:".$UneInfo->information."</p> 
+        ";
+     endforeach;
+     echo"
     </div>
     </div>
+   "; 
+    }
+    else{
+        echo "
+        <div id='Colonne centre' class=divColonneCentre>
+             <!-- Partie Information locale -->
+             <div class='divInfo'>
+             <h1 class=infoloc> Informations Locales </h1>   
+             </div>
+             <div class=divInformation>
+             <div class=txtInfo>
+             <p class=infodes> Informations:Aucune info Disponible</p> 
+            </div>
+         </div>
+        "; 
+
+
+
+
+    }
+?>
+    <!-- Partie interviews -->
+    <?php if($nbinterview == 1) {
+        echo '<div class=divInfo>
+        <h1 class=infoloc> Interviews </h1>    
+        </div>
+        <div class=divInformation>
+         <div class=txtInfo>';
+     foreach ($Interviews as $UneInterview):
+        echo'
+        <div class="divtxtfluid">
+        <span class="titreint">Titre:'.$UneInterview->Titre.'</span>
+        </div>
+        <div class="divImagefluid">
+        <img  class="imageint"  src='.img_url($UneInterview->image).'>
+        </div>
+        <p class="infodes"> Description:'.$UneInterview->Description.'</p>
+        ';
+     endforeach;
+     echo
+     '</div>
+     </div>';
+    }
+    elseif ($nbinterview >= 2 ) {
+        echo '<div class=divInfo>
+        <h1 class=infoloc> Interviews </h1>    
+        </div>
+        <div class=divInformation row>';
+     foreach ($Interviews as $key=>$UneInterview):
+        if($key==3)
+        {
+            echo'
+            <div>
+            <p> Voir plus</p>
+            <div>
+            ';
+        }
+        elseif ($key<2) {
+            if($key ==1)
+            {
+             echo'
+            <div class="divInterviewdroit>
+            <span class="titreint">Titre:'.$UneInterview->Titre.'</span>
+            <div>
+            <img  class="imagemultiint"  src='.img_url($UneInterview->image).'>
+            </div>
+            </div>
+            ';   
+            }else{
+            echo'      
+            <div class="divinterviewgauche">
+           <span class="titreint">Titre:'.$UneInterview->Titre.'</span>
+                    <img  class="imagemultiint"  src='.img_url($UneInterview->image).'>
+                    </div>
+                    '; 
+                
+            }
+           
+        }
+        else{
+
+        }
+     endforeach;
+     echo
+     '</div>';
+    }
+     else{
+      
+
+        };
+        ?>
     </div>
+
+  
     <div class="colonne1">
     <div  class="divTitre">
     <h1 class="h1jeux"> Les Jeux En Cours </h1>
     </div>
     <div class="divJeux">  
-    <?php  foreach ($LesJeux as $UnJeux) : ?> 
+    <?php  foreach ($LesJeux as $key=>$UnJeux) : 
+        
+         if($key<2)
+         {
+         echo
+         '
         <div>
-        <span class="lespan"> <?php echo $UnJeux->intitule ?> </span>
+        <span class="lespan">'.$UnJeux->intitule .'</span>
         <br>
-          <a href=" <?php echo site_url()."/Visiteur/inscriptionJeux/".$UnJeux->id; ?>"><img class="tales" src=<?php echo img_url($UnJeux->image)?>></a>
-        </div>
+          <a href='.site_url()."/Visiteur/inscriptionJeux/".$UnJeux->id.'><img class="tales" src='.img_url($UnJeux->image).'></a>
+        </div> ';
+         }elseif ($key==3) {
+            echo'
+            <BR>
+            <div>
+            <a href='.site_url("Visiteur/Jeux").'><p class="blue"> Voir plus >>> </p></a>
+            </div>
+            ';
+
+         }else{
+
+         }
+        
+        ?> 
+    
      <?php endforeach;?>
     </div>
+
+
+ <?php
+  if($nbinterview>0)
+  {
+   echo'
+   <div  class="divTitre">
+   <h1 class="h1jeux"> Les Evenement En Cours </h1>
+   </div>
+   <div class="divJeux"> '; 
+    foreach ($LesEvenements as$key=>$UnEvenement) : 
+        if($key<2)
+        {
+    echo' 
+       <div>
+       <span class="lespan">'.$UnEvenement->titre.'</span>
+       <br>
+         <a href='.site_url()."/Visiteur/inscriptionJeux/".$UnEvenement->id.'"><img class="tales" src='.img_url($UnEvenement->images).'></a>
+       </div>
+       ';
+        }
+        elseif($key==3){
+            echo'
+            <BR>
+            <div>
+            <a href='.site_url("Visiteur/LesEvenements").'><p class="blue"> Voir plus >>> </p></a>
+            </div>
+            ';
+        }
+        else{
+
+        }
+    endforeach;
+    echo 
+    '</div>';
+  }
+    ?>
 </body>
 </html>
 

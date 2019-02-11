@@ -8,10 +8,19 @@ class Visiteur extends CI_Controller {
 	public function Accueil()
 	{
 		$info=$this->ModeleInfos->getIdJour();
+		if($this->ModeleInfos->getnbinfojour() == 0 )
+		{
+			$DonneesInjectees['nbinfo']=$this->ModeleInfos->getnbinfojour();
+		}else{
+			$DonneesInjectees['Informations']=$this->ModeleInfos->GetInfoLocal($info->id);
+			$DonneesInjectees['nbinfo']=$this->ModeleInfos->GetnbTxtlocal($info->id);
+		}
 		$DonneesInjectees['titredelapage']='Accueil';
-		$DonneesInjectees['nbinfojour']=$this->ModeleInfos->getnbinfojour();
-		$DonneesInjectees['InfoLocales']=$info;
-		$DonneesInjectees['Informations']=$this->ModeleInfos->GetInfoLocal($info->id);
+		$DonneesInjectees['nbJeux']=$this->ModeleJeux->getnbjeux();
+		$DonneesInjectees['nbinterview']=$this->Modeleinterview->getnbinterview();
+		$DonneesInjectees['nbEvenement']=$this->ModeleEvenement->nbEvenement();
+		$DonneesInjectees['Interviews']=$this->Modeleinterview->getLesinterview();
+		$DonneesInjectees['InfoLocales']=$this->ModeleInfos->getIdJour();
 		$DonneesInjectees['LesEvenements']=$this->ModeleEvenement->LesEvenements();
 		$DonneesInjectees['LesJeux']=$this->ModeleJeux->LesJeuxActuelle();
 

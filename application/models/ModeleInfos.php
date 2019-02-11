@@ -44,6 +44,13 @@ public function GetInfoLocal($id)
 
     return $query->result();
 }
+
+    public function GetnbTxtlocal($id)
+    {
+        $this->db->where('info-locale',$id);
+        $this->db->from('cob_texte-infos-locales');
+        return $this->db->count_all_results();
+    }
 public function InfoLocal($id)
 {
     $query = $this->db->select('*')

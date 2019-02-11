@@ -60,7 +60,12 @@ class ModeleJeux extends CI_Model {
         $query=$this->db->query($requete);
         return $query->result();
     }
-     
+     public function getnbjeux()
+     {
+        $requete="SELECT * FROM `cob_jeux` WHERE fin > now() and debut <= now()";
+        $query=$this->db->query($requete);
+        return $query->num_rows();
+     }
     public function AjouterParticipant($DonnesParticipant)
     {
         $this->db->insert('cob_participants',$DonnesParticipant);

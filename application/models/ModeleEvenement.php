@@ -60,4 +60,10 @@ public function LesEvenements()
     return $query->result();
 }
 
+public function nbEvenement(){
+    $requete="SELECT * FROM cob_evenements WHERE debut <= CURDATE() AND fin >= CURDATE()";
+    $query=$this->db->query($requete);
+    return $query->num_rows();
+}
+
 }

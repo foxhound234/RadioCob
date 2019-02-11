@@ -627,6 +627,13 @@ class Admin extends CI_Controller {
 	{
 		if($this->input->post('btnInterview'))
 		{
+			$config['upload_path']          = './assets/images';
+			$config['allowed_types']        = 'gif|jpg|png';
+			$config['max_size']             = 100000;
+			$config['max_width']            = 2500;
+			$config['max_height']           = 2500;
+			$this->upload->initialize($config);
+			
 			$nomfichier=$_FILES['txtImages']['name']; 
 			$dossier='/assets/images/';
 			if(file_exists($dossier.$nomfichier))
@@ -635,8 +642,13 @@ class Admin extends CI_Controller {
 					'Titre'=>$this->input->post('txtTitre'),
 					'Description'=>$this->input->post('txtDescription'),
 					'image'=>$nomfichier,
-					'audio'=>$this->input->post('txtAudio')
+					'audio'=>$this->input->post('txtAudio'),
+					'Datedebut'=>$this->input->post('txtDateDebut'),
+					'Datefin'=>$this->input->post('txtDateFin')
 				);
+
+				$this->Modeleinterview->AjouterInterview($DonneesInterview);
+				redirect('/Admin/Accueil', 'refresh');
 
 			} else{
 
@@ -648,14 +660,16 @@ class Admin extends CI_Controller {
 				}
 				else
 				{
-						$DonneesInterview=array(
-						'Titre'=>$this->input->post('txtTitre'),
+					$DonneesInterview=array(
+					'Titre'=>$this->input->post('txtTitre'),
 					'Description'=>$this->input->post('txtDescription'),
 					'image'=>$nomfichier,
-					'audio'=>$this->input->post('txtAudio')
-						);
-					
-						 $this->ModeleJeux->ModifierUnJeux($DonneesJeux,$id);
+					'audio'=>$this->input->post('txtAudio'),
+					'Datedebut'=>$this->input->post('txtDateDebut'),
+					'Datefin'=>$this->input->post('txtDateFin')
+				);
+
+						 $this->Modeleinterview->AjouterInterview($DonneesInterview);
 						 
 						redirect('/Admin/Accueil', 'refresh');
 				}	

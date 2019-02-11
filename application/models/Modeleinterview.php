@@ -10,7 +10,19 @@ public function AjouterInterview($DonnesInterview){
     return $this->db->insert_id();
 }
 
-  
+public function getnbinterview()
+{
+    $requete="SELECT * FROM interview WHERE Datedebut <= CURDATE() AND Datefin >= CURDATE()";
+    $query=$this->db->query($requete);
+    $rowCount = $query->num_rows();
+    return $rowCount;
+}
+public function getLesinterview()
+{
+    $requete="SELECT * FROM interview WHERE Datedebut <= CURDATE() AND Datefin >= CURDATE()";
+    $query=$this->db->query($requete);
+    return $query->result(); 
+}
 
 
 }

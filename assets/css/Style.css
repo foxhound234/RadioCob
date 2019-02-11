@@ -346,6 +346,7 @@
           margin-left: 20%;
       }
       .infodes{
+        float: right;
       }
       .ahref{
         padding: 14px 25px;
@@ -417,12 +418,63 @@
             margin-bottom: 0px;
         }
         .lespan{
-            font-size: 45px;
+            font-size: 22px;
         }
         .divColonneCentre{
             width: 60%;
             float: left;
         }
+        .divImagefluid{
+            float: left;
+    margin-left: 15%;
+    margin-top: 0px;
+    margin-bottom: 7px;
+        }
+        .divtxtfluid{
+        
+        }
+        .imageint{
+            display: inline-block;
+            height: auto;
+            max-width: 50%;
+            margin-left: 23%;
+        }
+        .titreint{
+            font-size: 22px;
+
+            margin-left: 39%;
+        }
+        .divcontint{
+            display: inline-block;
+        }
+        .divinterviewgauche{
+
+            width: 150px;
+           display: inline-block;
+        }
+        .divInterviewdroit{
+     
+            width: 150px;
+            display: inline-block;
+        }
+        .imagemultiint{
+            max-width: 100%;
+            height: auto;
+        }
+        .txtInterview{
+            margin-left: 31px;
+
+            color: #2b456e;
+        
+            display: inline-block;
+        
+            margin-right: 31px;
+        }
+
+           .blue{
+            color: #2b456e;
+           }
+        
      @media screen and (max-width: 640px) {
         .bloc {
           display:block;

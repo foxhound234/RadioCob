@@ -776,6 +776,15 @@
 
          echo form_input(array('name'=>'txtAudio','value'=>'','class'=>'form-control','pattern'=>"https?://.+",'placeholder'=>'Lien mp3 de l interview')).'<BR>';
 
+
+        echo form_label('Date Début','lbxDateDebut');
+
+        echo form_input(array('name'=>'txtDateDebut','type'=>'date','value'=>'','placeholder'=>'DateDebut','required'=>'required','class'=>'form-control')).'<BR>';
+  
+        echo form_label('Date fin','lbxDatefin');
+  
+        echo form_input(array('name'=>'txtDateFin','type'=>'date','value'=>'','placeholder'=>'Datefin','required'=>'required','class'=>'form-control')).'<BR>';
+
          echo form_submit('btnInterview','Ajouter',array('class'=>'btn btn-primary')).'<BR>';
           
          echo form_close();
