@@ -7,18 +7,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-<div class="fond-picto">
-    <h1> Les Jeux </h1>
- <?php foreach ($LesJeux as $Unjeux):?>
-  <div class="picto">
-   <span class="textePicto">
-       <?php echo $Unjeux->intitule ?>  
-    </span>
-    <img style="height:150px;" src='<?php echo img_url($Unjeux->image) ?>'>
-    <p class="textePicto"><?php echo $Unjeux->description?> </P>
-    <a href= <?php echo site_url()."/Visiteur/inscriptionJeux/".$Unjeux->id; ?>> <button class="btn btn-primary">inscription</button> </a> 
-  </div>
-<?php  endforeach;?>
-</div>
+<div class="text-center"> 
+    <h1>Les Evenements</h1>
+    </div> 
+    <BR>
+    <?php foreach ( $LesJeux  as $key=>$UnJeux):
+           if($UnJeux->image=='')
+           {
+            echo'
+            <div class="Levenement">
+            <div class="containera">
+            <p> pas Image </P>
+           </div>
+            <div class="DivJeuxb">
+            <H1 class="text-center"> Titre:'.$UnJeux->intitule.'</h1> 
+            <p class="pEvenement text-center"> Description:<BR>'. $UnJeux->description.'</p>
+            </div>
+    
+         </div>';
+           }else{
+            echo'
+            <div class="Levenement">
+            <div class="containera">
+            <img  class="image"  src='.img_url($UnJeux->image).'>
+           </div>
+            <div class="DivJeuxb">
+            <H1 class="text-center"> Titre:'.$UnJeux->intitule.'</h1> 
+            <p class="pEvenement text-center"> Description:<BR>'.$UnJeux->description.'</p>
+            </div>
+         </div>';    
+           }
+    endforeach; ?>
 </body>
 </html>

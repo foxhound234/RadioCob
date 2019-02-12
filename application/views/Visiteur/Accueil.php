@@ -82,25 +82,27 @@
         echo '<div class=divInfo>
         <h1 class=infoloc> Interviews </h1>    
         </div>
-        <div class=divInformation row>';
+        <div class=DivInformationmulti row>';
      foreach ($Interviews as $key=>$UneInterview):
-        if($key==3)
+      
+        if($key == 2)
         {
+            
             echo'
-            <div>
-            <p> Voir plus</p>
-            <div>
+            <div class="DivVoirplus">
+            <a href='.site_url("Visiteur/Jeux").'>
+            <span class="titreint"> Voir Plus </span>
+            </a>
+            </div>
             ';
         }
         elseif ($key<2) {
             if($key ==1)
             {
              echo'
-            <div class="divInterviewdroit>
+            <div class="divInterviewdroit">
             <span class="titreint">Titre:'.$UneInterview->Titre.'</span>
-            <div>
             <img  class="imagemultiint"  src='.img_url($UneInterview->image).'>
-            </div>
             </div>
             ';   
             }else{
@@ -143,9 +145,9 @@
         <div>
         <span class="lespan">'.$UnJeux->intitule .'</span>
         <br>
-          <a href='.site_url()."/Visiteur/inscriptionJeux/".$UnJeux->id.'><img class="tales" src='.img_url($UnJeux->image).'></a>
+          <a href='.site_url()."/Visiteur/VoirUnJeux/".$UnJeux->id.'><img class="tales" src='.img_url($UnJeux->image).'></a>
         </div> ';
-         }elseif ($key==3) {
+         }elseif ($key==2) {
             echo'
             <BR>
             <div>
@@ -178,11 +180,11 @@
        <div>
        <span class="lespan">'.$UnEvenement->titre.'</span>
        <br>
-         <a href='.site_url()."/Visiteur/inscriptionJeux/".$UnEvenement->id.'"><img class="tales" src='.img_url($UnEvenement->images).'></a>
+         <a href='.site_url()."/Visiteur/VoirUnEvenement/".$UnEvenement->id.'><img class="tales" src='.img_url($UnEvenement->images).'></a>
        </div>
        ';
         }
-        elseif($key==3){
+        elseif($key==2){
             echo'
             <BR>
             <div>

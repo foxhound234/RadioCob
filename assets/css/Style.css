@@ -449,17 +449,33 @@
         }
         .divinterviewgauche{
 
-            width: 150px;
-           display: inline-block;
+            width: 40%;
+
+            float: left;
+            
+            background-color: white;
+            
+            margin-top: 3%;
+            
+            margin-left: 5%;
         }
         .divInterviewdroit{
      
-            width: 150px;
-            display: inline-block;
+            width: 40%;
+            float: right;
+            background-color: white;
+            margin-top: 3%;
+            margin-right: 5%;
+        
         }
         .imagemultiint{
-            max-width: 100%;
             height: auto;
+
+            width: 90%;
+            
+            margin-left: 5%;
+
+            margin-bottom: 8%;
         }
         .txtInterview{
             margin-left: 31px;
@@ -474,7 +490,36 @@
            .blue{
             color: #2b456e;
            }
+        .evenementvoir{
+            font-size:14%; 
+        }
+        .DivInformationmulti{
+            width: 100%;
+            margin-left: 31px;
+            margin-top: -9px;
+        }
+       .DivVoirplus{
+        width: 40%;
+        float: right;
+        background-color: blue;
+        color: white;
+        margin-top: 3%;
+        margin-right: 5%;
+       }
         
+      .DivJeuxb{
+        color: #15326b;
+        height: 100%;
+        width: 20%;
+        float: right;
+        margin-right: 18%;
+      }
+
+    
+
+
+
+
      @media screen and (max-width: 640px) {
         .bloc {
           display:block;

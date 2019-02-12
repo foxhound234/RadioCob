@@ -71,5 +71,9 @@ class ModeleJeux extends CI_Model {
         $this->db->insert('cob_participants',$DonnesParticipant);
         return $this->db->insert_id();
     }
-    
+    public function Unjeux($id)
+    {
+        return $this->db->get_where('cob_jeux',array('id'=>$id))->row();
+        
+    }
     }

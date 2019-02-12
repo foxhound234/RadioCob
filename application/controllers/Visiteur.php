@@ -59,6 +59,18 @@ class Visiteur extends CI_Controller {
 		$DonneesInjectees['TitredelaPage']="VoirUnAnimateur";
 		$this->afficher('Visiteur/VoirUnAnimateur',$DonneesInjectees);
 	 }
+	 public function VoirUnEvenement($id)
+	 {
+		$DonneesInjectees['UnEvenement']=$this->ModeleEvenement->getEvenement($id);
+		$DonneesInjectees['TitredelaPage']="Evenement";
+		$this->afficher('Visiteur/VoirUnEvenement',$DonneesInjectees); 
+	 }
+	 public function VoirUnJeux($id)
+	 {
+		$DonneesInjectees['UnJeux']=$this->ModeleJeux->Unjeux($id);
+		$DonneesInjectees['TitredelaPage']="Evenement";
+		$this->afficher('Visiteur/VoirUnjeux',$DonneesInjectees); 
+	 }
 	 
 	 public function ConnexionAdmin()
 	 {
