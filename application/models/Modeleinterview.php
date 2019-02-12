@@ -23,6 +23,15 @@ public function getLesinterview()
     $query=$this->db->query($requete);
     return $query->result(); 
 }
-
+public function RetournerInterview($id = NULL)
+{
+    if($id==NULL)
+    {
+        return $this->db->get('interview')->result();
+    }
+    else{
+        return $this->db->get_where('interview',array('id'=>$id))->row();
+    } 
+}
 
 }

@@ -33,8 +33,9 @@ $atts = array(
   <li class="active"><a href="<?php echo site_url('Visiteur/Partenaires') ?>"> Partenaires </a>&nbsp;&nbsp;</li>
   <li class="active"><a href="" data-toggle="modal" data-target="#myModal">  Contact </a>&nbsp;&nbsp;</li>
   <li class="active"><a href="<?php echo site_url('Visiteur/Jeux') ?>">Jeux </a>&nbsp;&nbsp;</li>
+  <li><a href="">  </a>&nbsp;&nbsp;</li>
   <li class="active"><a href="<?php echo site_url('Visiteur/APropos') ?>"> A Propos de la  Radio </a>&nbsp;&nbsp;</li>
-  <li class="active"><?php echo anchor_popup(site_url('Visiteur/AffichePopup/'),'<img class="imgee" src='.img_url('play.png').'>',array('title' => 'Ecoutez Le Direct', 'class'=>'ahref'),$atts);?></Li>
+  <li class="active lienradio"><?php echo anchor_popup(site_url('Visiteur/AffichePopup/'),'<img class="imgee" src='.img_url('play.png').'><span> Le direct</span>',array('title' => 'Ecoutez Le Direct', 'class'=>'ahref'),$atts);?></Li>
 </li>
   </ul>
 

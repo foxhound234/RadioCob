@@ -41,9 +41,18 @@ class Visiteur extends CI_Controller {
 		
 	}
 
+	public function LesInterview()
+	{
+		$DonneesInjectees['LesInterview']=$this->Modeleinterview->getLesinterview();
+		$DonneesInjectees['TitredelaPage']="Les Interview";
+
+		$this->afficher('Visiteur/VoirUnjeux',$DonneesInjectees);
+	}
+
 	 public function Partenaires()
 	 {
-		$DonneesInjectees['DesPartenaires']=$this->ModelePartenaires->getLespartenaires();
+		$DonneesInjectees['DesPartenaires']=$this->ModelePartenaires->getLespartenairesInti();
+		$DonneesInjectees['DesPartenairesPonctu']=$this->ModelePartenaires->getLespartenairesPonctu();
 		$DonneesInjectees['TitredelaPage']="Les Partenaires";
 		$this->afficher('Visiteur/Partenaires',$DonneesInjectees);
 	 }
@@ -168,6 +177,9 @@ class Visiteur extends CI_Controller {
 	 public function AffichePopup()
 	 {
 		$this->load->view('Visiteur/PopupRadio'); 
+	 }
+	 public function VoirUnPartenaires(){
+
 	 }
 	private function afficher($page,$DonneesInjectees)
 	{

@@ -13,8 +13,14 @@ class Admin extends CI_Controller {
 	public function Accueil()
 	{
 			$info=$this->ModeleInfos->getIdJour();
-		$DonneesInjectees['LesInfoslocal']=$this->ModeleInfos->GetInfoLocal($info->id);
-		$DonneesInjectees['nbinfojour']=$this->ModeleInfos->getnbinfojour();
+			if($this->ModeleInfos->getnbinfojour() == 0 )
+			{
+				$DonneesInjectees['nbinfojour']=$this->ModeleInfos->getnbinfojour();
+			}else{
+
+				$DonneesInjectees['LesInfoslocal']=$this->ModeleInfos->GetInfoLocal($info->id);
+				$DonneesInjectees['nbinfojour']=$this->ModeleInfos->GetnbTxtlocal($info->id);
+			}
 		$DonneesInjectees['titredelapage']='Accueil';
 		$DonneesInjectees['LesEmissions']=$this->ModeleEmission->RetournerEmission();
 		$DonneesInjectees['LesEmissionsAssignée']=$this->ModeleEmission->RetournerLesEmissions();

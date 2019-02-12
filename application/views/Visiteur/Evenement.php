@@ -24,11 +24,12 @@
             <p> pas Image </P>
            </div>
             <div class="containerb">
-            <H1 class="text-center"> Titre:'.$Evenement->titre.'</h1> 
-            <p class="pEvenement text-center"> Description:<BR>'.$Evenement->description.'</p>
+            <H1 class="text-center h1titrejeux"> Titre:'.$Evenement->titre.'</h1> 
             <p class="pEvenement text-center"> Periode:'.$Evenement->periode.'</p>
+            <p class="pEvenement text-center"> Description:<BR>'.$Evenement->description.'</p>
             </div>
-    
+
+              
          </div>';
            }else{
             echo'
@@ -37,10 +38,11 @@
             <img  class="image"  src='.img_url($Evenement->images).'>
            </div>
             <div class="containerb">
-            <H1 class="text-center"> Titre :'.$Evenement->titre.'</h1> 
-            <p class="pEvenement text-center"> Description:<BR>'.$Evenement->description.'</p>
-            <p class="pEvenement text-center"> Periode:'.$Evenement->periode.'</p>
+            <H1 class="h1titrejeux"> Titre :'.$Evenement->titre.'</h1> 
+            <p class="pEvenement "> Periode:'.$Evenement->periode.'</p>
+            <p class="pdescription"> Description:<BR>'.$Evenement->description.'</p>
             </div>
+             
          </div>';    
            }
     endforeach; ?>

@@ -91,7 +91,7 @@
             echo'
             <div class="DivVoirplus">
             <a href='.site_url("Visiteur/Jeux").'>
-            <span class="titreint"> Voir Plus </span>
+            <span class="txtvoirplus"> Voir Plus >></span>
             </a>
             </div>
             ';
@@ -101,14 +101,14 @@
             {
              echo'
             <div class="divInterviewdroit">
-            <span class="titreint">Titre:'.$UneInterview->Titre.'</span>
+            <div class="Divtext">'.$UneInterview->Titre.'</div>
             <img  class="imagemultiint"  src='.img_url($UneInterview->image).'>
             </div>
             ';   
             }else{
             echo'      
             <div class="divinterviewgauche">
-           <span class="titreint">Titre:'.$UneInterview->Titre.'</span>
+           <div class="Divtext">'.$UneInterview->Titre.'</div>
                     <img  class="imagemultiint"  src='.img_url($UneInterview->image).'>
                     </div>
                     '; 

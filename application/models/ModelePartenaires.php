@@ -17,6 +17,18 @@ class ModelePartenaires extends CI_Model {
         $this->db->insert('cob_partenaires',$DonneesPartenaire);
         return $this->db->insert_id();
     }
+    public function getLespartenairesInti()
+    {
+       $requete="SELECT * FROM `cob_partenaires` WHERE `type`='institutionnel'";
+       $query=$this->db->query($requete);
+       return $query->result();
+    }
+    public function getLespartenairesPonctu()
+    {
+    $requete="SELECT * FROM `cob_partenaires` WHERE type='ponctuel' and debut<= curdate() and fin > curdate() order by nom asc";
+    $query=$this->db->query($requete);
+    return $query->result();
+    }
     public function SupprimerPartenaire($id)
     {
         $this->db->where('id',$id);

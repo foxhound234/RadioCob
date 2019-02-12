@@ -11,7 +11,9 @@ public function RetournerAnimateur($id = NULL)
 {
     if($id==NULL)
     {
-        return $this->db->get('cob_animateurs')->result();
+         $requete="SELECT * FROM cob_animateurs order by nom asc ";
+         $query=$this->db->query($requete);
+         return $query->result();
     }
     else{
         return $this->db->get_where('cob_animateurs',array('id'=>$id))->row();

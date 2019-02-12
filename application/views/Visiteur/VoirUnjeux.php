@@ -10,6 +10,17 @@
 </head>
 <body> 
 <div class="text-center">
+<span class="lespan">
+<?php  echo 
+$UnJeux->intitule ?>
+</span>
+<p>
+
+<?php  echo 
+$UnJeux->description ?>
+</p>
+
+
 
 
 </div>

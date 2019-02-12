@@ -8,32 +8,32 @@
 </head>
 <body>
 <div class="text-center"> 
-    <h1>Les Evenements</h1>
+    <h1>Les Jeux</h1>
     </div> 
     <BR>
     <?php foreach ( $LesJeux  as $key=>$UnJeux):
            if($UnJeux->image=='')
            {
             echo'
-            <div class="Levenement">
-            <div class="containera">
+            <div class="lejeux">
+            <div class="divjeuxa">
             <p> pas Image </P>
            </div>
             <div class="DivJeuxb">
-            <H1 class="text-center"> Titre:'.$UnJeux->intitule.'</h1> 
+            <H1 class="h1titrejeux"> Titre:'.$UnJeux->intitule.'</h1> 
             <p class="pEvenement text-center"> Description:<BR>'. $UnJeux->description.'</p>
             </div>
     
          </div>';
            }else{
             echo'
-            <div class="Levenement">
-            <div class="containera">
+            <div class="lejeux">
+            <div class="divjeuxa">
             <img  class="image"  src='.img_url($UnJeux->image).'>
            </div>
             <div class="DivJeuxb">
-            <H1 class="text-center"> Titre:'.$UnJeux->intitule.'</h1> 
-            <p class="pEvenement text-center"> Description:<BR>'.$UnJeux->description.'</p>
+            <H1 class="h1titrejeux"> Titre:'.$UnJeux->intitule.'</h1> 
+            <p class="pEvenement"> Description:<BR>'.$UnJeux->description.'</p>
             </div>
          </div>';    
            }

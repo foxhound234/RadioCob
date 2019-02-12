@@ -232,7 +232,7 @@
   
     .image {
         display: inline-block;
-  
+        width: 100%;
         height: auto;
       }
     .text {
@@ -256,6 +256,7 @@
      color: #15326b;
      height:100% ;
      width: 20%;
+     margin-left: 2%;
     }
     .containerc{
     margin-left: 50%;
@@ -265,7 +266,6 @@
         font-size: 124%;
     }
     .Levenement{
-        border: 1px solid;
         padding: 10px;
         box-shadow: 5px 10px 8px #888888;
         background-color: #FFF;
@@ -374,7 +374,6 @@
       .imgee{
         width: 17%;
         margin-top: -3%;
-        margin-right: 86%;
         }
 
     .lien{
@@ -441,8 +440,8 @@
         }
         .titreint{
             font-size: 22px;
-
             margin-left: 39%;
+            color: #15326b;
         }
         .divcontint{
             display: inline-block;
@@ -499,30 +498,158 @@
             margin-top: -9px;
         }
        .DivVoirplus{
-        width: 40%;
         float: right;
-        background-color: blue;
+
+        background-color: #2b456e;
+        
         color: white;
+        
         margin-top: 3%;
+        
         margin-right: 5%;
+        
+        margin-left: 6%;
+        
+        width: 16%;
        }
         
       .DivJeuxb{
         color: #15326b;
         height: 100%;
-        width: 20%;
-        float: right;
-        margin-right: 18%;
+        margin-left: 22%;
+      }
+     .txtvoirplus{
+        font-size: 22px;
+
+        margin-left: 10%;
+     }
+    
+      .lejeux{
+        padding: 10px;
+        box-shadow: 5px 10px 8px #888888;
+        background-color: #FFF;
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-top: 30px;
+        height: 290px;
       }
 
-    
 
+      .divjeuxa{
+        display: inline-block;
+        height: 100%;
+        width: 20%;
+        float: left;
+      }
 
+      .h1titrejeux{
+        font-size: 22px; 
+      }
 
+      .partieDescription
+        {
+            float: right;
+            width: 54%;
+            margin-right: 5%;
+            margin-top: 70px;
+        }
+        .pdescription{
+            font-size: 124%;
+        }
+        .divAnimateur{
+            width: 15%;
 
+            float: left;
+            
+            background-color: white;
+            
+            margin-top: 3%;
+            
+            margin-left: 4%;
+        }
+        .divPartenaire{
+            width: 15%;
+            float: left;
+            background-color: white;
+            margin-top: 3%;
+            margin-left: 6%;
+        }
+        .divAnimateurGauche{
+            width: 15%;
+
+            float: left;
+            
+            background-color: white;
+            
+            margin-top: 3%;
+            
+            margin-left: 5%;
+
+        }
+        .divPartenaireGauche{
+            width: 15%;
+            float: left;
+            background-color: white;
+            margin-top: 3%;
+            margin-left: 11%;
+
+        }
+        .divLigne{
+            width: 100%;
+            height: 400px;
+        
+        }
+        .imageanim{
+            height: auto;
+            width: 90%;
+            margin-left: 5%;
+            margin-bottom: 8%;
+            height: 205px;
+            width: 205px;
+        }
+        .nomanim{
+            margin-left: 10%;
+            margin-right: 10%;
+            text-align: center;
+        }
+        .titrepage{
+            text-align: center;
+
+        }
+        .nom{
+            font-size: 18px;
+
+        width: 100%;
+        color: #15326b;
+        }
+        .Divtext{
+            text-align: center;
+            font-size: 22px;
+            color: #15326b;
+            
+        }
+        .Descriptionpart{
+            height: 200px;
+        }
+        
+        .bandeauPartenaire{
+            width: 78%;
+            background-color: #15326b;
+            height: 50px;
+            text-align: center;
+            margin-left: 11%;
+        }
+
+       .lienradio{
+        width: 13%;
+       }
+        
+        
      @media screen and (max-width: 640px) {
         .bloc {
           display:block;
           clear:both;
         }
+
+        
       }
