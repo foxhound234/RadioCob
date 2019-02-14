@@ -1,14 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title><?php echo $titredelapage?></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-</head>
-<body>
  <!-- Colonne Centre -->
+ <div class="wrap">
     <?php if($nbinfo>0)
     {
    echo "
@@ -109,7 +100,9 @@
             echo'      
             <div class="divinterviewgauche">
            <div class="Divtext">'.$UneInterview->Titre.'</div>
+           <a href='.site_url()."/Visiteur/VoirUnJeux/".$UneInterview->id.'>
                     <img  class="imagemultiint"  src='.img_url($UneInterview->image).'>
+                    </a>
                     </div>
                     '; 
                 
@@ -180,7 +173,7 @@
        <div>
        <span class="lespan">'.$UnEvenement->titre.'</span>
        <br>
-         <a href='.site_url()."/Visiteur/VoirUnEvenement/".$UnEvenement->id.'><img class="tales" src='.img_url($UnEvenement->images).'></a>
+        <img class="tales" src='.img_url($UnEvenement->images).'>
        </div>
        ';
         }
@@ -197,9 +190,8 @@
         }
     endforeach;
     echo 
-    '</div>';
+    '</div>
+    </div>';
   }
     ?>
-</body>
-</html>
-
+</div>

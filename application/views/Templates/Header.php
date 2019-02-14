@@ -10,6 +10,16 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href=<?php echo css_url("Style")?> />
+  <script>
+  $(document).ready(function() {
+  $('.dropdown-submenu a').on("click", function(e) {
+    $(this).parents('ul').find('.dropdown-submenu ul').hide();
+    $(this).next('ul').toggle();
+    e.stopPropagation();
+    e.preventDefault();
+  });
+});
+  </script>
 </head>
 <body>
 <?php 
@@ -24,25 +34,42 @@ $atts = array(
         'window_name' => '_blank'
 );
 ?>
-  <nav class="navbar">
+<div class="Divhautpage">
+<img  class ="Headerimage"src=<?php echo img_url('cobfm.png')?>>
+<nav class="navbar">
   <div class="container-fluid">
   <ul class="nav navbar-nav">    
   <li class="active"><a href="<?php echo site_url('Visiteur/Accueil') ?>">Accueil </a>&nbsp;&nbsp;</li>
-  <li class="active"><a href="<?php echo site_url('Visiteur/Programmation')?>"> Programmes</a>&nbsp;&nbsp;</li>
-  <li class="active"><a href="<?php echo site_url('Visiteur/LesEvenements')?>">Evenement </a>&nbsp;&nbsp;</li>
-  <li class="active"><a href="<?php echo site_url('Visiteur/Partenaires') ?>"> Partenaires </a>&nbsp;&nbsp;</li>
+  <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" id="navbarDropdownMenuLink"href="#">Radio <span class="caret"></span></a>
+
+
+<ul class="dropdown-menu"  aria-labelledby="navbarDropdownMenuLink">
+      <li><a href="<?php echo site_url('Visiteur/Programmation')?>"> Programmes</a></li> 
+      <li><a href="<?php echo site_url('Visiteur/Partenaires') ?>"> Partenaires </a></li>
+      <li><a href="<?php echo site_url('Visiteur/APropos') ?>"> Les Animateurs </a></li>
+      <li><a href=""></a></li>
+      <li class="dropdown-submenu">
+      <a class="dropdown-item" href="#" id="submenu">nous ecouter</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="" data-toggle="modal" data-target="#myModal">carte zone émissions </a></li>
+                <li> <?php echo anchor_popup(site_url('Visiteur/AffichePopup/'),'web',array('title' => 'Ecoutez Le Direct', 'class'=>'ahref'),$atts);?></li>
+                <li><a class="dropdown-item" href="#">Another subsubmenu action</a></li>
+              </ul>
+            </li>
+       </ul>
+  
+</Li>
+
+
+<li class="active"><a href="<?php echo site_url('Visiteur/Jeux') ?>">Jeux </a>&nbsp;&nbsp;</li>  
+
   <li class="active"><a href="" data-toggle="modal" data-target="#myModal">  Contact </a>&nbsp;&nbsp;</li>
-  <li class="active"><a href="<?php echo site_url('Visiteur/Jeux') ?>">Jeux </a>&nbsp;&nbsp;</li>
-  <li><a href="">  </a>&nbsp;&nbsp;</li>
-  <li class="active"><a href="<?php echo site_url('Visiteur/APropos') ?>"> A Propos de la  Radio </a>&nbsp;&nbsp;</li>
-  <li class="active lienradio"><?php echo anchor_popup(site_url('Visiteur/AffichePopup/'),'<img class="imgee" src='.img_url('play.png').'><span> Le direct</span>',array('title' => 'Ecoutez Le Direct', 'class'=>'ahref'),$atts);?></Li>
-</li>
-  </ul>
+  
+    <li class="active lienradio"><?php echo anchor_popup(site_url('Visiteur/AffichePopup/'),'<img class="imgee" src='.img_url('play.png').'><span> Le direct</span>',array('title' => 'Ecoutez Le Direct', 'class'=>'ahref'),$atts);?></Li>
+  </div>
 
-</ul>
-</div>
 </nav>
-
+</div>
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
     
@@ -103,9 +130,28 @@ $atts = array(
 
 
 
+  <div class="modal" id="Modalcouverture">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <img src=<?php echo img_url('couverture-geographique-cobfm.jpg')?> alt="">
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
 
 
 
 
-</body>
-</html>
+
+
+
+

@@ -1,3 +1,22 @@
+.footer{
+    font-size: 12px;
+    font-family: Verdana, Geneva, sans-serif;
+    color: #333;
+    background-color: #c7a2c6;
+    height: 20px;
+    line-height: 20px;
+    vertical-align: middle;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+.Divhautpage{
+    background-color: #3b5e96;
+}
+.wrap{
+    position: relative;
+    min-height: 100%;
+}
 
     .picto {
         display: inline-block;
@@ -46,22 +65,30 @@
         color: beige;
         font-size: 25px;
     }
+
+    .navbar-nav{
+        position: absolute;
+bottom: 0;
+    }
     .fond-picto > h1:nth-child(1){
         color:white;
+    }
+    .navbar {
+        border: 0px;
     }
     .nav > li > a:focus, .nav > li > a:hover {
 
         text-decoration: none;
         background-color: #426aa8;
-        height: 60px;
     }
     .container-fluid {
 
         padding-right: 15px;
-        padding-left: 15px;
-        margin-right: auto;
-        margin-left: auto;
-        background: #3b5e96;
+padding-left: 15px;
+margin-right: auto;
+margin-left: 22%;
+background: #3b5e96;
+width: 80%;
     }
     div.fond-picto:nth-child(8) > a:nth-child(4){
         height: 60px;
@@ -644,7 +671,58 @@
         width: 13%;
        }
         
+        .lejeuxdetail{
+            background-color: #FFF;
+            margin-left: 10%;
+            margin-right: 20px;
+            margin-top: 5%;
+            width: 80%;
+            height: 400px;
+        }
+        .DivImagejeux
+        {
+            float: left;
+            margin-right: 3%;
+        }
+        .DivtextJeuxDetail{
+            display: inline-block;
+            color: #15326b;
+            height: 100%;
+            width: 50%;
+        }
+        .DivEvenementDetail{
+            background-color: #FFF;
+            margin-left: 10%;
+            margin-right: 20px;
+            margin-top: 5%;
+            width: 80%;
+            height: 400px;
+        }
+        .ImageJeux{
+            height: 400px;
+            width: 500px;
+            float: left;
+        }
+
+
+        .dropdown-submenu {
+            position: relative;
+          }
+          
+          .dropdown-submenu .dropdown-menu {
+            top: 0;
+            left: 100%;
+            margin-top: -1px;
+          }
+
+          .Headerimage{
+            height: 227px;
+            float: left;
+            margin-left: 31px;
+          }
+
         
+
      @media screen and (max-width: 640px) {
         .bloc {
           display:block;
