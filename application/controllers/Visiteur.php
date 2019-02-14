@@ -82,6 +82,12 @@ class Visiteur extends CI_Controller {
 		$this->afficher('Visiteur/VoirUneinterview',$DonneesInjectees); 
 	 }
 
+	public function Services()
+	{
+		$DonneesInjectees['TitredelaPage']="Evenement";
+		$this->afficher('Visiteur/Services',$DonneesInjectees); 	
+		
+	}
 	 
 	 public function ConnexionAdmin()
 	 {

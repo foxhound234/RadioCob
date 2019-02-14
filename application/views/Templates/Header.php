@@ -13,7 +13,6 @@
   <script>
   $(document).ready(function() {
   $('.dropdown-submenu a').on("click", function(e) {
-    $(this).parents('ul').find('.dropdown-submenu ul').hide();
     $(this).next('ul').toggle();
     e.stopPropagation();
     e.preventDefault();
@@ -43,11 +42,10 @@ $atts = array(
   <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" id="navbarDropdownMenuLink"href="#">Radio <span class="caret"></span></a>
 
 
-<ul class="dropdown-menu"  aria-labelledby="navbarDropdownMenuLink">
+  <ul class="dropdown-menu"  aria-labelledby="navbarDropdownMenuLink">
       <li><a href="<?php echo site_url('Visiteur/Programmation')?>"> Programmes</a></li> 
       <li><a href="<?php echo site_url('Visiteur/Partenaires') ?>"> Partenaires </a></li>
       <li><a href="<?php echo site_url('Visiteur/APropos') ?>"> Les Animateurs </a></li>
-      <li><a href=""></a></li>
       <li class="dropdown-submenu">
       <a class="dropdown-item" href="#" id="submenu">nous ecouter</a>
               <ul class="dropdown-menu">
@@ -59,7 +57,7 @@ $atts = array(
        </ul>
   
 </Li>
-
+<li class="active"><a href="<?php echo site_url('Visiteur/Services')?>">Services </a>&nbsp;&nbsp;</li>
 
 <li class="active"><a href="<?php echo site_url('Visiteur/Jeux') ?>">Jeux </a>&nbsp;&nbsp;</li>  
 
