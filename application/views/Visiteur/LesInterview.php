@@ -9,36 +9,53 @@
     <script src="main.js"></script>
 </head>
 <body>
-<div class="text-center"> 
-    <h1>Les Evenements</h1>
-    </div> 
-    <BR>
-    <?php foreach ( $LesInterview  as $key=>$UneInterview):
-           if($UneInterview->image=='')
-           {
-            echo'
-            <div class="Levenement">
-            <div class="containera">
-            <p> pas Image </P>
-           </div>
-            <div class="DivJeuxb">
-            <H1 class="text-center"> Titre:'.$UneInterview->intitule.'</h1> 
-            <p class="pEvenement text-center"> Description:<BR>'. $UneInterview->description.'</p>
-            </div>
-    
-         </div>';
-           }else{
-            echo'
-            <div class="Levenement">
-            <div class="containera">
-            <img  class="image"  src='.img_url($UneInterview->image).'>
-           </div>
-            <div class="DivJeuxb">
-            <H1 class="text-center"> Titre:'.$UneInterview->intitule.'</h1> 
-            <p class="pEvenement text-center"> Description:<BR>'.$UneInterview->description.'</p>
-            </div>
-         </div>';    
-           }
-    endforeach; ?>
+<?php
+function get_string_between($string, $start, $end){
+  $string = ' ' . $string;
+  $ini = strpos($string, $start);
+  if ($ini == 0) return '';
+  $ini += strlen($start);
+  $len = strpos($string, $end, $ini) - $ini;
+  return substr($string, $ini, $len);
+}
+
+$url = "http://podcast.cobfm.free.fr/?feed=rss2"; /* insérer ici l'adresse du flux RSS de votre choix */
+$rss = simplexml_load_file($url);
+$i=0;
+foreach ($rss->channel->item as $item){
+  if($i<5)
+  {
+    $e_content = $item->children("content", true);
+    $e_encoded=(string)$e_content->encoded;
+   $tee=explode(" ",$e_encoded);
+   $rez=explode("href",$tee[1]);
+   $pio=explode("><img",$rez[1]);
+   $saert=explode("=",$pio[0]);
+   $image=$saert[1];
+ 
+
+
+    echo'
+    <div class="Levenement">
+    <div class="containera">
+    <img  class="image"  src='.$image.'>
+   </div>
+    <div class="containerb">
+    <H1 class="h1titrejeux"> Titre :'.$item->title.'</h1> 
+    <p class="pdescription"> Description:<BR>'.$item->description.'</p>
+    <audio controls
+    class=audioInfo
+    src="'.$item->enclosure['url'].'">
+        Your browser does not support the
+        <code>audio</code> element.
+    </audio>
+    </div>
+    </div>';    
+  }
+$i++;
+
+
+    }
+?>
 </body>
 </html>

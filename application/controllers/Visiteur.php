@@ -46,7 +46,7 @@ class Visiteur extends CI_Controller {
 		$DonneesInjectees['LesInterview']=$this->Modeleinterview->getLesinterview();
 		$DonneesInjectees['TitredelaPage']="Les Interview";
 
-		$this->afficher('Visiteur/VoirUnjeux',$DonneesInjectees);
+		$this->afficher('Visiteur/LesInterview',$DonneesInjectees);
 	}
 
 	 public function Partenaires()
@@ -75,18 +75,20 @@ class Visiteur extends CI_Controller {
 		$DonneesInjectees['TitredelaPage']="Evenement";
 		$this->afficher('Visiteur/VoirUnjeux',$DonneesInjectees); 
 	 }
-	 public function VoirUneInterview($id)
+	 public function VoirUneInterview($image)
 	 {
-		$DonneesInjectees['Interview']=$this->Modeleinterview->RetournerInterview($id);
+		 
+		$DonneesInjectees['Interview']=$image;
 		$DonneesInjectees['TitredelaPage']="Evenement";
 		$this->afficher('Visiteur/VoirUneinterview',$DonneesInjectees); 
+
 	 }
 
 	public function Services()
 	{
 		$DonneesInjectees['TitredelaPage']="Evenement";
 		$this->afficher('Visiteur/Services',$DonneesInjectees); 	
-		
+
 	}
 	 
 	 public function ConnexionAdmin()

@@ -48,21 +48,41 @@
     }
 ?>
     <!-- Partie interviews -->
-    <?php if($nbinterview == 1) {
+    <?php 
+    
+    $url = "http://podcast.cobfm.free.fr/?feed=rss2"; /* insérer ici l'adresse du flux RSS de votre choix */
+    $rss = simplexml_load_file($url);
+    $i=0;
+    
+    
+    
+    
+    if($nbinterview == 1) {
         echo '<div class=divInfo>
         <h1 class=infoloc> Interviews </h1>    
         </div>
         <div class=divInformation>
          <div class=txtInfo>';
-     foreach ($Interviews as $UneInterview):
+     foreach ($rss->channel->item as $item):
+        $e_content = $item->children("content", true);
+        $e_encoded=(string)$e_content->encoded;
+       $tee=explode(" ",$e_encoded);
+       $rez=explode("href",$tee[1]);
+       $pio=explode("><img",$rez[1]);
+       $saert=explode("=",$pio[0]);
+       $image=$saert[1];
+
+
+
+
         echo'
         <div class="divtxtfluid">
-        <span class="titreint">Titre:'.$UneInterview->Titre.'</span>
+        <span class="titreint">Titre:'.$item->title.'</span>
         </div>
         <div class="divImagefluid">
-        <img  class="imageint"  src='.img_url($UneInterview->image).'>
+        <img  class="imageint"  src='.$image.'>
         </div>
-        <p class="infodes"> Description:'.$UneInterview->Description.'</p>
+        <p class="infodes"> Description:'.$item->description.'</p>
         ';
      endforeach;
      echo
@@ -74,11 +94,26 @@
         <h1 class=infoloc> Interviews </h1>    
         </div>
         <div class=DivInformationmulti row>';
-     foreach ($Interviews as $key=>$UneInterview):
-      
-        if($key == 2)
-        {
+        foreach ($rss->channel->item as $item):
+            $e_content = $item->children("content", true);
+            $e_encoded=(string)$e_content->encoded;
+            $comments=$item->comments;
             
+            $zer=explode("http://",$comments);
+            $pza=explode("podcast.cobfm.free.fr",$zer[1]);
+
+
+            var_dump($zer);
+
+            $tee=explode(" ",$e_encoded);
+           $tee=explode(" ",$e_encoded);
+           $rez=explode("href",$tee[1]);
+           $pio=explode("><img",$rez[1]);
+           $saert=explode("=",$pio[0]);
+           $image=$saert[1];
+        if($i==2)
+        {
+           
             echo'
             <div class="DivVoirplus">
             <a href='.site_url("Visiteur/Jeux").'>
@@ -87,31 +122,31 @@
             </div>
             ';
         }
-        elseif ($key<2) {
-            if($key ==1)
+        elseif ($i<2) {
+            if($i ==1)
             {
              echo'
             <div class="divInterviewdroit">
-            <div class="Divtext">'.$UneInterview->Titre.'</div>
-            <img  class="imagemultiint"  src='.img_url($UneInterview->image).'>
+            <div class="Divtext">'.$item->title.'</div>
+            <a href='.site_url()."/Visiteur/VoirUneInterview/".$image.'><img  class="imagemultiint"  src='.$image.'></a>
             </div>
             ';   
             }else{
             echo'      
             <div class="divinterviewgauche">
-           <div class="Divtext">'.$UneInterview->Titre.'</div>
-           <a href='.site_url()."/Visiteur/VoirUnJeux/".$UneInterview->id.'>
-                    <img  class="imagemultiint"  src='.img_url($UneInterview->image).'>
-                    </a>
+           <div class="Divtext">'.$item->title.'</div>
+           <a href='.site_url()."/Visiteur/VoirUneInterview/".$image.'><img  class="imagemultiint"  src='.$image.'>
+             </a>
                     </div>
                     '; 
                 
             }
-           
+          
         }
         else{
 
         }
+        $i++;
      endforeach;
      echo
      '</div>';
