@@ -1,0 +1,21 @@
+.Ret{
+    vertical-align: middle;
+    margin-left: 50px;
+    width: 60%;
+}
+.divPopup{
+    margin: 17%;
+}
+.audioInfo{
+    display: inline;
+
+    vertical-align: 12%;
+
+    margin-left: 70%;
+
+    margin-top: -7%;
+    
+    margin-bottom: 21px;
+    
+    width: 30%;
+}

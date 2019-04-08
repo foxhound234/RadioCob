@@ -1,0 +1,122 @@
+.divInfo{
+    margin-left: 31px;
+    margin-right: 3%;
+    width: 100%;
+    background-color: #15326b;
+    height: 50px;
+    }
+    .divColonneCentre{
+        width: 60%;
+        float: left;
+    }
+    .DivEvenementDetail{
+        background-color: #FFF;
+        margin-left: 10%;
+        margin-right: 20px;
+        margin-top: 5%;
+        width: 80%;
+        height: 400px;
+    }
+    .DivInformationmulti{
+        width: 100%;
+        margin-left: 31px;
+        margin-top: -9px;
+    }
+    .DivVoirplus{
+        float: right;
+
+        background-color: #2b456e;
+        
+        color: white;
+        
+        margin-top: 3%;
+        
+        margin-right: 5%;
+        
+        margin-left: 6%;
+        
+        width: 16%;
+       }
+       .txtvoirplus{
+        font-size: 22px;
+
+        margin-left: 10%;
+     }
+
+     .divinterviewgauche{
+
+        width: 40%;
+
+        float: left;
+        
+        background-color: white;
+        
+        margin-top: 3%;
+        
+        margin-left: 5%;
+    }
+    .divInterviewdroit{
+ 
+        width: 40%;
+        float: right;
+        background-color: white;
+        margin-top: 3%;
+        margin-right: 5%;
+    
+    }
+
+    
+    .Divtext{
+        text-align: center;
+        font-size: 22px;
+        color: #15326b;
+        
+    }
+
+    
+   .divInformation{
+    background-color: #FFF;
+    width: 100%;
+    margin-left: 31px;
+    margin-top: -9px;
+   }
+ 
+   .tales {
+    width: 50%;
+  }
+  .lespan{
+    font-size: 22px;
+}
+   .divInfo{
+    margin-left: 31px;
+    margin-right: 3%;
+    width: 100%;
+    background-color: #15326b;
+    height: 50px;
+    }
+    .txtInfo{
+    margin-left: 31px;
+
+    color: #2b456e;
+
+    display: inline-block;
+
+    margin-right: 31px;
+    }
+
+        .infoloc{
+            margin-left: 31px;
+            color: #FFF;
+        }
+        .infodes{
+            float: right;
+          }
+
+          .divTitre{
+            background-color: #15326b;
+            color: white;
+        }
+        .divJeux{
+        background-color: white;
+        color: #2b456e;
+        }     

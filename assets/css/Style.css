@@ -106,11 +106,11 @@
     .container-fluid {
 
         padding-right: 15px;
-padding-left: 15px;
-margin-right: auto;
-margin-left: 20%;
-background: #3b5e96;
-width: 80%;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: 20%;
+        background: #3b5e96;
+        width: 80%;
     }
     div.fond-picto:nth-child(8) > a:nth-child(4){
         height: 60px;
@@ -162,95 +162,7 @@ width: 80%;
         margin-left: 42%;
     }
 
-    .horaires {
 
-        float: left;
-        width: 48px;
-        text-align: center;
-        font-weight: bold;
-        font-size: 13px;
-        line-height: 14px;
-        color: #67aacf;
-
-    }
-
-    .emission {
-        background: #efefef;
-        border-bottom: 1px solid #afd9f1;
-        padding: 4px 0;
-            padding-top: 4px;
-            padding-right: 0px;
-            padding-bottom: 4px;
-            padding-left: 0px;
-    }
-    .nom-jour {
-
-        text-align: center;
-        line-height: 30px;
-        color: #fff;
-        font-size: 16px;
-        font-weight: bold;
-        font-variant: small-caps;
-        background: #072258   bottom left repeat-x;
-
-    }
-
-    .contenu {
-
-        position: relative;
-        float: left;
-        margin: 2%;
-
-        margin-left: 3%;
-
-        margin-right: 1%;
-
-    }
-    .jourProgrammes{
-
-        position: relative;
-        float: left;
-        width: 13.7%;
-        border: 1px solid #072258;
-        margin-right: 5px;
-        margin-bottom: 0px;
-        background-color: #679df4;
-        height: 10%;
-    }
-
-
-    .H1emission{
-        font-weight: bold;
-        font-size: 12px;
-        color: #15326b;
-        display: block;
-        padding-bottom: 5px;
-        margin-bottom: 5px;
-        border-bottom: 1px solid #15326b;
-        text-transform: uppercase;
-    
-    }
-    .emission-details {
-
-        position: relative;
-        margin-top: 4px;
-        padding: 6px;
-        background: #afd9f1;
-        color: #15326b;
-
-    }
-    .H1Jour{
-        
-        font-weight: bold;
-        font-size: 12px;
-        color: #15326b;
-        display: block;
-        padding-bottom: 5px;
-        margin-bottom: 0px;
-        border-bottom: 1px solid #15326b;
-        text-transform: uppercase;
-
-    }
     .DivEvenement{
         width: 26%; 
     float: left; 
@@ -294,67 +206,16 @@ width: 80%;
         -webkit-box-orient: vertical;
      }
      
-     .containera {
-      display: inline-block;
-     height:100% ;
-     width: 20%;
-    }
-
-  .containerb {
-      display: inline-block;
-     color: #15326b;
-     height:100% ;
-     width: 20%;
-     margin-left: 2%;
-    }
+    
     .containerc{
     margin-left: 50%;
     display: inline-block;
     }
-    .pEvenement{
-        font-size: 124%;
-    }
-    .Levenement{
-        padding: 10px;
-        box-shadow: 5px 10px 8px #888888;
-        background-color: #FFF;
-            margin-left: 20px;
-
-            margin-right: 20px;
-
-            margin-top: 30px;
-    }
-    .TitreSon{
-        font-size: 123%;
-    }
-
-    .divPopup{
-        margin: 17%;
-    }
-
-   .divInformation{
-    background-color: #FFF;
-    width: 100%;
-    margin-left: 31px;
-    margin-top: -9px;
-   }
-
-   .divInfo{
-    margin-left: 31px;
-    margin-right: 3%;
-    width: 100%;
-    background-color: #15326b;
-    height: 50px;
-    }
-    .txtInfo{
-    margin-left: 31px;
-
-    color: #2b456e;
-
-    display: inline-block;
-
-    margin-right: 31px;
-    }
+  
+ 
+    
+  
+ 
     .infoloc{
         margin-left: 31px;
         color: #FFF;
@@ -378,19 +239,13 @@ width: 80%;
         padding: 10px;
         
     }
-    .Ret{
-        vertical-align: middle;
-        margin-left: 50px;
-        width: 60%;
-    }
+   
     .carousel-inner{
         width:100%;
         max-height: 200px !important;
       }
      
-      .tales {
-        width: 50%;
-      }
+      
       .item{
           margin-left: 20%;
       }
@@ -454,24 +309,14 @@ width: 80%;
             margin-right: 3.8%;
 
         }
-        .divTitre{
-            background-color: #15326b;
-            color: white;
-        }
-        .divJeux{
-        background-color: white;
-        color: #2b456e;
-        }
+      
         .h1jeux{
             margin-bottom: 0px;
         }
         .lespan{
             font-size: 22px;
         }
-        .divColonneCentre{
-            width: 60%;
-            float: left;
-        }
+       
         .divImagefluid{
             float: left;
     margin-left: 15%;
@@ -495,27 +340,7 @@ width: 80%;
         .divcontint{
             display: inline-block;
         }
-        .divinterviewgauche{
-
-            width: 40%;
-
-            float: left;
-            
-            background-color: white;
-            
-            margin-top: 3%;
-            
-            margin-left: 5%;
-        }
-        .divInterviewdroit{
-     
-            width: 40%;
-            float: right;
-            background-color: white;
-            margin-top: 3%;
-            margin-right: 5%;
-        
-        }
+    
         .imagemultiint{
             height: 242px;
 
@@ -541,59 +366,20 @@ width: 80%;
         .evenementvoir{
             font-size:14%; 
         }
-        .DivInformationmulti{
-            width: 100%;
-            margin-left: 31px;
-            margin-top: -9px;
-        }
-       .DivVoirplus{
-        float: right;
-
-        background-color: #2b456e;
+    
         
-        color: white;
-        
-        margin-top: 3%;
-        
-        margin-right: 5%;
-        
-        margin-left: 6%;
-        
-        width: 16%;
-       }
-        
-      .DivJeuxb{
-        color: #15326b;
-        height: 100%;
-        margin-left: 22%;
-      }
+    
      .txtvoirplus{
         font-size: 22px;
 
         margin-left: 10%;
      }
     
-      .lejeux{
-        padding: 10px;
-        box-shadow: 5px 10px 8px #888888;
-        background-color: #FFF;
-        margin-left: 20px;
-        margin-right: 20px;
-        margin-top: 30px;
-        height: 290px;
-      }
+    
 
+    
 
-      .divjeuxa{
-        display: inline-block;
-        height: 100%;
-        width: 20%;
-        float: left;
-      }
-
-      .h1titrejeux{
-        font-size: 22px; 
-      }
+   
 
       .partieDescription
         {
@@ -605,49 +391,9 @@ width: 80%;
         .pdescription{
             font-size: 124%;
         }
-        .divAnimateur{
-            width: 15%;
-
-            float: left;
-            
-            background-color: white;
-            
-            margin-top: 3%;
-            
-            margin-left: 4%;
-        }
-        .divPartenaire{
-            width: 15%;
-            float: left;
-            background-color: white;
-            margin-top: 3%;
-            margin-left: 6%;
-        }
-        .divAnimateurGauche{
-            width: 15%;
-
-            float: left;
-            
-            background-color: white;
-            
-            margin-top: 3%;
-            
-            margin-left: 5%;
-
-        }
-        .divPartenaireGauche{
-            width: 15%;
-            float: left;
-            background-color: white;
-            margin-top: 3%;
-            margin-left: 11%;
-
-        }
-        .divLigne{
-            width: 100%;
-            height: 400px;
-        
-        }
+   
+  
+     
         .imageanim{
             height: auto;
             width: 90%;
@@ -656,21 +402,7 @@ width: 80%;
             height: 205px;
             width: 205px;
         }
-        .nomanim{
-            margin-left: 10%;
-            margin-right: 10%;
-            text-align: center;
-        }
-        .titrepage{
-            text-align: center;
-
-        }
-        .nom{
-            font-size: 18px;
-
-        width: 100%;
-        color: #15326b;
-        }
+    
         .Divtext{
             text-align: center;
             font-size: 22px;
@@ -687,38 +419,7 @@ width: 80%;
         width: 13%;
        }
         
-        .lejeuxdetail{
-            background-color: #FFF;
-            margin-left: 10%;
-            margin-right: 20px;
-            margin-top: 5%;
-            width: 80%;
-            height: 400px;
-        }
-        .DivImagejeux
-        {
-            float: left;
-            margin-right: 3%;
-        }
-        .DivtextJeuxDetail{
-            display: inline-block;
-            color: #15326b;
-            height: 100%;
-            width: 50%;
-        }
-        .DivEvenementDetail{
-            background-color: #FFF;
-            margin-left: 10%;
-            margin-right: 20px;
-            margin-top: 5%;
-            width: 80%;
-            height: 400px;
-        }
-        .ImageJeux{
-            height: 400px;
-            width: 500px;
-            float: left;
-        }
+ 
 
 
         .dropdown-submenu {
@@ -755,7 +456,6 @@ width: 80%;
     }
 
     
-
      @media screen and (max-width: 640px) {
         .bloc {
           display:block;

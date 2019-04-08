@@ -8,7 +8,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href=<?php echo css_url("Style")?> />
+    <link rel="stylesheet" type="text/css" media="screen" href=<?php echo css_url("Evenement")?> />
 </head>
 <body>
     <div class="text-center"> 
@@ -24,7 +24,7 @@
             <p> pas Image </P>
            </div>
             <div class="containerb">
-            <H1 class="text-center h1titrejeux"> Titre:'.$Evenement->titre.'</h1> 
+            <H1 class="text-center h1titreEvenement"> Titre:'.$Evenement->titre.'</h1> 
             <p class="pEvenement text-center"> Periode:'.$Evenement->periode.'</p>
             <p class="pEvenement text-center"> Description:<BR>'.$Evenement->description.'</p>
             </div>
@@ -38,8 +38,8 @@
             <img  class="image"  src='.img_url($Evenement->images).'>
            </div>
             <div class="containerb">
-            <H1 class="h1titrejeux"> Titre :'.$Evenement->titre.'</h1> 
-            <p class="pEvenement "> Periode:'.$Evenement->periode.'</p>
+            <H1 class="h1titreEvenement"> Titre :'.$Evenement->titre.'</h1> 
+            <p class="pEvenement"> Periode:'.$Evenement->periode.'</p>
             <p class="pdescription"> Description:<BR>'.$Evenement->description.'</p>
             </div>
              

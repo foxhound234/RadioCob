@@ -21,7 +21,7 @@
            </div>
             <div class="DivJeuxb">
             <H1 class="h1titrejeux"> Titre:'.$UnJeux->intitule.'</h1> 
-            <p class="pEvenement text-center"> Description:<BR>'. $UnJeux->description.'</p>
+            <p class="pJeux text-center"> Description:<BR>'. $UnJeux->description.'</p>
             </div>
     
          </div>';
@@ -33,7 +33,7 @@
            </div>
             <div class="DivJeuxb">
             <H1 class="h1titrejeux"> Titre:'.$UnJeux->intitule.'</h1> 
-            <p class="pEvenement"> Description:<BR>'.$UnJeux->description.'</p>
+            <p class="pJeux"> Description:<BR>'.$UnJeux->description.'</p>
             </div>
          </div>';    
            }

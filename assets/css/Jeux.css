@@ -1,0 +1,58 @@
+.lejeux{
+    padding: 10px;
+    box-shadow: 5px 10px 8px #888888;
+    background-color: #FFF;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 30px;
+    height: 290px;
+  }
+  .divjeuxa{
+    display: inline-block;
+    height: 100%;
+    width: 20%;
+    float: left;
+  }
+  .DivJeuxb{
+    color: #15326b;
+    height: 100%;
+    margin-left: 22%;
+  }
+  .h1titrejeux{
+    font-size: 22px; 
+  }
+
+  .pJeux{
+    font-size: 124%;
+}
+.image {
+    display: inline-block;
+    width: 100%;
+    height: auto;
+  }
+
+  .lejeuxdetail{
+    background-color: #FFF;
+    margin-left: 10%;
+    margin-right: 20px;
+    margin-top: 5%;
+    width: 80%;
+    height: 400px;
+}
+.DivImagejeux
+{
+    float: left;
+    margin-right: 3%;
+}
+.DivtextJeuxDetail{
+    display: inline-block;
+    color: #15326b;
+    height: 100%;
+    width: 50%;
+}
+
+.ImageJeux{
+    height: 400px;
+    width: 500px;
+    float: left;
+}
