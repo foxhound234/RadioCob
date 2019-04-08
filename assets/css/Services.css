@@ -1,0 +1,26 @@
+.bandeauPartenaire{
+    width: 78%;
+    background-color: #15326b;
+    height: 50px;
+    text-align: center;
+    margin-left: 11%;
+}
+.annoncesAsso{
+background-color: #FFF;
+width: 78%;
+margin-left: 11%;
+margin-top: -9px;
+padding-bottom: 4px;
+padding-top: 24px;
+}
+.infoloc{
+    margin-left: 31px;
+    color: #FFF;
+}
+.annonceTexteAsso
+{
+    margin-bottom: 32px;
+    margin-left: 7%;
+    margin-right: 7%;
+    font-size: 19px;
+}

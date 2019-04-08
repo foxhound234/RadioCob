@@ -10,6 +10,22 @@
     position: absolute;
     bottom: 0;
 }
+
+.player
+{
+    float: right;
+    background-color: #FFF;
+    border-top-left-radius: 60px;
+    width: 39%;
+    min-width: 20%;
+}
+
+.menu
+{
+    width: 25%;
+    float: left;
+    margin-left: 0%;
+}
 .Divhautpage{
     background-color: #3b5e96;
 }
@@ -68,7 +84,13 @@
 
     .navbar-nav{
         position: absolute;
-bottom: 0;
+
+        bottom: 0;
+
+        width: 38%;
+
+        min-width: 600px;
+
     }
     .fond-picto > h1:nth-child(1){
         color:white;
@@ -86,7 +108,7 @@ bottom: 0;
         padding-right: 15px;
 padding-left: 15px;
 margin-right: auto;
-margin-left: 22%;
+margin-left: 20%;
 background: #3b5e96;
 width: 80%;
     }
@@ -659,13 +681,7 @@ width: 80%;
             height: 200px;
         }
         
-        .bandeauPartenaire{
-            width: 78%;
-            background-color: #15326b;
-            height: 50px;
-            text-align: center;
-            margin-left: 11%;
-        }
+    
 
        .lienradio{
         width: 13%;
@@ -721,7 +737,24 @@ width: 80%;
             margin-left: 31px;
           }
 
-        
+          .containerImageint{
+            display: inline-block;
+            height: 100%;
+            width: 20%;
+            float:left;
+          }
+
+
+
+    #txtEntête
+    {
+        margin-top: 50px;
+        font-size: 60px;
+        font-family:'Mv Boli';
+        color:beige;
+    }
+
+    
 
      @media screen and (max-width: 640px) {
         .bloc {

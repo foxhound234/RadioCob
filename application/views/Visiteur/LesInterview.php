@@ -37,18 +37,19 @@ foreach ($rss->channel->item as $item){
 
     echo'
     <div class="Levenement">
-    <div class="containera">
+    <div class="containerImageint">
     <img  class="image"  src='.$image.'>
    </div>
     <div class="containerb">
-    <H1 class="h1titrejeux"> Titre :'.$item->title.'</h1> 
-    <p class="pdescription"> Description:<BR>'.$item->description.'</p>
+    <H1 class="h1titrejeux"> Titre :'.$item->title.'</h1>
+    <Br>
     <audio controls
     class=audioInfo
     src="'.$item->enclosure['url'].'">
         Your browser does not support the
         <code>audio</code> element.
-    </audio>
+    </audio> 
+    <p class="pdescription"> Description:<BR>'.$item->description.'</p>
     </div>
     </div>';    
   }

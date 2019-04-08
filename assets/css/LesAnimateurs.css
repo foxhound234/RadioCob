@@ -1,0 +1,50 @@
+.divLigne{
+    width: 100%;
+    height: 400px;
+
+}
+
+.divAnimateurGauche{
+    width: 15%;
+
+    float: left;
+    
+    background-color: white;
+    
+    margin-top: 3%;
+    
+    margin-left: 5%;
+
+}
+
+.divAnimateur{
+    width: 15%;
+
+    float: left;
+    
+    background-color: white;
+    
+    margin-top: 3%;
+    
+    margin-left: 4%;
+}
+
+.nomanim{
+    margin-left: 10%;
+    margin-right: 10%;
+    text-align: center;
+}
+.imageanim{
+    height: auto;
+    width: 90%;
+    margin-left: 5%;
+    margin-bottom: 8%;
+    height: 205px;
+    width: 205px;
+}
+
+.nom{
+font-size: 18px;
+width: 100%;
+color: #15326b;
+}

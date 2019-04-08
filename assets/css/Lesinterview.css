@@ -1,0 +1,28 @@
+.Levenement{
+    padding: 10px;
+    box-shadow: 5px 10px 8px #888888;
+    background-color: #FFF;
+        margin-left: 20px;
+
+        margin-right: 20px;
+
+        margin-top: 30px;
+}
+
+.containerImageint{
+    display: inline-block;
+    height: 100%;
+    width: 20%;
+    float:left;
+  }
+
+  .containerb {
+    display: inline-block;
+   color: #15326b;
+   height:100% ;
+   width: 20%;
+   margin-left: 2%;
+  }
+  .pdescription{
+    font-size: 124%;
+}

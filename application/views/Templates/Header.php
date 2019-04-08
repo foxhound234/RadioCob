@@ -37,11 +37,14 @@ $atts = array(
 <div class="Divhautpage">
 <img  class ="Headerimage"src=<?php echo img_url('cobfm.png')?>>
 <nav class="navbar">
+  
   <div class="container-fluid">
+    
+  <p id="txtEntête">Votre radio en baie de Saint Brieuc</p>
+  <div class="menu">
   <ul class="nav navbar-nav">    
   <li class="active"><a href="<?php echo site_url('Visiteur/Accueil') ?>">Accueil </a>&nbsp;&nbsp;</li>
   <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" id="navbarDropdownMenuLink"href="#">Radio <span class="caret"></span></a>
-
 
   <ul class="dropdown-menu"  aria-labelledby="navbarDropdownMenuLink">
       <li><a href="<?php echo site_url('Visiteur/Programmation')?>"> Programmes</a></li> 
@@ -64,9 +67,11 @@ $atts = array(
 
   <li class="active"><a href="" data-toggle="modal" data-target="#myModal">  Contact </a>&nbsp;&nbsp;</li>
   
-    <li class="active lienradio"><?php echo anchor_popup(site_url('Visiteur/AffichePopup/'),'<img class="imgee" src='.img_url('play.png').'><span> Le direct</span>',array('title' => 'Ecoutez Le Direct', 'class'=>'ahref'),$atts);?></Li>
+    <li class="active lienradio"></Li>
+</div>
+    </div>
+    <div class="player"><?php echo anchor_popup(site_url('Visiteur/AffichePopup/'),'<img class="imgee" src='.img_url('play.png').'><span> Le direct</span>',array('title' => 'Ecoutez Le Direct', 'class'=>'ahref'),$atts);?>
   </div>
-
 </nav>
 </div>
 <div class="modal fade" id="myModal" role="dialog">

@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
 </head>
 <body>
     <?php $premierligne=true; ?>
@@ -82,15 +83,14 @@
                         echo'<div class="divPartenaire">';
                  }
                 echo'
-             <div class="nomanim">  
+             <div class="nomPartenaire">  
             <span class="nom text-center">'.$items->nom.'</span>
             </div>
-            <a href='.site_url()."/Visiteur/VoirUnAnimateur/".$items->id.'><img class="imageanim"  src="'.img_url($items->logo).'"></a>
+            <a href='.site_url()."/Visiteur/VoirUnAnimateur/".$items->id.'><img class="imageParte"  src="'.img_url($items->logo).'"></a>
             <div>
             <a  class="blue" href='.$items->site.'>Visiter le site du partenaire</a>
             </div> 
             </div>';      
-                 
                  
                  ?> 
           

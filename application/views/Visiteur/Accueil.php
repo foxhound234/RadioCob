@@ -56,40 +56,7 @@
     
     
     
-    
-    if($nbinterview == 1) {
-        echo '<div class=divInfo>
-        <h1 class=infoloc> Interviews </h1>    
-        </div>
-        <div class=divInformation>
-         <div class=txtInfo>';
-     foreach ($rss->channel->item as $item):
-        $e_content = $item->children("content", true);
-        $e_encoded=(string)$e_content->encoded;
-       $tee=explode(" ",$e_encoded);
-       $rez=explode("href",$tee[1]);
-       $pio=explode("><img",$rez[1]);
-       $saert=explode("=",$pio[0]);
-       $image=$saert[1];
-
-
-
-
-        echo'
-        <div class="divtxtfluid">
-        <span class="titreint">Titre:'.$item->title.'</span>
-        </div>
-        <div class="divImagefluid">
-        <img  class="imageint"  src='.$image.'>
-        </div>
-        <p class="infodes"> Description:'.$item->description.'</p>
-        ';
-     endforeach;
-     echo
-     '</div>
-     </div>';
-    }
-    elseif ($nbinterview >= 2 ) {
+   
         echo '<div class=divInfo>
         <h1 class=infoloc> Interviews </h1>    
         </div>
@@ -103,7 +70,7 @@
             $pza=explode("podcast.cobfm.free.fr",$zer[1]);
 
 
-            var_dump($zer);
+         
 
             $tee=explode(" ",$e_encoded);
            $tee=explode(" ",$e_encoded);
@@ -116,7 +83,7 @@
            
             echo'
             <div class="DivVoirplus">
-            <a href='.site_url("Visiteur/Jeux").'>
+            <a href='.site_url("Visiteur/LesInterview").'>
             <span class="txtvoirplus"> Voir Plus >></span>
             </a>
             </div>
@@ -143,18 +110,11 @@
             }
           
         }
-        else{
 
-        }
         $i++;
      endforeach;
      echo
      '</div>';
-    }
-     else{
-      
-
-        };
         ?>
     </div>
 
