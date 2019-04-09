@@ -7,10 +7,8 @@
     <link rel="stylesheet" href=<?php echo css_url("Accueil")?> />
 </head>
 <body>
-    
-
 <!-- Colonne Centre -->
- <div class="wrap">
+ <div id="conteneur">
     <?php if($nbinfo>0)
     {
    echo "
@@ -52,10 +50,6 @@
             </div>
          </div>
         "; 
-
-
-
-
     }
 ?>
     <!-- Partie interviews -->
@@ -158,48 +152,16 @@
 
          }
         
-        ?> 
-    
-     <?php endforeach;?>
-    </div>
-
-
- <?php
-  if($nbinterview>0)
-  {
-   echo'
-   <div  class="divTitre">
-   <h1 class="h1jeux"> Les Evenement En Cours </h1>
-   </div>
-   <div class="divJeux"> '; 
-    foreach ($LesEvenements as$key=>$UnEvenement) : 
-        if($key<2)
-        {
-    echo' 
-       <div>
-       <span class="lespan">'.$UnEvenement->titre.'</span>
-       <br>
-        <img class="tales" src='.img_url($UnEvenement->images).'>
-       </div>
-       ';
-        }
-        elseif($key==2){
-            echo'
-            <BR>
-            <div>
-            <a href='.site_url("Visiteur/LesEvenements").'><p class="blue"> Voir plus >>> </p></a>
-            </div>
-            ';
-        }
-        else{
-
-        }
-    endforeach;
-    echo 
+      
+     
+        endforeach;
+    echo
     '</div>
-    </div>';
-  }
-    ?>
-</div>
+    </div>'?>
+   
+    
+
+
+
 </body>
 </html>

@@ -1,22 +1,10 @@
-.footer{
-    font-size: 12px;
-    font-family: Verdana, Geneva, sans-serif;
-    color: #333;
-    background-color: #c7a2c6;
-    height: 20px;
-    line-height: 20px;
-    vertical-align: middle;
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-}
 
 .player
 {
     float: right;
     background-color: #FFF;
-    border-top-left-radius: 60px;
-    width: 39%;
+    border-top-left-radius: 58px;
+    width: 27%;
     min-width: 20%;
 }
 
@@ -34,22 +22,6 @@
     min-height: 100%;
 }
 
-    .picto {
-        display: inline-block;
-        align-content: top;
-        margin: 4%;
-    }
-    .textePicto {
-        max-width: 500px;
-        display: block;
-        font-size: 30px;
-        color:white;
-    }
-    .fond-picto{
-        background: #2b456e;
-        margin-left: 10%;
-        width: 80%;
-    }
     .form-liste {
         background: #2b456e;
         clear: right;
@@ -105,10 +77,10 @@
     }
     .container-fluid {
 
-        padding-right: 15px;
+        padding-right: 11px;
         padding-left: 15px;
         margin-right: auto;
-        margin-left: 20%;
+        margin-left: 18%;
         background: #3b5e96;
         width: 80%;
     }
@@ -249,9 +221,7 @@
       .item{
           margin-left: 20%;
       }
-      .infodes{
-        float: right;
-      }
+    
       .ahref{
         padding: 14px 25px;
         text-align: center;
@@ -341,15 +311,7 @@
             display: inline-block;
         }
     
-        .imagemultiint{
-            height: 242px;
-
-            width: 90%;
-            
-            margin-left: 5%;
-
-            margin-bottom: 8%;
-        }
+   
         .txtInterview{
             margin-left: 31px;
 
@@ -388,20 +350,10 @@
             margin-right: 5%;
             margin-top: 70px;
         }
-        .pdescription{
-            font-size: 124%;
-        }
-   
+        
   
      
-        .imageanim{
-            height: auto;
-            width: 90%;
-            margin-left: 5%;
-            margin-bottom: 8%;
-            height: 205px;
-            width: 205px;
-        }
+       
     
         .Divtext{
             text-align: center;
@@ -455,7 +407,12 @@
         color:beige;
     }
 
-    
+
+
+  
+    #footer {clear: both;
+        background-color: #2b456e;}
+  
      @media screen and (max-width: 640px) {
         .bloc {
           display:block;

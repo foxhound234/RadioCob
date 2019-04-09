@@ -16,13 +16,35 @@
     float:left;
   }
 
-  .containerb {
+
+  .pdescription{
+    font-size: 124%;
+}
+
+.containera {
+    display: inline-block;
+   height:100% ;
+   width: 20%;
+  }
+
+.containerb {
     display: inline-block;
    color: #15326b;
    height:100% ;
    width: 20%;
    margin-left: 2%;
   }
-  .pdescription{
-    font-size: 124%;
+
+  .audioInfo{
+    display: inline;
+
+    vertical-align: 12%;
+
+    margin-left: 70%;
+
+    margin-top: -7%;
+    
+    margin-bottom: 21px;
+    
+    width: 30%;
 }

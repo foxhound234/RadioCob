@@ -120,3 +120,16 @@
         background-color: white;
         color: #2b456e;
         }     
+
+        .imagemultiint{
+            height: 242px;
+
+            width: 90%;
+            
+            margin-left: 5%;
+
+            margin-bottom: 8%;
+        }
+        .infodes{
+            float: right;
+          }

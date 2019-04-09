@@ -43,6 +43,15 @@
     width: 205px;
 }
 
+.imageanim{
+    height: auto;
+    width: 90%;
+    margin-left: 5%;
+    margin-bottom: 8%;
+    height: 205px;
+    width: 205px;
+}
+
 .nom{
 font-size: 18px;
 width: 100%;
